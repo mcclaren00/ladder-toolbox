@@ -1,6 +1,6 @@
 ---
 name: Lint
-'on':
+'off':
   pull_request:
   push:
     branches:
