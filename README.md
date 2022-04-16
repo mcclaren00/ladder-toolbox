@@ -32,3 +32,11 @@ This provisions and installs k3s on all nodes based off of the `inventory/hosts.
  To access the provisioned cluster run:
 
     scp USER@master_ip:~/.kube/config ~/.kube/config
+
+<br>
+
+## Quick References 
+
+- [Ansible Docs](https://docs.ansible.com/)
+- [K3s](https://rancher.com/docs/k3s/latest/en/)
+- [Kubernetes](https://kubernetes.io/docs/home/)
