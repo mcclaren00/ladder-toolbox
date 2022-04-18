@@ -5,7 +5,7 @@
   roles:
     - role: prereq
     - role: download
-    - role: raspberrypi
+    - role: rpi
 
 - hosts: master
   become: yes
