@@ -1,5 +1,5 @@
 ---
-- name: Get mounted filesystems 
+- name: Get the list of mounted filesystems
   shell: set -o pipefail && cat /proc/mounts | awk '{ print $2}' | grep -E "^{{ mounted_fs }}"
   register: get_mounted_filesystems
   args:
