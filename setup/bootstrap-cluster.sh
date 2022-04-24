@@ -1,7 +1,7 @@
 #!/usr/bin/env bash 
 # This script is meant to be ran on master node
-
-USER="sa"
+  
+USER="sa" # change to fit your needs
 K3S_VERSION="v1.23.4+k3s1"
 
 REPO_ROOT=$(git rev-parse --show-toplevel)
@@ -30,11 +30,12 @@ message() {
 }
 
 k3s_master_node() {
-    for master in $K3S_MASTERS; do 
+    for master in ${K3S_MASTERS}; do 
         
         message "Installing k3s master to ${master}"
         k3sup install --ip "${master}" \
             --cluster \
+            --ssh-key "~/.ssh/id_ed25519" \
             --k3s-version "${K3S_VERSION}" \
             --user "${USER}" \
             --k3s-extra-args "--no-deploy servicelb --no-deploy traefik --no-deploy metrics-server --default-local-storage-path /k3s-local-storage"
@@ -54,6 +55,7 @@ k3s_worker_node() {
     for worker in $K3S_WORKERS; do
         message "Joining ${worker} to ${K3S_MASTER}"
         k3sup join --ip "${worker}" \
+            --ssh-key "~/.ssh/id_ed25519" \
             --server-ip "${K3S_MASTER}" \
             --server \
             --k3s-version "${K3S_VERSION}" \
@@ -120,7 +122,6 @@ sleep 5
 message "Installed K3s and flux"
 kubectl get nodes -o=wide
 
-message "Installing monitoring stack"
 sleep 5
 
 install_monitoring
