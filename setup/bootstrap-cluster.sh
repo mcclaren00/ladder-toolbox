@@ -22,19 +22,19 @@ need "flux"
 
 K3S_MASTER=$(ansible-inventory -i ${ANSIBLE_INVENTORY} --list | jq -r '.k3s_master[] | @tsv')
 K3S_WORKERS=$(ansible-inventory -i ${ANSIBLE_INVENTORY} --list | jq -r '.k3s_worker[] | @tsv')
-# FIRST_MASTER=$(ansible-inventory -i ${ANSIBLE_INVENTORY} --list | jq -r '.k3s_first_master[] | @tsv')
 
 
 # echo "Cluster IP" ${FIRST_MASTER} #works 
 echo "Masters" ${K3S_MASTERS}
 echo "Workers" ${K3S_WORKERS} 
+
 message() {
   echo -e "\n######################################################################"
   echo "# ${1}"
   echo "######################################################################"
 } 
 
-first_master_node() {
+k3s_master_node() {
     message "Installing first master node"
     k3sup install --ip "${K3S_MASTER}" --user "${USER}" --k3s-version "${K3S_VERSION}" --ssh-key "~/.ssh/id_ed25519" --k3s-extra-args "--no-deploy metrics-server"
 
@@ -45,32 +45,18 @@ first_master_node() {
     sleep 10 
 }
 
-k3s_master_node() {
-   
-        
-    message "Installing master nodes ${K3S_MASTER}"
-    k3sup install --ip "${K3S_MASTER}" --ssh-key "~/.ssh/id_ed25519" --k3s-version "${K3S_VERSION}" --user "${USER}" --k3s-extra-args "--no-deploy metrics-server"
-    sleep 10 
-    message "Labeling ${MASTER} as node-role.kubernetes.io/master=master"
-    # hostname=$(ansible-inventory -i ${ANSIBLE_INVENTORY} --list | jq -r --arg master "$master" '._meta[] | .[$k3s_master].hostname')
-    # kubectl label node ${hostname} node-role.kubernetes.io/worker=worker
-    
-    # Move to correct folder
-    mkdir -p ~/.kube
-    mv ./kubeconfig ~/.kube/config
-
-}
-
 k3s_worker_node() {
     for worker in ${K3S_WORKERS}; do
 
-        message "Joining ${worker} to ${FIRST_MASTER} cluster"
-        k3sup join --ip "${worker}" --ssh-key "~/.ssh/id_ed25519" --k3s-version "${K3S_VERSION}" --user "${USER}" --server-ip "${K3S_MASTER}" --k3s-extra-args "--no-deploy metrics-server"
+        message "Joining ${worker} to ${K3S_MASTER} cluster"
+        k3sup join --ip "${worker}" --server-ip "${K3S_MASTER}" --ssh-key "~/.ssh/id_ed25519" --k3s-version "${K3S_VERSION}" --user "${USER}" --k3s-extra-args "--no-deploy metrics-server"
         
         sleep 10
 
         message "Labeling ${worker} as node-role.kubernetes.io/worker=worker"
         hostname=$(ansible-inventory -i ${ANSIBLE_INVENTORY} --list | jq -r --arg k3s_worker "${worker}" '._meta[] | .[$k3s_worker].hostname')
+        echo ${hostname}
+
         kubectl label node ${hostname} node-role.kubernetes.io/worker=worker
     done
 }
@@ -82,15 +68,6 @@ install_flux() {
     # Bootstrap flux into cluster and repo 
     flux bootstrap github --owner=mcclaren00 --repository=ladder-toolbox --branch=main --path=/cluster/ --personal
 
-    '''
-    FLUX_READY=1
-    while [ ${FLUX_READY} != 0 ]; do
-        echo "Waiting for flux pod to be fully ready..."
-        kubectl -n flux-system wait --for condition=available deployment/flux
-        FLUX_READY="$?"
-        sleep 5
-    done
-    '''
     sleep 5
 }
 
@@ -116,7 +93,7 @@ install_monitoring() {
 
 k3s_master_node
 k3s_worker_node
-install_flux
+# install_flux
 # add_deploy_key
 
 sleep 5

@@ -1,22 +1,6 @@
 ---
-k3s_version: v1.23.4+k3s1
 ansible_user: sa
 systemd_dir: /etc/systemd/system
 
 system_timezone: "America/New_York"
 
-flannel_iface: "eth0"
-
-apiserver_endpoint: "192.168.50.222"
-
-k3s_token: "APYUShksHahtXJHXyJ5FQMRWnxjKaXxDdh26VDbvcuWrdfhxKGkYyhEch3DdMM3AJfjsfrSEdrgd"
-
-extra_server_args: "--no-deploy servicelb"
-extra_agent_args: ""
-
-kube_vip_tag_version: "v0.4.3"
-
-metal_lb_speaker_tag_version: "v0.12.1"
-metal_lb_controller_tag_version: "v0.12.1"
-
-metal_lb_ip_range: "192.168.50.80-192.168.50.90"

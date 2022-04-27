@@ -1,6 +1,6 @@
 ---
 - name: Reboot Servers
-  hosts: node, master
+  hosts: worker, master
   gather_facts: no
   become: true
   tasks:

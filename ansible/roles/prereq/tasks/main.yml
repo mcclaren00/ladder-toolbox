@@ -1,4 +1,16 @@
 ---
+- name: Update apt repo and cache 
+  apt:
+    update_cache: yes
+    force_apt_get: yes
+    cache_valid_time: 3600
+
+- name: Upgrade all packages 
+  apt:
+    upgrade: dist
+    force_apt_get: yes
+
+  
 - name: Set same timezone on every Server
   timezone:
     name: "{{ system_timezone }}"

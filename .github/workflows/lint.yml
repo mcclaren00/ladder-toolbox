@@ -4,7 +4,9 @@ name: Lint
   pull_request:
   push:
     branches:
-      - kevin/ansible
+      - main
+      file: 
+        - ansible/
 
 jobs:
 
