@@ -1,11 +1,11 @@
-# Ansible Branch 
+# Ansible  
 
 Credits to: Jeff Geerling
 
 <br>
 
-## Branch usage 
-This branch is mainly used for system configurations across the cluster. Any changes with system configurations should happen within this branch to be used as a single source of truth for system configuration. 
+## Usage 
+This is mainly used for system configurations across the cluster. Any changes with system configurations across the cluster should happen through playbooks and uploaded into this directory. 
 
 <br>
 
@@ -19,19 +19,11 @@ This branch is mainly used for system configurations across the cluster. Any cha
 <br>
 
 ## Usage 
-To provision or nuke cluster run: 
+To run playbooks first make sure that the inventory is updated with the correct information. 
 
-    ansible-playbook site.yml -i inventory/hosts.ini 
-
-This provisions and installs k3s on all nodes based off of the `inventory/hosts.ini` file 
-
-
-<br>
-
-## Accessing the cluster 
- To access the provisioned cluster run:
-
-    scp USER@master_ip:~/.kube/config ~/.kube/config
+```
+ansible-playbook site.yml -i inventory/inventory.yml
+```
 
 <br>
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env sh 
 
 
-github_username=mcclaren00
+github_username=mcclaren00 # change to apropriate username
 
 if [ ! -f "$HOME/.secret/github_access_token" ]; then
     echo "$HOME/.secret/github_access_token needs to exist with a GitHub personal access token"

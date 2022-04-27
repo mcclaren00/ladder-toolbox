@@ -42,4 +42,6 @@ uninstall_first_master
 uninstall_masters
 uninstall_workers
 
+rm -rf ~/.kube/* 
+
 message "Finished uninstalling"
