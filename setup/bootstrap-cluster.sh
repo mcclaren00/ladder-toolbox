@@ -93,8 +93,8 @@ install_monitoring() {
 
 k3s_master_node
 k3s_worker_node
-# install_flux
-# add_deploy_key
+install_flux
+add_deploy_key
 
 sleep 5
 message "Installed K3s and flux"
@@ -102,7 +102,7 @@ kubectl get nodes -o=wide
 
 sleep 5
 
-# install_monitoring
+install_monitoring
 message "All done!"
 kubectl get nodes 
 kubectl get pods -A
