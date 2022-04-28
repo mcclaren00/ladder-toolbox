@@ -21,7 +21,7 @@ message() {
 uninstall_masters(){
     for master in ${K3S_MASTERS}; do
         message "Removing K3s from ${master}"
-        ssh ${USER}@${master} " sudo systemctl stop k3s.service ; sudo /usr/local/bin/k3s-uninstall.sh"
+        ssh ${USER}@${master} "sudo systemctl stop k3s.service ; sudo /usr/local/bin/k3s-uninstall.sh"
     done        
 }
 
