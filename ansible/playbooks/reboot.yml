@@ -1,9 +1,0 @@
----
-- name: Reboot Servers
-  hosts: worker, master
-  gather_facts: no
-  become: true
-  tasks:
-    - name: Reboot machine
-      reboot:
-        reboot_timeout: 200

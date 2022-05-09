@@ -1,6 +1,0 @@
----
-ansible_user: sa
-systemd_dir: /etc/systemd/system
-
-system_timezone: "America/New_York"
-

@@ -1,9 +1,0 @@
----
-- hosts: master, worker
-  gather_facts: yes
-  become: yes
-  roles:
-    - role: prereq
-    - role: rpi
-  
-
