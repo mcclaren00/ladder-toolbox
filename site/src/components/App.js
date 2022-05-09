@@ -6,7 +6,9 @@ import Web3 from 'web3';
 import './App.css';
 
 const ipfsClient = require('ipfs-http-client')
-const ipfs = ipfsClient({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
+const ipfs = ipfsClient({
+    host: 'ipfs.infura.io', port: 5001, protocol: 'https'
+})
 
 class App extends Component {
 
@@ -70,7 +72,7 @@ class App extends Component {
     uploadFile = description => {
         console.log("Submitting file to IPFS")
 
-      
+
         ipfs.add(this.state.buffer, (error, result) => {
             console.log('IPFS result', result.size)
             if (error) {
@@ -79,7 +81,7 @@ class App extends Component {
             }
 
             this.setState({ loading: true })
-            
+
             if (this.state.type === '') {
                 this.setState({ type: 'none' })
             }
