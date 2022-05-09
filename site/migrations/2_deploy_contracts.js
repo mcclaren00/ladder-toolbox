@@ -1,6 +1,5 @@
-const Image = artifacts.require("Image")
-
+const DataStore = artifacts.require("DataStore");
 
 module.exports = function (deployer) {
-    deployer.deploy(Image);
-}
+    deployer.deploy(DataStore);
+};
