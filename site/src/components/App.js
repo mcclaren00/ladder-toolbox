@@ -5,9 +5,10 @@ import Main from './Main'
 import Web3 from 'web3';
 import './App.css';
 
+const authorization = "Basic " + btoa(process.env.ID + ":" + process.env.SECRET);
 const ipfsClient = require('ipfs-http-client')
 const ipfs = ipfsClient({
-    host: 'ipfs.infura.io', port: 5001, protocol: 'https'
+    host: 'ipfs.infura.io', port: 5001, protocol: 'https', Headers: authorization 
 })
 
 class App extends Component {
