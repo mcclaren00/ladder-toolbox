@@ -1,5 +1,5 @@
 ---
-version: "1"
+version: "3"
 
 vars:
   PROJECT_DIR:
@@ -20,7 +20,7 @@ includes:
   terraform: .taskfiles/TerraformTasks.yml
 
 tasks:
-  init:
+  default:
     desc: Install dependancies through brew
     cmds:
       - brew install {{.DEPS}} {{.CLI_ARGS}}
