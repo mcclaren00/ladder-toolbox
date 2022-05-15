@@ -1,6 +1,6 @@
 ---
 
-version: "1"
+version: "3"
 
 env: 
   ANSIBLE_CONFIG: "{{.PROJECT_DIR}}/ansible.cfg"

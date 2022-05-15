@@ -21,7 +21,7 @@ includes:
 
 tasks:
   init:
-    desc: Initialize workstation dependencies with Brew
+    desc: Install dependancies through brew
     cmds:
       - brew install {{.DEPS}} {{.CLI_ARGS}}
     preconditions:
@@ -48,11 +48,11 @@ tasks:
         yamllint
         yq
   verify:
-    desc: Verify env settings
+    desc: Verify correct env settings 
     cmds:
       - ./configure --verify
 
   configure:
-    desc: Configure repository from env settings
+    desc: Configure repository and cluster 
     cmds:
       - ./configure
