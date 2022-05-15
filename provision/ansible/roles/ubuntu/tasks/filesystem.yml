@@ -1,0 +1,21 @@
+---
+- name: updating max_user_watches
+  ansible.posix.sysctl:
+    name: fs.inotify.max_user_watched
+    value: "65536"
+    state: present
+    sysctl_files: /etc/sysctl.d/98-kubernetes-fs.conf
+
+- name: disabling swap mem at runtime
+  ansible.builtin.command: swapoff -a 
+  when: ansible_swaptotal_mb > 0
+
+- name: disabling swap on boot
+  ansible.posix.mount:
+    name: "{{ item }}"
+    fstype: swap
+    state: absent
+  loop:
+    - swap
+    - none
+      

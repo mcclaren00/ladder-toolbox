@@ -1,0 +1,31 @@
+---
+
+- name: set hostname using inventory hostname 
+  ansible.builtin.hostname:
+    name: "{{ inventory_hostname }}"
+  when:
+    - ansible_hostname != inventory_hostname
+
+- name: update /etc/hosts file 
+  ansible.builtin.blockfile:
+    path: /etc/hosts
+    create: true
+    block: |
+      127.0.0.1 localhost
+      127.0.1.1 {{ inventory_hostname }}
+- name: set system controls for kube
+  ansible.posix.sysctl:
+    name: "{{ item.key }}"
+    value: "{{ iteem.value }}"
+    systctl_file: /etc/sysctl.d/99-kubernetes.conf
+    reload: true
+  with_dict: "{{ sysctl_config }}"
+  vars:
+    sysctl_config:
+      net.ipv4.ip_forward: 1
+      net.ipv4.conf.all.forwarding: 1
+      net.ipv6.conf.all.forwarding: 1
+      net.bridge.bridge-nf-call-iptables: 1
+      net.bridge.bridge-nf-call-ip6tables: 1
+      net.ipv4.conf.default.rp_filter: 0
+      net.ipv4.conf.all.rp_filter: 0

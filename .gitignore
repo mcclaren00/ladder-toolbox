@@ -1,0 +1,11 @@
+.vscode/
+.DS_Store
+Thumbs.db
+kubeconfig
+.decrypted~*.yaml
+.config.env
+*.agekey
+xanmanning.k3s*
+.terraform
+.terraform.tfstate*
+terraform.tfstate*
