@@ -20,7 +20,8 @@ includes:
   terraform: .taskfiles/TerraformTasks.yml
 
 tasks:
-  default:
+
+  init:
     desc: Install dependancies through brew
     cmds:
       - brew install {{.DEPS}} {{.CLI_ARGS}}
@@ -47,6 +48,7 @@ tasks:
         terraform
         yamllint
         yq
+
   verify:
     desc: Verify correct env settings 
     cmds:
