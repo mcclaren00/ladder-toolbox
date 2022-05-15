@@ -28,8 +28,8 @@ tasks:
     preconditions:
       - sh: command -v brew
         msg: |
-          Homebrew is not installed. Using MacOS, Linux or WSL?
-          Head over to https://brew.sh to get up and running.
+          'Homebrew is not installed. Using MacOS, Linux or WSL?
+          Head over to https://brew.sh to get up and running.'
     vars:
       DEPS: >-
         age
