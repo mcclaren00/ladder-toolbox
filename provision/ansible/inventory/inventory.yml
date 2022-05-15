@@ -4,9 +4,9 @@
 
 [k3s_worker]
 192.168.50.111 hostname=worker-01
-192.168.50.222 hostname=worker-02
+# 192.168.50.222 hostname=worker-02
 192.168.50.34 hostname=worker-03
-192.168.50.243 hostname=worker-04
+# 192.168.50.243 hostname=worker-04
 
 
 # 192.168.50.222 hostname=worker-03

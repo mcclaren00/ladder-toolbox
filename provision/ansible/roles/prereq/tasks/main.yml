@@ -10,7 +10,6 @@
     upgrade: dist
     force_apt_get: yes
 
-  
 - name: Set same timezone on every Server
   timezone:
     name: "{{ system_timezone }}"
