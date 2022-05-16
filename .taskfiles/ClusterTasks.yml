@@ -1,77 +1,77 @@
 ---
-version: "3"
+version: "1"
 
 tasks:
 
   flux:verify:
-    desc: Verify flux meets the prerequisites
+    desc: check flux reqirements 
     cmds:
       - flux check --pre
 
   flux:namespace:
-    desc: Create the flux-system namespace
+    desc: create flux namespace flux-system
     cmds:
       - kubectl create namespace flux-system --dry-run=client -o yaml | kubectl apply -f -
 
   flux:secret:
-    desc: Create the Age secret in the flux-system namespace
+    desc: create age secret in flux-system namespace 
     cmds:
       - cat {{.SOPS_AGE_KEY_FILE}} | kubectl -n flux-system create secret generic sops-age --from-file=age.agekey=/dev/stdin
     preconditions:
       - sh: test -f {{.SOPS_AGE_KEY_FILE}}
         msg: |
-          Age key file is not found. Did you forget to create it?
+          Age key file is not found. please create it! 
     vars:
       SOPS_AGE_KEY_FILE: ~/.config/sops/age/keys.txt
 
   flux:install:
-    desc: Install Flux into your cluster, run this again if it fails
+    desc: install flux into cluster 
     cmds:
       - kubectl apply -k {{.CLUSTER_DIR}}/base/flux-system
 
   reconcile:
-    desc: Force update Flux to pull in changes from your Git repository
+    desc: for flux to pull changes from your Git repository 
     cmds:
       - flux reconcile source git flux-system {{.CLI_ARGS | default "-n flux-system"}}
 
   nodes:
-    desc: List all the nodes in your cluster
+    desc: Get all nodes 
     cmds:
       - kubectl get nodes {{.CLI_ARGS | default "-o wide"}}
 
   pods:
-    desc: List all the pods in your cluster
+    desc: get all pods 
     cmds:
       - kubectl get pods {{.CLI_ARGS | default "-A"}}
 
   kustomizations:
-    desc: List all the kustomizations in your cluster
+    desc: list all kustomizations in cluster 
     cmds:
       - kubectl get kustomizations {{.CLI_ARGS | default "-A"}}
 
   helmreleases:
-    desc: List all the helmreleases in your cluster
+    desc: list all helm relases 
     cmds:
       - kubectl get helmreleases {{.CLI_ARGS | default "-A"}}
 
   helmrepositories:
-    desc: List all the helmreleases in your cluster
+    desc: list all helm relases
     cmds:
       - kubectl get helmrepositories {{.CLI_ARGS | default "-A"}}
 
   gitrepositories:
-    desc: List all the helmreleases in your cluster
+    desc: list all helm relases
     cmds:
       - kubectl get gitrepositories {{.CLI_ARGS | default "-A"}}
 
   certificates:
-    desc: List all the certificates in your cluster
+    desc: list all the certificates in cluster 
     cmds:
       - kubectl get certificates {{.CLI_ARGS | default "-A"}}
       - kubectl get certificaterequests {{.CLI_ARGS | default "-A"}}
 
   resources:
-    desc: Gather common resources in your cluster, useful when asking for support
+    desc: get all resources in cluster 
     cmds:
       - task: nodes
       - task: kustomizations

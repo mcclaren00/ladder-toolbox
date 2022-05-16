@@ -1,7 +1,5 @@
 ---
-# Namespace should already exist
-# Delete the system-upgrade namespace
-# from the kustomization
+# Namespace should alreaady exist may want to delete later 
 $patch: delete
 apiVersion: v1
 kind: Namespace
