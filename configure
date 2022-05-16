@@ -38,27 +38,27 @@ main() {
         verify_success
     else
         # this generates sops configuration files
-        envsubst < "${PROJECT_DIR}/tmplate/.sops.yaml" \
+        envsubst < "${PROJECT_DIR}/template/.sops.yaml" \
             > "${PROJECT_DIR}/.sops.yaml"
 
 
         # generating cluster settings
-        envsubst < "${PROJECT_DIR}/tmplate/cluster/cluster-settings.yml" \
+        envsubst < "${PROJECT_DIR}/template/cluster/cluster-settings.yml" \
             > "${PROJECT_DIR}/cluster/base/cluster-settings.yaml"
-        envsubst < "${PROJECT_DIR}/tmplate/cluster/gotk-sync.yml" \
+        envsubst < "${PROJECT_DIR}/template/cluster/gotk-sync.yml" \
             > "${PROJECT_DIR}/cluster/base/flux-system/gotk-sync.yaml"
-        envsubst < "${PROJECT_DIR}/tmplate/cluster/kube-vip-daemonset.yml" \
+        envsubst < "${PROJECT_DIR}/template/cluster/kube-vip-daemonset.yml" \
             > "${PROJECT_DIR}/cluster/core/kube-system/kube-vip/daemon-set.yaml"
 
 
         # generating cluster secrets
-        envsubst < "${PROJECT_DIR}/tmplate/cluster/cluster-secrets.sops.yml" \
+        envsubst < "${PROJECT_DIR}/template/cluster/cluster-secrets.sops.yml" \
             > "${PROJECT_DIR}/cluster/base/cluster-secrets.sops.yaml"
-        envsubst < "${PROJECT_DIR}/tmplate/cluster/cert-manager-secret.sops.yml" \
+        envsubst < "${PROJECT_DIR}/template/cluster/cert-manager-secret.sops.yml" \
             > "${PROJECT_DIR}/cluster/core/cert-manager/secret.sops.yaml"
-        envsubst < "${PROJECT_DIR}/tmplate/cluster/cloudflare-ddns-secret.sops.yml" \
+        envsubst < "${PROJECT_DIR}/template/cluster/cloudflare-ddns-secret.sops.yml" \
             > "${PROJECT_DIR}/cluster/apps/networking/cloudflare-ddns/secret.sops.yaml"
-        envsubst < "${PROJECT_DIR}/tmplate/cluster/external-dns-secret.sops.yml" \
+        envsubst < "${PROJECT_DIR}/template/cluster/external-dns-secret.sops.yml" \
             > "${PROJECT_DIR}/cluster/apps/networking/external-dns/secret.sops.yaml"
 
         # encrypts cluster secrets 
@@ -68,7 +68,7 @@ main() {
         sops --encrypt --in-place "${PROJECT_DIR}/cluster/apps/networking/external-dns/secret.sops.yaml"
 
         # generates terraform secrets from sops template 
-        envsubst < "${PROJECT_DIR}/tmplate/terraform/secret.sops.yml" \
+        envsubst < "${PROJECT_DIR}/template/terraform/secret.sops.yml" \
             > "${PROJECT_DIR}/provision/terraform/cloudflare/secret.sops.yaml"
 
 
@@ -76,7 +76,7 @@ main() {
         sops --encrypt --in-place "${PROJECT_DIR}/provision/terraform/cloudflare/secret.sops.yaml"
 
         # ansible settings stuff 
-        envsubst < "${PROJECT_DIR}/tmplate/ansible/kube-vip.yml" \
+        envsubst < "${PROJECT_DIR}/template/ansible/kube-vip.yml" \
             > "${PROJECT_DIR}/provision/ansible/inventory/group_vars/kubernetes/kube-vip.yml"
 
         # ansible hosts and secrets 
@@ -296,9 +296,9 @@ setup_github_webhook() {
         export BOOTSTRAP_FLUX_GITHUB_WEBHOOK_SECRET="${WEBHOOK_SECRET}"
         _log "INFO" "Using GitHub Token '${WEBHOOK_SECRET}' for Flux"
 
-        cp -rf  "${PROJECT_DIR}/tmpl/cluster/flux-system" "${PROJECT_DIR}/cluster/apps/"
+        cp -rf  "${PROJECT_DIR}/template/cluster/flux-system" "${PROJECT_DIR}/cluster/apps/"
 
-        envsubst < "${PROJECT_DIR}/tmpl/cluster/flux-system/webhooks/github/secret.sops.yaml" \
+        envsubst < "${PROJECT_DIR}/template/cluster/flux-system/webhooks/github/secret.sops.yaml" \
             > "${PROJECT_DIR}/cluster/apps/flux-system/webhooks/github/secret.sops.yaml"
 
         sops --encrypt --in-place "${PROJECT_DIR}/cluster/apps/flux-system/webhooks/github/secret.sops.yaml"
