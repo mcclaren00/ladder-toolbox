@@ -1,5 +1,5 @@
 ---
-# Delete the allow-egress NetworkPolicy
+# this deletes the allow egress NetworkPolicy
 $patch: delete
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -7,7 +7,7 @@ metadata:
   name: allow-egress
   namespace: flux-system
 ---
-# Delete the allow-scraping NetworkPolicy
+# this deletes the allow-scraping NetworkPolicy
 $patch: delete
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -15,7 +15,7 @@ metadata:
   name: allow-scraping
   namespace: flux-system
 ---
-# Delete the allow-webhooks NetworkPolicy
+# this deletes the allow-webhooks NetworkPolicy
 $patch: delete
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
