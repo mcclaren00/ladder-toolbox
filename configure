@@ -38,27 +38,27 @@ main() {
         verify_success
     else
         # this generates sops configuration files
-        envsubst < "${PROJECT_DIR}/template/.sops.yaml" \
+        envsubst < "${PROJECT_DIR}/initial/.sops.yaml" \
             > "${PROJECT_DIR}/.sops.yaml"
 
 
         # generating cluster settings
-        envsubst < "${PROJECT_DIR}/template/cluster/cluster-settings.yml" \
+        envsubst < "${PROJECT_DIR}/initial/cluster/cluster-settings.yml" \
             > "${PROJECT_DIR}/cluster/base/cluster-settings.yaml"
-        envsubst < "${PROJECT_DIR}/template/cluster/gotk-sync.yml" \
+        envsubst < "${PROJECT_DIR}/initial/cluster/gotk-sync.yml" \
             > "${PROJECT_DIR}/cluster/base/flux-system/gotk-sync.yaml"
-        envsubst < "${PROJECT_DIR}/template/cluster/kube-vip-daemonset.yml" \
+        envsubst < "${PROJECT_DIR}/initial/cluster/kube-vip-daemonset.yml" \
             > "${PROJECT_DIR}/cluster/core/kube-system/kube-vip/daemon-set.yaml"
 
 
         # generating cluster secrets
-        envsubst < "${PROJECT_DIR}/template/cluster/cluster-secrets.sops.yml" \
+        envsubst < "${PROJECT_DIR}/initial/cluster/cluster-secrets.sops.yml" \
             > "${PROJECT_DIR}/cluster/base/cluster-secrets.sops.yaml"
-        envsubst < "${PROJECT_DIR}/template/cluster/cert-manager-secret.sops.yml" \
+        envsubst < "${PROJECT_DIR}/initial/cluster/cert-manager-secret.sops.yml" \
             > "${PROJECT_DIR}/cluster/core/cert-manager/secret.sops.yaml"
-        envsubst < "${PROJECT_DIR}/template/cluster/cloudflare-ddns-secret.sops.yml" \
+        envsubst < "${PROJECT_DIR}/initial/cluster/cloudflare-ddns-secret.sops.yml" \
             > "${PROJECT_DIR}/cluster/apps/networking/cloudflare-ddns/secret.sops.yaml"
-        envsubst < "${PROJECT_DIR}/template/cluster/external-dns-secret.sops.yml" \
+        envsubst < "${PROJECT_DIR}/initial/cluster/external-dns-secret.sops.yml" \
             > "${PROJECT_DIR}/cluster/apps/networking/external-dns/secret.sops.yaml"
 
         # encrypts cluster secrets 
@@ -68,7 +68,7 @@ main() {
         sops --encrypt --in-place "${PROJECT_DIR}/cluster/apps/networking/external-dns/secret.sops.yaml"
 
         # generates terraform secrets from sops template 
-        envsubst < "${PROJECT_DIR}/template/terraform/secret.sops.yml" \
+        envsubst < "${PROJECT_DIR}/initial/terraform/secret.sops.yml" \
             > "${PROJECT_DIR}/provision/terraform/cloudflare/secret.sops.yaml"
 
 
@@ -76,7 +76,7 @@ main() {
         sops --encrypt --in-place "${PROJECT_DIR}/provision/terraform/cloudflare/secret.sops.yaml"
 
         # ansible settings stuff 
-        envsubst < "${PROJECT_DIR}/template/ansible/kube-vip.yml" \
+        envsubst < "${PROJECT_DIR}/initial/ansible/kube-vip.yml" \
             > "${PROJECT_DIR}/provision/ansible/inventory/group_vars/kubernetes/kube-vip.yml"
 
         # ansible hosts and secrets 
@@ -206,7 +206,7 @@ verify_addressing() {
     fi
 
     if [[ "${found_k8s_gateway}" == "false" ]]; then
-        _log "ERROR" "The IP for k8s_gateway '${BOOTSTRAP_METALLB_K8S_GATEWAY_ADDR}' should be in the provided metallb range '${BOOTSTRAP_METALLB_LB_RANGE}'"
+        _log "ERROR" "The IP for k8s_gateway '${BOOTSTRAP_METALLB_K3S_GATEWAY_ADDR}' should be in the provided metallb range '${BOOTSTRAP_METALLB_LB_RANGE}'"
         exit 1
     fi
 
@@ -396,8 +396,8 @@ generate_ansible_host_secrets() {
     local node_username=
     local node_password=
     local node_hostname=
-    default_control_node_prefix=${BOOTSTRAP_ANSIBLE_DEFAULT_CONTROL_NODE_HOSTNAME_PREFIX:-k8s-}
-    default_worker_node_prefix=${BOOTSTRAP_ANSIBLE_DEFAULT_NODE_HOSTNAME_PREFIX:-k8s-}
+    default_control_node_prefix=${BOOTSTRAP_ANSIBLE_DEFAULT_CONTROL_NODE_HOSTNAME_PREFIX:-k3s-}
+    default_worker_node_prefix=${BOOTSTRAP_ANSIBLE_DEFAULT_NODE_HOSTNAME_PREFIX:-k3s-}
     for var in "${!BOOTSTRAP_ANSIBLE_HOST_ADDR_@}"; do
         node_id=$(echo "${var}" | awk -F"_" '{print $5}')
         if [[ "${!node_control}" == "true" ]]; then
@@ -430,8 +430,8 @@ generate_ansible_host_secrets() {
 
 generate_ansible_hosts() {
     local worker_node_count=
-    default_control_node_prefix=${BOOTSTRAP_ANSIBLE_DEFAULT_CONTROL_NODE_HOSTNAME_PREFIX:-k8s-}
-    default_worker_node_prefix=${BOOTSTRAP_ANSIBLE_DEFAULT_NODE_HOSTNAME_PREFIX:-k8s-}
+    default_control_node_prefix=${BOOTSTRAP_ANSIBLE_DEFAULT_CONTROL_NODE_HOSTNAME_PREFIX:-k3s-}
+    default_worker_node_prefix=${BOOTSTRAP_ANSIBLE_DEFAULT_NODE_HOSTNAME_PREFIX:-k3s-}
     {
         printf -- "---\n"
         printf "kubernetes:\n"
