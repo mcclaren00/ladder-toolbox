@@ -1,0 +1,4 @@
+kubevip_interface: "${BOOTSTRAP_KUBE_VIP_INTERFACE}"
+
+kubevip_address: "${BOOTSTRAP_KUBE_VIP_ADDR}"
+
