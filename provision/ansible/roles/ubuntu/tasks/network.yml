@@ -7,7 +7,7 @@
     - ansible_hostname != inventory_hostname
 
 - name: update /etc/hosts file 
-  ansible.builtin.blockfile:
+  ansible.builtin.blockinfile:
     path: /etc/hosts
     create: true
     block: |
