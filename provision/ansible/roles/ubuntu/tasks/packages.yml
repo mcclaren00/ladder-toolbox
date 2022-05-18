@@ -34,11 +34,11 @@
       - software-properties-common
       - unattended-upgrades
       - unzip
-  # install_recommends: false 
-  update_cache: true
-  cache_valid_time: 3600
-  autoclean: true 
-  autoremove: true
+    install_recommends: false 
+    update_cache: true
+    cache_valid_time: 3600
+    autoclean: true 
+    autoremove: true
 
 - name: install RPI specific packages
   ansible.builtin.apt:
