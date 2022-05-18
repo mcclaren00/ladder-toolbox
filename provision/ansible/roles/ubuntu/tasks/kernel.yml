@@ -1,7 +1,7 @@
 ---
 
 - name: enable kernel modules at runtime
-  community.general.modprob:
+  community.general.modprobe:
     name: "{{ item }}"
     state: present
   loop:
