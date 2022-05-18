@@ -6,12 +6,13 @@
     dest: "/etc/sudoers.d/{{ ansible_user }}_nopasswd"
     mode: "0440"
 
-- name: add addional users SSH public keys
-  ansible.posix.authorized_keys:
-    user: "{{ ansible_user }}"
-    key: "{{ item }}"
-  loop: "{{ ssh_authorized_keys }}"
-  when: 
-    - ssh_authorized_keys is defined
-    - ssh_authorized_keys is iterable
-    - ssh_authorized_keys | length > 0   
+
+# - name: add addional users SSH public keys
+# ansible.posix.authorized_keys:
+#    user: "{{ ansible_user }}"
+#   key: "{{ item }}"
+#  loop: "{{ ssh_authorized_keys }}"
+#  when: 
+#    - ssh_authorized_keys is defined
+#    - ssh_authorized_keys is iterable
+#    - ssh_authorized_keys | length > 0   
