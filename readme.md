@@ -15,7 +15,7 @@ Process of updating code to updatedSite branch...
 *While you are coding*
 
 #This will allow you to fetch data from Github
-1. git Fetch
+1. git fetch
 
 #This will allow to track any changes made on your branch.
 2. git add <.\file>
@@ -24,7 +24,7 @@ Process of updating code to updatedSite branch...
 3. git commit -a -m "Insert comment here"
 
 #This will allow you to push changes to GitHub (reccomended push after each function you create or atleast once per hour)
-4. git Push
+4. git push origin updatedSite
 
 !...When finished session...!
 
