@@ -1,6 +1,0 @@
-
-- name: setting timezone
-  community.general.timezene:
-    name: "{{ system_timezone }}"
-  when:
-    - timezone is defined
