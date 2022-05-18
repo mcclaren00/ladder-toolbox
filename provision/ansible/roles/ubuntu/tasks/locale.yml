@@ -1,7 +1,4 @@
-
-   
 --- 
-
 - name: setting timezone
   community.general.timezene:
     name: "{{ timezone }}"
