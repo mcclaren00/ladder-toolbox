@@ -52,7 +52,7 @@
   when: "'raspi' in ansible_kernel"
 
 - name: copy 20auto-upgrades unattended-upgrades config
-  ansible.builtin.blockfile:
+  ansible.builtin.blockinfile:
     path: /etc/apt/apt.conf.d/20auto-upgrades
     mode: 0644
     create: true
