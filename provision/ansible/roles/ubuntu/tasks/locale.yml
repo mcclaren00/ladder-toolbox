@@ -2,6 +2,6 @@
 
 - name: setting timezone
   community.general.timezene:
-    name: "{{ timezone }}"
+    name: "{{ system_timezone }}"
   when:
     - timezone is defined
