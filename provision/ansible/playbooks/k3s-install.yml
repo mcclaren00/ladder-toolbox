@@ -1,34 +1,33 @@
 ---
-
 - hosts:
-  - master
-  - worker
+    - master
+    - worker
   become: true
   gather_facts: true
   any_errors_fatal: true
   pre_tasks:
-    - name: Pausing for 5 seconds
+    - name: Pausing for 5 seconds...
       pause:
         seconds: 5
   tasks:
-    - name: check if a cluster exitsts already
+    - name: Check if cluster is installed
       ansible.builtin.stat:
         path: "/etc/rancher/k3s/config.yaml"
       register: k3s_check_installed
-      check_mode: false 
+      check_mode: false
 
-    - name: set manifes facts
+    - name: Set manifest facts
       ansible.builtin.set_fact:
-        k3s_server_manifest_templates: []
-        k3s_server_manifest_urls: []
+        k3s_server_manifests_templates: []
+        k3s_server_manifests_urls: []
       when: k3s_check_installed.stat.exists
 
-    - name: install kube
+    - name: Install Kubernetes
       include_role:
         name: xanmanning.k3s
         public: true
 
-   - name: Get absolute path to this Git repository
+    - name: Get absolute path to this Git repository
       delegate_to: localhost
       become: false
       run_once: true
@@ -74,4 +73,4 @@
       loop: "{{ k3s_server_manifests_urls }}"
       when:
         - k3s_server_manifests_urls
-        - k3s_server_manifests_urls | length > 0         
+        - k3s_server_manifests_urls | length > 0
