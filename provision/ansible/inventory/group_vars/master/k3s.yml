@@ -5,7 +5,8 @@ k3s_server:
   node-ip: "{{ ansible_host }}"
 tls-san:
     - "{{ kubevip_address }}"
-  docker: false
+  
+  # docker: false
   flannel-backend: "none"
   disable:
     - flannel
