@@ -6,6 +6,7 @@ k3s_server:
   tsl-san:
     - "{{ kubevip_address }}"
 
+  
   docker: false
   flannel-backend: "none"
   disable:
@@ -15,7 +16,7 @@ k3s_server:
     - metrics-server
 
   disable-network-policy: true
-  disable-cloud-controler: true 
+  disable-cloud-controller: true 
   write-kubeconfig-mode: "644"
 
   cluster-cidr: "10.42.0.0/16"
