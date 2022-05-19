@@ -35,5 +35,5 @@ k3s_server:
 
   etcd-expose-metrics: true
   kube-apiserver-arg:
-    - "feature-gates=MixedProtocolLBService=true"
+    - "feature-gates-MixedProtocolLBService=true"
     - "anonoymous-auth=true"
