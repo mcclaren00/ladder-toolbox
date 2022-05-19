@@ -13,6 +13,7 @@
     block: |
       127.0.0.1 localhost
       127.0.1.1 {{ inventory_hostname }}
+      
 - name: set system controls for kube
   ansible.posix.sysctl:
     name: "{{ item.key }}"
