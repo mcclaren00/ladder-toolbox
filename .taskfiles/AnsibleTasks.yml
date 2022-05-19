@@ -27,7 +27,7 @@ tasks:
     desc: prepare all nodes 
     dir: provision/ansible
     cmds:
-      - ansible-playbook -vvv -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/ubuntu-prepare.yml
+      - ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/ubuntu-prepare.yml
       
   install:
     desc: install kube on nodes 
