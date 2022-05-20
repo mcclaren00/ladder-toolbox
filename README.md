@@ -5,7 +5,7 @@ This branch makes use of many different Infrastructure as code frameworks, in or
  <br>
 
  ## Tools used in this branch: 
- ---
+ 
  <ul>
  <li>Ansible - Playbooks for bootstrapping and manage nodes </li>
  <li>Terraform - Help bootstrapping DNS with Cloudflare </li>
@@ -15,7 +15,7 @@ This branch makes use of many different Infrastructure as code frameworks, in or
  <br>
 
  ## Default Kubernetes cluster state:
- ---
+ 
  <ul>
  <li>Apps</li>
  <ul>
@@ -39,7 +39,7 @@ This branch makes use of many different Infrastructure as code frameworks, in or
  <br>
 
  ## Cluster folder structure:
- ---
+ 
 ```
 ├── apps
 │   ├── default
@@ -57,7 +57,7 @@ This branch makes use of many different Infrastructure as code frameworks, in or
 <br>
 
 ## Usage
----
+
 Most of the interaction with kubernetes cluster nodes is done with Taskfiles and task commands (see task help for task commands options). 
 
 Once cluster is installed majority of interation to the cluster is through `kubectl` although there are some `task` commands that interact with the cluster. 
@@ -67,7 +67,7 @@ However with fluxcd installed an looking at the cluster file, changing kubernete
 <br>
 
 ### Task command examples:
----
+
 ```
 task ansible:ping 
 task ansible:reboot 
