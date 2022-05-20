@@ -36,6 +36,7 @@ This branch makes use of many different Infrastructure as code frameworks, in or
  </ul>
  </ul>
 
+ Various workflows with `Renovatebot` and `dependabot`. 
  <br>
 
  ## Cluster folder structure:
