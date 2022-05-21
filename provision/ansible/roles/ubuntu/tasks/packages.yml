@@ -1,8 +1,8 @@
 ---
-- name: Upgrade all system packages
-  ansible.builtin.apt:
-    upgrade: full
-    update_cache: true
+# - name: Upgrade all system packages
+#   ansible.builtin.apt:
+#     upgrade: full
+#     update_cache: true
 
 - name: Install common packages
   ansible.builtin.apt:
