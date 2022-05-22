@@ -4,6 +4,7 @@ resource "proxmox_vm_qemu" "srv_ubnt_1" {
     vmid = "401"
     target_node = "proxmox"
 
+    onboot = true
     agent = 1
     clone = "ubnt-svr-temp"
 
@@ -13,4 +14,5 @@ resource "proxmox_vm_qemu" "srv_ubnt_1" {
     memory = 1024
 
     os_type = "cloud-init"
+    ciuser = "sa"
 }
