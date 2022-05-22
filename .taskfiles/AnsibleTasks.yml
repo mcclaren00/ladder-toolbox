@@ -29,16 +29,12 @@ tasks:
     cmds:
       - ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/ubuntu-prepare.yml
       
+
   install:
-    desc: Install kube on nodes
+    desc: install kube on nodes 
     dir: provision/ansible
     cmds:
-      - ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.ini {{.ANSIBLE_PLAYBOOK_DIR}}/site.yml
-  # install:
-  #   desc: install kube on nodes 
-  #   dir: provision/ansible
-  #   cmds:
-  #     - ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/k3s-install.yml
+      - ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/k3s-install.yml
 
   nuke:
     desc: uninstall kube on nodes 
