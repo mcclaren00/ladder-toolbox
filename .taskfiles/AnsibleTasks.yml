@@ -63,7 +63,7 @@ tasks:
     desc: reboot all nodes 
     dir: provision/ansible
     cmds:
-      - ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml -a '/usr/bin/systemctl reboot' --become
+      - ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.ini -a '/usr/bin/systemctl reboot' --become
 
   poweroff:
     desc: shutdown all nodes 
