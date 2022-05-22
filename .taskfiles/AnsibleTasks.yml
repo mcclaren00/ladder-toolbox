@@ -33,7 +33,7 @@ tasks:
     desc: Install kube on nodes
     dir: provision/ansible
     cmds:
-      - ansible-playbook -i {{.ANSIBLE_INVENTOTY_DIR}}/hosts.ini {{.ANSIBLE_PLAYBOOK_DIR}}/site.yml
+      - ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.ini {{.ANSIBLE_PLAYBOOK_DIR}}/site.yml
   # install:
   #   desc: install kube on nodes 
   #   dir: provision/ansible
