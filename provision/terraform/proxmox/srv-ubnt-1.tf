@@ -5,7 +5,6 @@ resource "proxmox_vm_qemu" "srv_ubnt_1" {
     target_node = "proxmox"
 
     agent = 1
-    onboot = 1
     clone = "ubnt-svr-temp"
 
     cores = 1
