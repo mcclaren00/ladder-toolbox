@@ -15,4 +15,9 @@ resource "proxmox_vm_qemu" "srv_ubnt_1" {
 
     os_type = "cloud-init"
     ciuser = "sa"
+
+    network {
+        bridge = "vmbr0"
+        model  = "virtio"
+    }
 }
