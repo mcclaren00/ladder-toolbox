@@ -1,4 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+import Site from "./Site"
+const container = document.getElementById('root');
+const root = createRoot(container);
 
-ReactDOM.render(<site />, document.getElementById("root"))
+root.render(<Site />);
