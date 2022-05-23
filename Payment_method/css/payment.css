@@ -1,0 +1,93 @@
+body    {
+    background-image: url(C:/ladder-toolbox/Payment_method/Images/blockchain.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+header  {
+    text-align: center;
+    font-style: oblique;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+    color: whitesmoke;
+}
+h1  {
+    padding-bottom: 50px;
+
+}
+/*Actual grid*/
+.container  {
+    max-width: 840px;
+    margin: auto;
+    margin-top: 100px;
+    position: relative;
+}
+.payForm    {
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    font-size: 30px;
+}
+#crypto {
+
+    padding: 40px;
+    font-size: 30px;
+    background-image: url(C:/ladder-toolbox/Payment_method/Images/ladder_coin.jpg);
+    background-position: right;
+    background-repeat: no-repeat;
+}
+.payMethod  {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    height: 400px;
+    align-content: space-between;
+}
+.payRecFrom {
+    font-size: 30px;
+    margin: auto;
+}
+.paymentAuthUser    {
+    font-size: 25px;
+    margin: auto;
+    width: 415px;
+    height: 30px;
+    margin-right: -1px;
+}
+.payRec {
+    font-size: 30px;
+    margin: auto;
+}
+.paymentAuth    {
+    font-size: 25px;
+    margin: auto;
+    width: 415px;
+    height: 30px;
+    margin-right: -1px;
+}
+.actualCost {
+    font-size: 30px;
+    margin: auto;
+}
+.total   {
+    font-size: 30px;
+    margin: auto;
+}
+.rating {
+    font-size: 30px;
+    margin:auto;
+}
+.comment  {
+    font-size: 25px;
+    margin: auto;
+    width: 415px;
+    height: 30px;
+    margin-right: -1px;
+}
+.checkout   {
+    margin-top: 50px;
+    font-size: 50px;
+    width: 500px;
+    height: 100px;
+    cursor: pointer;
+}
