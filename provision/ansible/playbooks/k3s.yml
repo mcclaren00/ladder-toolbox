@@ -31,12 +31,12 @@
       delegate_to: localhost
 
     - name: generate helper script on master
-        template:
-          src: templates/k3sup-worker.j2
-          dest: "/tmp/install_worker.sh"
-          mode: '0770'
-        when: main == 0
-        delegate_to: "{{ bootstrap_master_name }}"
+      template:
+        src: templates/k3sup-worker.j2
+        dest: "/tmp/install_worker.sh"
+        mode: '0770'
+      when: main == 0
+      delegate_to: "{{ bootstrap_master_name }}"
 
     - name: check if already installed
       stat:
