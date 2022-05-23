@@ -60,10 +60,10 @@
         msg: "{{ output2 }}"
 
     - name: absolute path to git repo
-    delegate_to: localhost
-    run_once: true
-    ansible.builtin.command: "git rev-parse --show-toplevel"
-    register: repo_abs_path
+      delegate_to: localhost
+      run_once: true
+      ansible.builtin.command: "git rev-parse --show-toplevel"
+      register: repo_abs_path
 
     - name: copy kubeconfig to the provision folder
       run_once: true
