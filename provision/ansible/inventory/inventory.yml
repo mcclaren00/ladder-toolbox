@@ -1,5 +1,5 @@
 [master]
-192.168.50.51
+192.168.50.51 boostrap_master_name=k3s-master-01
 
 [worker]
 192.168.50.225
