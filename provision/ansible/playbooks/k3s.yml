@@ -23,7 +23,7 @@
       when: k3s_check_installed.stat.exists
 
     - name: generate helper script on master
-        become: false
+      
         template:
           src: templates/install_slave.j2
           dest: "/tmp/install_slave.sh"
@@ -37,7 +37,7 @@
       register: stat_result
         
     - name: run k3sup helper script for master
-      become: false
+     
       shell: sh /tmp/install_master.sh
       when: main == 1 and stat_result.stat.exists == false
       register: output2
@@ -45,7 +45,7 @@
 
     - name: run k3sup helper script for slave
       shell: "sh /tmp/install_slave.sh"
-      become: false
+     
       when: main == 0 and stat_result.stat.exists == false
       register: output2
       delegate_to: "{{ bootstrap_master_name }}"
@@ -56,7 +56,7 @@
 
     - name: absolute path to git repo
     delegate_to: localhost
-    become: false
+
     run_once: true
     ansible.builtin.command: "git rev-parse --show-toplevel"
     register: repo_abs_path
@@ -73,7 +73,6 @@
 
     - name: update kubeconfig with the correct ip address 
       delegate_to: localhost
-      become: false
       run_once: true
       ansible.builtin.replace:
         path: "{{ repo_abs_path.stdout }}/provision/kubeconfig"
