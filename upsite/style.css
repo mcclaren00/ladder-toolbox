@@ -1,0 +1,9 @@
+*   {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: Fira-sans, IBM-plex-serif;
+    height: 100vh;
+    background-color: #6F7188;
+}
