@@ -22,13 +22,13 @@
         k3s_server_manifests_urls: []
       when: k3s_check_installed.stat.exists
 
-  - name: generate helper script locally
-    template:
-      src: templates/k3sup-master.j2
-      dest: /tmp/install_master.sh
-      mode: '0770'
-    when: main == 1
-    delegate_to: localhost
+    - name: generate helper script locally
+      template:
+        src: templates/k3sup-master.j2
+        dest: /tmp/install_master.sh
+        mode: '0770'
+      when: main == 1
+      delegate_to: localhost
 
     - name: generate helper script on master
         template:
