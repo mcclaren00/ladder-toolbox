@@ -1,0 +1,14 @@
+[k3s_master]
+192.168.50.51 hostname=k3s-master-01
+
+
+
+
+[k3s_worker]
+192.168.50.225 hostname=k3s-worker-01
+192.168.50.105 hostname=k3s-worker-02
+
+
+[k3s_cluster:children]
+k3s_master
+k3s_worker
