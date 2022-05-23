@@ -34,7 +34,7 @@ tasks:
     desc: install kube on nodes 
     dir: provision/ansible
     cmds:
-      - ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/k3s-install.yml
+      - ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/k3s.yml
 
   nuke:
     desc: uninstall kube on nodes 

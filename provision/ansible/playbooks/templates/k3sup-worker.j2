@@ -1,0 +1,8 @@
+#!/bin/bash
+k3sup join --k3s-version {{ k3s_version  }} \
+    --ip {{ internal_ip }} \
+    --server-ip {{ master_ip }}  \
+    --user sa \
+    --server \
+    --ssh-key ~/.ssh/id_ed25519
+sleep 10

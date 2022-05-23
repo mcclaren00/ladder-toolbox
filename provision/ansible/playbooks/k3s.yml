@@ -22,17 +22,44 @@
         k3s_server_manifests_urls: []
       when: k3s_check_installed.stat.exists
 
-    - name: Install Kubernetes through xamanning role 
-      include_role:
-        name: xanmanning.k3s
-        public: true
+    - name: generate helper script on master
+        become: false
+        template:
+          src: templates/install_slave.j2
+          dest: "/tmp/install_slave.sh"
+          mode: '0770'
+        when: main == 0
+        delegate_to: "{{ bootstrap_master_name }}"
+
+    - name: check if already installed
+      stat:
+        path: /usr/local/bin/k3s-uninstall.sh
+      register: stat_result
+        
+    - name: run k3sup helper script for master
+      become: false
+      shell: sh /tmp/install_master.sh
+      when: main == 1 and stat_result.stat.exists == false
+      register: output2
+      delegate_to: localhost
+
+    - name: run k3sup helper script for slave
+      shell: "sh /tmp/install_slave.sh"
+      become: false
+      when: main == 0 and stat_result.stat.exists == false
+      register: output2
+      delegate_to: "{{ bootstrap_master_name }}"
+
+    - name: print output
+      debug: 
+        msg: "{{ output2 }}"
 
     - name: absolute path to git repo
-      delegate_to: localhost
-      become: false
-      run_once: true
-      ansible.builtin.command: "git rev-parse --show-toplevel"
-      register: repo_abs_path
+    delegate_to: localhost
+    become: false
+    run_once: true
+    ansible.builtin.command: "git rev-parse --show-toplevel"
+    register: repo_abs_path
 
     - name: copy kubeconfig to the provision folder
       run_once: true

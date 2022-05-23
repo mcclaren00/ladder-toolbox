@@ -1,0 +1,8 @@
+#!/bin/bash
+k3sup install \
+  --k3s-version {{ k3s_version  }} \
+  --ip {{ ansible_host }} \
+  --user sa  \
+  --cluster \
+  --ssh-key ~/.ssh/id_ed25519
+sleep 10
