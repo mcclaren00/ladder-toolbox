@@ -21,12 +21,12 @@
         k3s_server_manifests_templates: []
         k3s_server_manifests_urls: []
       when: k3s_check_installed.stat.exists
-
-    - name: Bootstrap Kube through k3sup bash script
-      ansible.builtin.shell:
-        cmd: ./bootstrap-cluster.sh
-        chdir: ../../../setup
-      delegate_to: 127.0.0.1
+    hosts: localhost 
+      - name: Installing K3s
+        ansible.builtin.shell:
+          cmd: ./bootstrap-cluster.sh
+          chdir: ../../../setup
+        delegate_to: 127.0.0.1
 
     - name: remove templates 
       ansible.builtin.file:
