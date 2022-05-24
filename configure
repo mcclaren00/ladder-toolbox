@@ -296,9 +296,9 @@ setup_github_webhook() {
         export BOOTSTRAP_FLUX_GITHUB_WEBHOOK_SECRET="${WEBHOOK_SECRET}"
         _log "INFO" "Using GitHub Token '${WEBHOOK_SECRET}' for Flux"
 
-        cp -rf  "${PROJECT_DIR}/template/cluster/flux-system" "${PROJECT_DIR}/cluster/apps/"
+        cp -rf  "${PROJECT_DIR}/initial/cluster/flux-system" "${PROJECT_DIR}/cluster/apps/"
 
-        envsubst < "${PROJECT_DIR}/template/cluster/flux-system/webhooks/github/secret.sops.yaml" \
+        envsubst < "${PROJECT_DIR}/initial/cluster/flux-system/webhooks/github/secret.sops.yaml" \
             > "${PROJECT_DIR}/cluster/apps/flux-system/webhooks/github/secret.sops.yaml"
 
         sops --encrypt --in-place "${PROJECT_DIR}/cluster/apps/flux-system/webhooks/github/secret.sops.yaml"
@@ -387,7 +387,7 @@ verify_ansible_hosts() {
 
 verify_success() {
     _log "INFO" "All checks passed!"
-    _log "INFO" "Run the script without --verify to template all the files out"
+    _log "INFO" "Run the script without --verify to template files "
     exit 0
 }
 
@@ -481,7 +481,7 @@ generate_ansible_hosts() {
 }
 
 success() {
-    _log "INFO" "All files have been templated, proceed to the next steps outlined in the README"
+    _log "INFO" "All files have been templated, you are cleared to go on!"
     exit 0
 }
 
