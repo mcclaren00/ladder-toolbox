@@ -61,25 +61,25 @@ main() {
         envsubst < "${PROJECT_DIR}/initial/cluster/external-dns-secret.sops.yml" \
             > "${PROJECT_DIR}/cluster/apps/networking/external-dns/secret.sops.yaml"
 
-        # encrypts cluster secrets 
+        # encrypts cluster secrets
         sops --encrypt --in-place "${PROJECT_DIR}/cluster/base/cluster-secrets.sops.yaml"
         sops --encrypt --in-place "${PROJECT_DIR}/cluster/core/cert-manager/secret.sops.yaml"
         sops --encrypt --in-place "${PROJECT_DIR}/cluster/apps/networking/cloudflare-ddns/secret.sops.yaml"
         sops --encrypt --in-place "${PROJECT_DIR}/cluster/apps/networking/external-dns/secret.sops.yaml"
 
-        # generates terraform secrets from sops template 
+        # generates terraform secrets from sops template
         envsubst < "${PROJECT_DIR}/initial/terraform/secret.sops.yml" \
             > "${PROJECT_DIR}/provision/terraform/cloudflare/secret.sops.yaml"
 
 
-        # encrypt terraform secrets 
+        # encrypt terraform secrets
         sops --encrypt --in-place "${PROJECT_DIR}/provision/terraform/cloudflare/secret.sops.yaml"
 
-        # ansible settings stuff 
+        # ansible settings stuff
         envsubst < "${PROJECT_DIR}/initial/ansible/kube-vip.yml" \
             > "${PROJECT_DIR}/provision/ansible/inventory/group_vars/kubernetes/kube-vip.yml"
 
-        # ansible hosts and secrets 
+        # ansible hosts and secrets
         generate_ansible_hosts
         generate_ansible_host_secrets
         setup_github_webhook
