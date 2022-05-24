@@ -23,7 +23,7 @@
       when: k3s_check_installed.stat.exists
 
     - name: Bootstrap Kube through k3sup bash script
-      ansible.builtin.script: /setup/bootstrap-cluster.sh
+      ansible.builtin.script: ../../../setup/bootstrap-cluster.sh
       delegate_to: localhost
 
     - name: remove templates 
