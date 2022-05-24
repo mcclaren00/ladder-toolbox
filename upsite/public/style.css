@@ -1,0 +1,51 @@
+*   {
+    box-sizing: border-box;
+}
+.navTool {
+    display: flex;
+    background-color: #00B6FF;
+    color: #FFFF59;
+    align-items: center;
+    height: 100px;
+    padding: 20px 10px;
+}
+.navTool   h1 {
+    margin-right: auto;
+}
+body {
+    margin: 0;
+    font-family: Fira-sans, IBM-plex-serif;
+    height: 100vh;
+    background-color: #404750;
+}
+.baseBody   {
+    text-align: center;
+}
+.storNet    {
+    color: #FFFF59;
+}
+.trialFree  {
+    padding: 10px;
+    font-size: large;
+    margin-right: 50px;
+    color: #00B6FF
+}
+.upSign {
+    padding: 10px;
+    font-size: large;
+    margin-right: 50px;
+    color: #00B6FF
+}
+.infoMore   {
+    padding: 10px;
+    font-size: large;
+    color: #00B6FF
+}
+.serviceProv    {
+    margin-top: 50px;
+    color: #FFFF59;
+}
+.corpLadder {
+    margin-top: 100px;
+    color: #FFFF59;
+}
