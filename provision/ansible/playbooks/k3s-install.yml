@@ -10,24 +10,6 @@
       pause:
         seconds: 5
   tasks:
-    - name: check if cluster already installed
-      ansible.builtin.stat:
-        path: "/etc/rancher/k3s/config.yaml"
-      register: k3s_check_installed
-      check_mode: false
-
-    - name: set manifest facts 
-      ansible.builtin.set_fact:
-        k3s_server_manifests_templates: []
-        k3s_server_manifests_urls: []
-      when: k3s_check_installed.stat.exists
-    
-    - name: Installing K3s
-      ansible.builtin.shell:
-        cmd: ./setup/bootstrap-cluster.sh
-        chdir: ../../../
-      delegate_to: localhost
-
     - name: remove templates 
       ansible.builtin.file:
         path: "{{ k3s_server_manifests_dir }}/{{ item | basename | regex_replace('\\.j2$', '') }}"
