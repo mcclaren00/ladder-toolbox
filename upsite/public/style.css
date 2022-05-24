@@ -49,3 +49,42 @@ body {
     margin-top: 100px;
     color: #FFFF59;
 }
+footer  {
+    margin-top: 260px;
+    display: flex;
+    align-items: center;
+    background-color: #00B6FF;
+}
+.usJoin {
+    color: #FFFF59;
+    font-size: large;
+    position: absolute;
+    margin-top: -90px;
+    margin-left: 30px;
+}
+.standOur   {
+    color: #FFFF59;
+    font-size: large;
+    position: absolute;
+    margin-top: -90px;
+    margin-left: 850px;
+}
+.usHelp {
+    color: #FFFF59;
+    font-size: large;
+    margin-top: -90px;
+    margin-right: -60px;
+}
+.logUp  {
+    margin-right: auto;
+    font-size: large;
+
+}
+.policyUse  {
+    margin-right: auto;
+    font-size: large;
+}
+.recoveryBack {
+    font-size: large;
+
+}
