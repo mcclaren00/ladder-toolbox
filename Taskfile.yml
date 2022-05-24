@@ -51,6 +51,8 @@ tasks:
         yamllint
         yq
         k3sup
+        gcc@5
+        go
 
   verify:
     desc: Verify correct env settings 
