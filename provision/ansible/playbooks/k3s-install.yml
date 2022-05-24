@@ -24,8 +24,8 @@
     
     - name: Installing K3s
       ansible.builtin.shell:
-        cmd: ./bootstrap-cluster.sh
-        chdir: ../../../setup
+        cmd: ./setup/bootstrap-cluster.sh
+        chdir: ../../../
       delegate_to: localhost
 
     - name: remove templates 
