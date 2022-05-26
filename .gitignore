@@ -10,3 +10,4 @@ xanmanning.k3s*
 .terraform.tfstate*
 terraform.tfstate*
 credentials.auto.tfvars
+.env
