@@ -21,9 +21,8 @@ data:
         namespaces:               # List of namespaces, "all" will watch all the namespaces
           include:
             - all
-          ignore:                 # List of namespaces to be ignored (omitempty), used only with include: all, can contain a wildcard (*)
-            -                     # example : include [all], ignore [x,y,secret-ns-*]
-        events:                   # List of lifecycle events you want to receive, e.g create, update, delete, error OR all
+                      
+        events:                   #
           - create
           - delete
           - error
@@ -31,8 +30,7 @@ data:
         namespaces:
           include:
             - all
-          ignore:
-            -
+          
         events:
           - create
           - delete
@@ -41,8 +39,7 @@ data:
         namespaces:
           include:
             - all
-          ignore:
-            -
+       
         events:
           - create
           - update
@@ -57,8 +54,7 @@ data:
         namespaces:
           include:
             - all
-          ignore:
-            -
+       
         events:
           - create
           - update
@@ -73,8 +69,7 @@ data:
         namespaces:
           include:
             - all
-          ignore:
-            -
+        
         events:
           - create
           - delete
@@ -83,8 +78,7 @@ data:
         namespaces:
           include:
             - all
-          ignore:
-            -
+         
         events:
           - create
           - delete
@@ -93,8 +87,7 @@ data:
         namespaces:
           include:
             - all
-          ignore:
-            -
+        
         events:
           - create
           - delete
@@ -103,8 +96,7 @@ data:
         namespaces:
           include:
             - all
-          ignore:
-            -
+        
         events:
           - create
           - delete
@@ -123,8 +115,7 @@ data:
         namespaces:
           include:
             - all
-          ignore:
-            -
+         
         events:
           - create
           - delete
@@ -133,8 +124,7 @@ data:
         namespaces:
           include:
             - all
-          ignore:
-            -
+          
         events:
           - create
           - update
@@ -149,8 +139,7 @@ data:
         namespaces:
           include:
             - all
-          ignore:
-            -
+          
         events:
           - create
           - update
@@ -165,8 +154,7 @@ data:
         namespaces:
           include:
             - all
-          ignore:
-            -
+         
         events:
           - create
           - delete
@@ -343,4 +331,4 @@ spec:
       securityContext:
         runAsUser: 101
         runAsGroup: 101
----
+
