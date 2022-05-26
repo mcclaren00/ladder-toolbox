@@ -1,20 +1,37 @@
 import React from "react"
 import Logo from "./ladder_coin.jpg"
+import {BrowserRouter as Router, Link, Route} from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 export default function Main()  {
     return  (
-        <main className="baseBody">
-            <h2 className="storNet">Reliable Secure Storage on A Decentralized Network</h2>
-            <button className="trialFree">Free Trial</button>
-            <button className="upSign">Sign up Now</button>
-            <button className="infoMore">More info</button>
-            <h2 className="serviceProv">Provided Services</h2>
-            <p>Redundancy</p>
-            <p>Security</p>
-            
-            <img src={Logo} className="coinPic"/>
-            <p>Decentralization</p>
-            <p>Cloud providers</p>
-        </main>
+        <Router>
+            <main className="baseBody">
+                <h2 className="storNet">Reliable Secure Storage on A Decentralized Network</h2>
+                <Link to="FreeTrial">
+                    <Button className="trialFree">Free Trial</Button>
+                </Link>
+                <Link to="Signup">
+                    <Button className="upSign">Sign up Now</Button>
+                </Link>
+                <Link to="Moreinfo">
+                    <Button className="infoMore">More info</Button>
+                </Link>
+                <h2 className="serviceProv">Provided Services</h2>
+                <Link to="Redundancy">
+                    <Button className="redundantMain">Redundancy</Button>
+                </Link>
+                <Link to="Security">
+                    <Button className="secureMain">Security</Button>
+                </Link>
+                <img src={Logo} className="coinPic"/>
+                <Link to="Decentralized">
+                    <Button className="decentralMain">Decentralization</Button>
+                </Link>
+                <Link to="CloudProviders">
+                    <Button className="cloudMain">Cloud providers</Button>
+                </Link>
+            </main>
+        </Router>
     )
 }

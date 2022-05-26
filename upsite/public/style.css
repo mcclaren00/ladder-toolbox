@@ -45,12 +45,35 @@ body {
     margin-top: 50px;
     color: #FFFF59;
 }
+.coinPic    {
+    border-radius: 50%;
+}
 .corpLadder {
     margin-top: 100px;
     color: #FFFF59;
 }
+.redundantMain  {
+    padding: 10px;
+    font-size: large;
+    color: #00B6FF
+}
+.secureMain {
+    padding: 10px;
+    font-size: large;
+    color: #00B6FF
+}
+.decentralMain  {
+    padding: 10px;
+    font-size: large;
+    color: #00B6FF
+}
+.cloudMain  {
+    padding: 10px;
+    font-size: large;
+    color: #00B6FF
+}
 footer  {
-    margin-top: 260px;
+    margin-top: 403px;
     display: flex;
     align-items: center;
     background-color: #00B6FF;
@@ -78,7 +101,6 @@ footer  {
 .logUp  {
     margin-right: auto;
     font-size: large;
-
 }
 .policyUse  {
     margin-right: auto;
@@ -86,5 +108,4 @@ footer  {
 }
 .recoveryBack {
     font-size: large;
-
 }
