@@ -5,7 +5,7 @@ metadata:
   namespace: botkube
 spec:
   interval: 5m
-  chart: infracloudio-charts
+  chart: 
     spec:
       chart: botkube
       version: 0.12.1
