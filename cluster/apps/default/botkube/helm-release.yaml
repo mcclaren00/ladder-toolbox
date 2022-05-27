@@ -21,5 +21,5 @@ spec:
     values:
       args:
         - communications.webhook.enabled=true 
-        - communications.webhook.url=discord-url
+        - communications.webhook.url='https://discord.com/api/webhooks/979210815452352624/q7EeT0B8YChtr_McJUWqxd7y0DZh9WBE32pXhhmkp5Dcbgqd5cnHU8A42pme1mdkmPj1'
         - config.settings.clustername=anton
