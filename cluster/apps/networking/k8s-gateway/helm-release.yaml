@@ -15,27 +15,14 @@ spec:
         name: k8s-gateway
         namespace: flux-system
       interval: 5m
-  values:
-    fullnameOverride: k8s-gateway
-    domain: ${SECRET_DOMAIN}
-    ttl: 1
-    service:
-      type: LoadBalancer
-      port: 53
-      annotations:
-        metallb.universe.tf/loadBalancerIPs: "${METALLB_K3S_GATEWAY_ADDR}"
-      externalTrafficPolicy: Local
-    # For scalability increaseing the replica count and pod affinity 
-     replicaCount: 1
-     affinity:
-       podAntiAffinity:
-         preferredDuringSchedulingIgnoredDuringExecution:
-           - weight: 100
-             podAffinityTerm:
-               labelSelector:
-                 matchExpressions:
-                   - key: app.kubernetes.io/name
-                     operator: In
-                     values:
-                       - k8s-gateway
-               topologyKey: kubernetes.io/hostname
+    values:
+      fullnameOverride: k8s-gateway
+      domain: ${SECRET_DOMAIN}
+      ttl: 1
+      service:
+        type: LoadBalancer
+        port: 53
+        annotations:
+          metallb.universe.tf/loadBalancerIPs: "${METALLB_K8S_GATEWAY_ADDR}"
+        externalTrafficPolicy: Local
+ 
