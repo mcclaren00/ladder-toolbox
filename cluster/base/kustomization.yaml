@@ -4,8 +4,7 @@ resources:
 
   - flux-system
   - apps.yaml
-  - cluster-secrets.yaml
+  - cluster-secrets.sops.yaml
   - cluster-settings.yaml
   - core.yaml
   - crds.yaml
-  
