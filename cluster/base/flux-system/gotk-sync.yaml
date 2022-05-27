@@ -7,7 +7,7 @@ metadata:
 spec:
   interval: 5m0s
   ref:
-    branch: infra
+    branch: main
   url: https://github.com/mcclaren00/ladder-toolbox/
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2

@@ -1,4 +1,3 @@
 ---
 kubevip_interface: "ens18"
-
 kubevip_address: "192.168.50.226"
