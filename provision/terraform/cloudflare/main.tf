@@ -70,9 +70,9 @@ resource "cloudflare_zone_settings_override" "cloudflare_settings" {
   }
 }
 
-data "http" "ipv4" {
-  url = "http://ipv4.icanhazip.com"
-}
+# data "http" "ipv4" {
+#   url = "http://ipv4.icanhazip.com"
+# }
 
 resource "cloudflare_record" "ipv4" {
   name    = "ipv4"
