@@ -71,7 +71,7 @@ resource "cloudflare_zone_settings_override" "cloudflare_settings" {
 }
 
 data "http" "ipv4" {
-     ip = "71.232.13.24"
+     url = "https://ipv4.icanhazip.com/"
  }
 
 resource "cloudflare_record" "ipv4" {
