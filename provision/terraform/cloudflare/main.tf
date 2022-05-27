@@ -82,10 +82,12 @@ data "http" "ipv4" {
   url = "http://ipv4.icanhazip.com"
 }
 
+
+
 resource "cloudflare_record" "ipv4" {
   name    = "ipv4"
   zone_id = lookup(data.cloudflare_zones.domain.zones[0], "id")
-  value   = "http://ipv4.icanhazip.com"
+  value   = chomp(data.http.ipv4.body)
   proxied = true
   type    = "A"
   ttl     = 1
@@ -99,3 +101,4 @@ resource "cloudflare_record" "root" {
   type    = "CNAME"
   ttl     = 1
 }
+
