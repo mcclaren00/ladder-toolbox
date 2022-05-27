@@ -1,15 +1,17 @@
 import React from "react"
 import Logo from "./ladder_coin.jpg"
-import {BrowserRouter as Router, Link, Route} from "react-router-dom";
+import {BrowserRouter as Router, Link, Route, Routes, useNavigate, renderMatches} from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import FreeTrial from "./FreeTrial";
 
 export default function Main()  {
+
     return  (
         <Router>
             <main className="baseBody">
                 <h2 className="storNet">Reliable Secure Storage on A Decentralized Network</h2>
                 <Link to="FreeTrial">
-                    <Button className="trialFree">Free Trial</Button>
+                    <Button className="trialFree" onClick={<useNavigate to FreeTrial/>}>Free Trial</Button>
                 </Link>
                 <Link to="Signup">
                     <Button className="upSign">Sign up Now</Button>
