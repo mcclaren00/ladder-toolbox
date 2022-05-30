@@ -20,7 +20,8 @@ const site = () =>  {
                 <Link to="/CloudProviders">CloudProviders</Link>
                 <Routes>
                     <Route exact path="/" element={<PrivateRoute/>}>
-                    <Route exact path="/Home" element={<Home/>}/>
+                    </Route>
+                    <Route exact path="/Home" element={<Home/>}>
                     </Route>
                     <Route exact path="/FreeTrial" element={<FreeTrial/>}>
                     </Route>
