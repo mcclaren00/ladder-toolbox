@@ -129,7 +129,7 @@ items:
                   value: MYSQL_PASSWORD
                 - name: MYSQL_USER
                   value: MYSQL_USER
-              image: mcclaren00/ladder-toolbox:latest 
+              image: ladder-toolbox:latest 
               name: api
               resources: {}
               volumeMounts:
@@ -204,7 +204,7 @@ items:
             - env:
                 - name: CHOKIDAR_USEPOLLING
                   value: "true"
-              image: mcclaren00/ladder-toolbox:latest
+              image: ladder-toolbox:latest
               name: client
               resources: {}
               stdin: true
