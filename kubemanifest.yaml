@@ -129,7 +129,7 @@ items:
                   value: MYSQL_PASSWORD
                 - name: MYSQL_USER
                   value: MYSQL_USER
-              image: api
+              image: mcclaren00/api
               name: api
               resources: {}
               volumeMounts:
@@ -204,7 +204,7 @@ items:
             - env:
                 - name: CHOKIDAR_USEPOLLING
                   value: "true"
-              image: client
+              image: mcclaren00/client
               name: client
               resources: {}
               stdin: true
