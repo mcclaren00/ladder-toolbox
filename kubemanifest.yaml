@@ -346,7 +346,7 @@ items:
             io.kompose.service: nginx
         spec:
           containers:
-            - image: nginx
+            - image: ladder-toolbox_nginx
               name: nginx
               ports:
                 - containerPort: 80
