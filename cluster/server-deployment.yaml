@@ -1,0 +1,34 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-deployment 
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      component: server
+  template:
+    metadata:
+      labels:
+        component: server
+    spec: 
+      containers:
+        - name: server 
+          image: mcclaren00/multi-server
+          ports:
+            - containerPort: 5000
+          env:
+            - name: MQUSER
+              value: MYSQL_USER
+            - name: MQHOST 
+              value: MYSQL_HOST
+            - name: MQPORT
+              value: "5432"
+            - name: MQDATABASE 
+              value: mysql
+            - name: MYSQL_PASSWORD
+              valueFrom: 
+                secretKeyRef:
+                  name: mysqlpassword 
+                  key: MYSQLPASSWORD
