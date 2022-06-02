@@ -15,18 +15,18 @@ spec:
     spec: 
       containers:
         - name: server 
-          image: mcclaren00/multi-server
+          image: mcclaren00/ladder-toolbox-server:latest
           ports:
             - containerPort: 5000
           env:
             - name: MQUSER
               value: MYSQL_USER
-            - name: MQHOST 
+            - name: MYSQL_HOST 
               value: MYSQL_HOST
             - name: MQPORT
               value: "5432"
             - name: MQDATABASE 
-              value: mysql
+              value: MYSQL_DATABASE
             - name: MYSQL_PASSWORD
               valueFrom: 
                 secretKeyRef:

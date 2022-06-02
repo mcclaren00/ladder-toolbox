@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: client
-          image: mcclaren00/multi-client
+          image: mcclaren00/ladder-toolbox
       ports:
         - containerPort: 3000
