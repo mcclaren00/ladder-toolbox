@@ -1,21 +1,38 @@
 import React from "react"
 import Logo from "./ladder_coin.jpg"
 import Button from "react-bootstrap/Button";
+import {Link} from "react-router-dom";
 
 export default function Main()  {
 
     return  (
         <main className="baseBody">
             <h2 className="storNet">Reliable Secure Storage on A Decentralized Network</h2>
-            <Button className="trialFree">FreeTrial</Button>
-            <Button className="upSign">Sign up Now</Button>
+            <Link to="/FreeTrial">
+                <Button className="trialFree">FreeTrial</Button>
+            </Link>
+            <Link to="/Signup">
+                <Button className="upSign">Sign up Now</Button>
+            </Link>
+            <Link to="/Moreinfo">
             <Button className="infoMore">More info</Button>
+            </Link>
             <h2 className="serviceProv">Provided Services</h2>
-            <Button className="redundantMain">Redundancy</Button>
-            <Button className="secureMain">Security</Button>
-            <img src={Logo} className="coinPic"/>
-            <Button className="decentralMain">Decentralization</Button>
-            <Button className="cloudMain">Cloud providers</Button>
+            <Link to="/Redundancy">
+                <Button className="redundantMain">Redundancy</Button>
+            </Link>
+            <Link to="/Security">
+                <Button className="secureMain">Security</Button>
+            </Link>
+            <Link to="/Home">
+                <img src={Logo} className="coinPic"/>
+            </Link>
+            <Link to="/Decentralized">
+                <Button className="decentralMain">Decentralization</Button>
+            </Link>
+            <Link to="/CloudProviders">
+                <Button className="cloudMain">Cloud providers</Button>
+            </Link>
         </main>
     )
 }

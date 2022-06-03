@@ -10,14 +10,6 @@ const site = () =>  {
     return  (
         <Router>
             <Fragment>
-                <Link to="/Home">Home</Link>
-                <Link to="/FreeTrial">FreeTrial</Link>
-                <Link to="/Signup">Signup</Link>
-                <Link to="/Moreinfo">Moreinfo</Link>
-                <Link to="/Redundancy">Redundancy</Link>
-                <Link to="/Security">Security</Link>
-                <Link to="/Decentralized">Decentralized</Link>
-                <Link to="/CloudProviders">CloudProviders</Link>
                 <Routes>
                     <Route exact path="/" element={<PrivateRoute/>}>
                     </Route>
