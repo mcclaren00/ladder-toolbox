@@ -26,8 +26,8 @@ spec:
               mountPath: /var/lib/mysql/data
               subPath: mysql
           env:
-            - name: MYSQL_PASSWORD
+            - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: mysqlpaddword 
-                  key: MYSQLPASSWORD
+                  name: mysql-secret 
+                  key: password
