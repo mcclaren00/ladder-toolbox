@@ -2,11 +2,11 @@ import React from "react";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
-export default function Moreinfo()  {
+export default function Security()  {
     return  (
-        <div className="containerInfo">
+        <div className="containerSecurity">
             <Navbar />
-            <h1>Welcome to Moreinfo page!</h1>
+            <h1>Welcome to Security page!</h1>
             <Footer />
         </div>
     )

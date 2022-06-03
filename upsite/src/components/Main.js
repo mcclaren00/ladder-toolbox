@@ -27,11 +27,11 @@ export default function Main()  {
             <Link to="/Home">
                 <img src={Logo} className="coinPic"/>
             </Link>
-            <Link to="/Decentralized">
-                <Button className="decentralMain">Decentralization</Button>
+            <Link to="/Decentralize">
+                <Button className="decentralMain">Decentralized</Button>
             </Link>
             <Link to="/CloudProviders">
-                <Button className="cloudMain">Cloud providers</Button>
+                <Button className="cloudMain">Cloud Providers</Button>
             </Link>
         </main>
     )

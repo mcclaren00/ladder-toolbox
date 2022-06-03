@@ -6,7 +6,7 @@ export default function FreeTrial()  {
     return  (
         <div className="containerTrial">
             <Navbar />
-            <h1>Welcome to Trial page! testing</h1>
+            <h1>Welcome to Trial page!</h1>
             <Footer />
         </div>
     )

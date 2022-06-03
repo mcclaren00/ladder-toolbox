@@ -2,11 +2,11 @@ import React from "react";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
-export default function Moreinfo()  {
+export default function CloudProviders()  {
     return  (
-        <div className="containerInfo">
+        <div className="containerCloud">
             <Navbar />
-            <h1>Welcome to Moreinfo page!</h1>
+            <h1>Welcome to CloudProviders page!</h1>
             <Footer />
         </div>
     )
