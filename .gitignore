@@ -11,3 +11,4 @@ xanmanning.k3s*
 terraform.tfstate*
 credentials.auto.tfvars
 .env
+*/node_modules/*
