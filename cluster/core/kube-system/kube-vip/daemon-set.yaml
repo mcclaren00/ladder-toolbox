@@ -1,4 +1,4 @@
----
+--
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
@@ -28,7 +28,7 @@ spec:
             - name: vip_arp
               value: "true"
             - name: vip_interface
-              value: "ens18"
+              value: ""
             - name: port
               value: "6443"
             - name: vip_cidr
@@ -48,7 +48,7 @@ spec:
             - name: vip_retryperiod
               value: "2"
             - name: address
-              value: "192.168.50.226"
+              value: "192.168.50.106"
           securityContext:
             capabilities:
               add:
