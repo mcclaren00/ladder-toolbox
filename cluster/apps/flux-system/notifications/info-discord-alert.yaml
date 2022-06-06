@@ -13,31 +13,16 @@ spec:
       namespace: flux-system
       name: flux-system
     - kind: HelmRelease
-      namespace: db
-      name: "*"
-    - kind: HelmRelease
       namespace: default
       name: "*"
     - kind: HelmRelease
-      namespace: home-automation
-      name: "*"
-    - kind: HelmRelease
-      namespace: kasten-io
-      name: "*"
-    - kind: HelmRelease
       namespace: kube-system
-      name: "*"
-    - kind: HelmRelease
-      namespace: media
       name: "*"
     - kind: HelmRelease
       namespace: monitoring
       name: "*"
     - kind: HelmRelease
       namespace: networking
-      name: "*"
-    - kind: HelmRelease
-      namespace: rook-ceph
       name: "*"
     - kind: HelmRelease
       namespace: system-upgrade
