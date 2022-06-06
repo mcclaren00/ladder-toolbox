@@ -1,5 +1,5 @@
 ---
-kubevip_interface: "${BOOTSTRAP_KUBE_VIP_INTERFACE}"
+kubevip_interface: "ens18"
 
 kubevip_address: "${BOOTSTRAP_KUBE_VIP_ADDR}"
 
