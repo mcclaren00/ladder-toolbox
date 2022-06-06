@@ -1,0 +1,335 @@
+affinity: {}
+automountServiceAccountToken: true
+communications:
+  discord:
+    botid: "979496341346586800"
+    channel: "979882549507678208"
+    enabled: true
+    notiftype: short
+    token: OTc5NDk2MzQxMzQ2NTg2NzE0.GWUgZ5.5rD1EkPBmMXcCfH-IcUzVomCW7lf1sXAlGU-Q8
+  elasticsearch:
+    awsSigning:
+      awsRegion: us-east-1
+      enabled: false
+      roleArn: ""
+    enabled: false
+    index:
+      name: botkube
+      replicas: 0
+      shards: 1
+      type: botkube-event
+    password: ELASTICSEARCH_PASSWORD
+    server: ELASTICSEARCH_ADDRESS
+    skipTLSVerify: false
+    username: ELASTICSEARCH_USERNAME
+  existingSecretName: ""
+  lark:
+    appID: LARK_APP_ID
+    appSecret: LARK_APP_SECRET
+    chatGroup: LARK_CHAT_GROUP_ID
+    enabled: false
+    encryptKey: LARK_ENCRYPT_KEY
+    endpoint: LARK_URL
+    messagePath: /bots/lark
+    port: 9999
+    verificationToken: LARK_VERIFICATION_TOKEN
+  mattermost:
+    botName: BotKube
+    channel: MATTERMOST_CHANNEL
+    enabled: false
+    notiftype: short
+    team: MATTERMOST_TEAM
+    token: MATTERMOST_TOKEN
+    url: MATTERMOST_SERVER_URL
+  slack:
+    channel: SLACK_CHANNEL
+    enabled: false
+    notiftype: short
+    token: SLACK_API_TOKEN
+  teams:
+    appID: APPLICATION_ID
+    appPassword: APPLICATION_PASSWORD
+    enabled: false
+    messagePath: /bots/teams
+    notiftype: short
+    port: 3978
+  webhook:
+    enabled: false
+    url: https://discord.com/api/webhooks/979880174386565200/-HLXRmwAY5JFJcVrxiM6HPP44hglE-uhwIf3EOTXJzxci2DtqVXu03tJEcpQtGzZdkH7
+config:
+  recommendations: true
+  resources:
+  - events:
+    - create
+    - delete
+    - error
+    name: v1/pods
+    namespaces:
+      ignore:
+      - null
+      include:
+      - all
+  - events:
+    - create
+    - delete
+    - error
+    name: v1/services
+    namespaces:
+      ignore:
+      - null
+      include:
+      - all
+  - events:
+    - create
+    - delete
+    - error
+    name: apps/v1/deployments
+    namespaces:
+      ignore:
+      - null
+      include:
+      - all
+    updateSetting:
+      fields:
+      - spec.template.spec.containers[*].image
+      - status.availableReplicas
+      includeDiff: true
+  - events:
+    - create
+    - delete
+    - error
+    name: apps/v1/statefulsets
+    namespaces:
+      ignore:
+      - null
+      include:
+      - all
+    updateSetting:
+      fields:
+      - spec.template.spec.containers[*].image
+      - status.readyReplicas
+      includeDiff: true
+  - events:
+    - create
+    - delete
+    - error
+    name: networking.k8s.io/v1beta1/ingresses
+    namespaces:
+      ignore:
+      - null
+      include:
+      - all
+  - events:
+    - create
+    - delete
+    - error
+    name: v1/nodes
+    namespaces:
+      ignore:
+      - null
+      include:
+      - all
+  - events:
+    - create
+    - delete
+    - error
+    name: v1/namespaces
+    namespaces:
+      ignore:
+      - null
+      include:
+      - all
+  - events:
+    - create
+    - delete
+    - error
+    name: v1/persistentvolumes
+    namespaces:
+      ignore:
+      - null
+      include:
+      - all
+  - events:
+    - create
+    - delete
+    - error
+    name: v1/persistentvolumeclaims
+    namespaces:
+      ignore:
+      - null
+      include:
+      - all
+  - events:
+    - create
+    - delete
+    - error
+    name: v1/configmaps
+    namespaces:
+      ignore:
+      - null
+      include:
+      - all
+  - events:
+    - create
+    - delete
+    - error
+    name: apps/v1/daemonsets
+    namespaces:
+      ignore:
+      - null
+      include:
+      - all
+    updateSetting:
+      fields:
+      - spec.template.spec.containers[*].image
+      - status.numberReady
+      includeDiff: true
+  - events:
+    - create
+    - delete
+    - error
+    name: batch/v1/jobs
+    namespaces:
+      ignore:
+      - null
+      include:
+      - all
+    updateSetting:
+      fields:
+      - spec.template.spec.containers[*].image
+      - status.conditions[*].type
+      includeDiff: true
+  - events:
+    - create
+    - delete
+    - error
+    name: rbac.authorization.k8s.io/v1/roles
+    namespaces:
+      ignore:
+      - null
+      include:
+      - all
+  - events:
+    - create
+    - delete
+    - error
+    name: rbac.authorization.k8s.io/v1/rolebindings
+    namespaces:
+      ignore:
+      - null
+      include:
+      - all
+  - events:
+    - create
+    - delete
+    - error
+    name: rbac.authorization.k8s.io/v1/clusterrolebindings
+    namespaces:
+      ignore:
+      - null
+      include:
+      - all
+  - events:
+    - create
+    - delete
+    - error
+    name: rbac.authorization.k8s.io/v1/clusterroles
+    namespaces:
+      ignore:
+      - null
+      include:
+      - all
+  settings:
+    clustername: anton
+    configwatcher: true
+    kubectl:
+      commands:
+        resources:
+        - deployments
+        - pods
+        - namespaces
+        - daemonsets
+        - statefulsets
+        - storageclasses
+        - nodes
+        verbs:
+        - api-resources
+        - api-versions
+        - cluster-info
+        - describe
+        - diff
+        - explain
+        - get
+        - logs
+        - top
+        - auth
+      defaultNamespace: default
+      enabled: false
+      restrictAccess: false
+    upgradeNotifier: true
+  ssl:
+    enabled: false
+containerSecurityContext:
+  allowPrivilegeEscalation: false
+  privileged: false
+  readOnlyRootFilesystem: true
+deployment:
+  annotations: {}
+extraAnnotations: {}
+extraEnv: []
+extraObjects: []
+fullnameOverride: ""
+image:
+  pullPolicy: IfNotPresent
+  registry: ghcr.io
+  repository: infracloudio/botkube
+  tag: v0.12.4
+ingress:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  create: false
+  host: HOST
+  tls:
+    enabled: false
+    secretName: ""
+kubeconfig:
+  base64Config: ""
+  enabled: false
+  existingSecret: ""
+logLevel: info
+nameOverride: ""
+nodeSelector: {}
+podSecurityPolicy:
+  enabled: false
+priorityClassName: ""
+rbac:
+  create: true
+  rules:
+  - apiGroups:
+    - '*'
+    resources:
+    - '*'
+    verbs:
+    - get
+    - watch
+    - list
+replicaCount: 1
+resources: {}
+securityContext:
+  runAsGroup: 101
+  runAsUser: 101
+service:
+  name: metrics
+  port: 2112
+  targetPort: 2112
+serviceAccount:
+  annotations: {}
+  create: true
+  name: ""
+serviceMonitor:
+  enabled: false
+  interval: 10s
+  labels: {}
+  path: /metrics
+  port: metrics
+tolerations: []
