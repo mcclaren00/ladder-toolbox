@@ -2,11 +2,11 @@ affinity: {}
 automountServiceAccountToken: true
 communications:
   discord:
-    botid: "979496341346586800"
-    channel: "979882549507678208"
-    enabled: true
+    botid: ""
+    channel: ""
+    enabled: false
     notiftype: short
-    token: OTc5NDk2MzQxMzQ2NTg2NzE0.GWUgZ5.5rD1EkPBmMXcCfH-IcUzVomCW7lf1sXAlGU-Q8
+    token: 
   elasticsearch:
     awsSigning:
       awsRegion: us-east-1
@@ -54,8 +54,8 @@ communications:
     notiftype: short
     port: 3978
   webhook:
-    enabled: false
-    url: https://discord.com/api/webhooks/979880174386565200/-HLXRmwAY5JFJcVrxiM6HPP44hglE-uhwIf3EOTXJzxci2DtqVXu03tJEcpQtGzZdkH7
+    enabled: true
+    url: https://discord.com/api/webhooks/979882588929941604/o_HXdDnqpGhQRi-TO1TEZ5AaPk2ZhW8xcq2rcqWsqgoJcjZYxAutVdvVmwBDuD1a15MZ
 config:
   recommendations: true
   resources:
