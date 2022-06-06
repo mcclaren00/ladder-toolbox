@@ -24,7 +24,7 @@ export default function Main()  {
             <Link to="/Security">
                 <Button className="secureMain">Security</Button>
             </Link>
-            <Link to="/Home">
+            <Link to="/Upload">
                 <img src={Logo} className="coinPic"/>
             </Link>
             <Link to="/Decentralize">

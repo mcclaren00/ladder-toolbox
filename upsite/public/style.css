@@ -109,3 +109,23 @@ footer  {
 .recoveryBack {
     font-size: large;
 }
+.containerUpload    {
+    text-align: center;
+}
+.containerUpload h1 {
+   color:  #FFFF59;
+}
+.containerUpload input  {
+    color: #FFFF59;
+}
+input[type=file]::file-selector-button   {
+    color: #00B6FF;
+    font-size: large;
+    padding: 10px;  
+}
+.containerUpload button  {
+    color: #00B6FF;
+    font-size: large;
+    padding: 10px;
+    text-align: center;
+}

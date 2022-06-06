@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment} from "react";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import FreeTrial from "./components/FreeTrial";
 import Signup from "./components/Signup";
@@ -9,8 +9,10 @@ import Redundancy from "./components/Redundancy";
 import Security from "./components/Security";
 import Decentralize from "./components/Decentralization";
 import CloudProviders from "./components/CloudProviders";
+import Upload from "./components/Upload";
 
-const site = () =>  {
+export default function site ()  {
+
     return  (
         <Router>
             <Fragment>
@@ -18,6 +20,8 @@ const site = () =>  {
                     <Route exact path="/" element={<PrivateRoute/>}>
                     </Route>
                     <Route exact path="/Home" element={<Home/>}>
+                    </Route>
+                    <Route exact path="/Upload" element={<Upload/>}>
                     </Route>
                     <Route exact path="/FreeTrial" element={<FreeTrial/>}>
                     </Route>
@@ -38,4 +42,3 @@ const site = () =>  {
         </Router>
     );
 }
-export default site;
