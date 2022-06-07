@@ -54,6 +54,24 @@ tasks:
         gcc@5
         go
 
+  workstation:
+    desc: Install dependancies, for workstations through brew
+    cmds:
+      - brew install {{.DEPS}} {{.CLI_ARGS}}
+    preconditions:
+      - sh: command -v brew 
+        msg: install homebrew 
+    vars: 
+      DEPS >-
+        direnv
+        gitleaks 
+        go-task/tap/go-task
+        pre-commit
+        prettier
+        yamllint
+        gcc@5
+        go
+
   verify:
     desc: Verify correct env settings 
     cmds:
