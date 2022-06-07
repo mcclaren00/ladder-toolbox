@@ -59,12 +59,12 @@ tasks:
     cmds:
       - brew install {{.DEPS}} {{.CLI_ARGS}}
     preconditions:
-      - sh: command -v brew 
-        msg: install homebrew 
-    vars: 
+      - sh: command -v brew
+        msg: install homebrew
+    vars:
       DEPS: >-
         direnv
-        gitleaks 
+        gitleaks
         go-task/tap/go-task
         pre-commit
         prettier
@@ -73,11 +73,11 @@ tasks:
         go
 
   verify:
-    desc: Verify correct env settings 
+    desc: Verify correct env settings
     cmds:
       - ./configure --verify
 
   configure:
-    desc: Configure repository and cluster 
+    desc: Configure repository and cluster
     cmds:
       - ./configure

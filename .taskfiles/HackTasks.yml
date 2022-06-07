@@ -6,12 +6,12 @@ vars:
   HACK_DIR: "{{.PROJECT_DIR}}/setup"
 
 tasks:
-  provision: 
+  provision:
     desc: Install K3s with k3sup bash script
     sh:
       - ./{{.HACK_DIR}}/bootstrap-cluster.sh
-  
+
   nuke:
     desc: Nuke cluster install through bash script
     sh:
-     - ./{{.HACK_DIR}}/uninstall-k3s.sh
+      - ./{{.HACK_DIR}}/uninstall-k3s.sh

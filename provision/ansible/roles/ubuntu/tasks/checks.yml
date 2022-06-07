@@ -1,4 +1,4 @@
---- 
+---
 
 - name: Check if interface for kube-vip is valid
   ansible.builtin.assert:
@@ -6,10 +6,10 @@
       - ansible_{{ kubevip_interface }}.device is defined
       - ansible_{{ kubevip_interface }}['ipv4']['address'] | ansible.utils.ipaddr('{{ ansible_host}}')
     success_msg:
-      kube-vip is available to use {{ kubevip_interface }} for node 
+      kube-vip is available to use {{ kubevip_interface }} for node
     full_msg:
-      This node dones not have a network interface called {{ kubevip_interface }}. 
-      This means that you provided the wrong interface 
-      You may want to set a static interface name check https://askubuntu.com/a/1317043 
-  when: 
+      This node dones not have a network interface called {{ kubevip_interface }}.
+      This means that you provided the wrong interface
+      You may want to set a static interface name check https://askubuntu.com/a/1317043
+  when:
     "'master' in group_names"

@@ -1,3 +1,4 @@
+---
 [k3s_master]
 192.168.50.51 hostname=k3s-master-01
 

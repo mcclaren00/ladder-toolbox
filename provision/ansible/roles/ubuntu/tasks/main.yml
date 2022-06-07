@@ -1,15 +1,15 @@
 ---
 
 # - include: checks.yml
-#   tags: 
+#   tags:
 #    - checks
 
 
 - include: locale.yml
-  tags: 
+  tags:
     - locale
 
-- include: packages.yml 
+- include: packages.yml
   tags:
     - packages
 
@@ -22,9 +22,9 @@
     - network
 
 - include: filesystem.yml
-  tags: 
+  tags:
     - filesystem
-    
-- include: user.yml 
-  tags: 
+
+- include: user.yml
+  tags:
     - user

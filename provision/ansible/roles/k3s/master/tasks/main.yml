@@ -106,9 +106,9 @@
 - name: Enable and check K3s service
   systemd:
     name: k3s
-    daemon_reload: yes
+    daemon_reload: true
     state: restarted
-    enabled: yes
+    enabled: true
 
 - name: Wait for node-token
   wait_for:
@@ -149,7 +149,7 @@
   copy:
     src: /etc/rancher/k3s/k3s.yaml
     dest: ~{{ ansible_user }}/.kube/config
-    remote_src: yes
+    remote_src: true
     owner: "{{ ansible_user }}"
     mode: "u=rw,g=,o="
 

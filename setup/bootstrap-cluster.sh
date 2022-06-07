@@ -1,6 +1,6 @@
-#!/usr/bin/env bash 
-# This script provisions k3s and installs flux and k3s monitoring stack 
-  
+#!/usr/bin/env bash
+# This script provisions k3s and installs flux and k3s monitoring stack
+
 USER="sa" # change to fit your needs
 K3S_VERSION="v1.23.4+k3s1"
 
@@ -17,22 +17,22 @@ need "kubectl"
 need "helm"
 need "k3sup"
 need "ansible-inventory"
-need "jq" 
+need "jq"
 need "flux"
 
 K3S_MASTER=$(ansible-inventory -i ${ANSIBLE_INVENTORY} --list | jq -r '.k3s_master[] | @tsv')
 K3S_WORKERS=$(ansible-inventory -i ${ANSIBLE_INVENTORY} --list | jq -r '.k3s_worker[] | @tsv')
 
 
-# echo "Cluster IP" ${FIRST_MASTER} #works 
+# echo "Cluster IP" ${FIRST_MASTER} #works
 echo "Masters" ${K3S_MASTERS}
-echo "Workers" ${K3S_WORKERS} 
+echo "Workers" ${K3S_WORKERS}
 
 message() {
   echo -e "\n######################################################################"
   echo "# ${1}"
   echo "######################################################################"
-} 
+}
 
 k3s_master_node() {
     message "Installing first master node"
@@ -42,7 +42,7 @@ k3s_master_node() {
     mkdir -p ~/.kube
     mv ./kubeconfig ~/.kube/config
 
-    sleep 10 
+    sleep 10
 }
 
 k3s_worker_node() {
@@ -50,7 +50,7 @@ k3s_worker_node() {
 
         message "Joining ${worker} to ${K3S_MASTER} cluster"
         k3sup join --ip "${worker}" --server-ip "${K3S_MASTER}" --ssh-key "~/.ssh/id_ed25519" --k3s-version "${K3S_VERSION}" --user "${USER}"
-        
+
         sleep 10
 
         message "Labeling ${worker} as node-role.kubernetes.io/worker=worker"
@@ -62,10 +62,10 @@ k3s_worker_node() {
 }
 
 install_flux() {
-    ## installing flux through helm 
+    ## installing flux through helm
     message "Installing flux"
 
-    # Bootstrap flux into cluster and repo 
+    # Bootstrap flux into cluster and repo
     flux bootstrap github --owner=mcclaren00 --repository=ladder-toolbox --branch=main --path=/cluster/ --personal
 
     sleep 5
@@ -81,7 +81,7 @@ add_deploy_key() {
 
 install_monitoring() {
     message "Installing Prometheus/Grafana monitoring stack"
-    kubectl create namespace monitoring 
+    kubectl create namespace monitoring
     helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
     helm repo add stable https://charts.helm.sh/stable
     helm repo update
@@ -103,8 +103,5 @@ sleep 5
 
 # install_monitoring
 message "All done!"
-kubectl get nodes 
+kubectl get nodes
 kubectl get pods -A
-
-
-

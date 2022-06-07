@@ -7,7 +7,7 @@
     backrefs: true
   notify: reboot
 
-- name: Flush iptables 
+- name: Flush iptables
   iptables:
     flush: true
   changed_when: false   # iptables flush always returns changed

@@ -1,5 +1,5 @@
 ---
-- name: setting hostname 
+- name: setting hostname
   ansible.builtin.hostname:
     name: "{{ inventory_hostname }}"
   when:
@@ -12,7 +12,7 @@
     block: |
       127.0.0.1 localhost
       127.0.1.1 {{ inventory_hostname }}
-      # for IPv6 just because 
+      # for IPv6 just because
       ::1 ip6-localhost ip6-loopback
       fe00::0 ip6-localnet
       ff00::0 ip6-mcastprefix
@@ -20,7 +20,7 @@
       ff02::2 ip6-allrouters
       ff02::3 ip6-allhosts
 
-- name: setting system controls for kube 
+- name: setting system controls for kube
   ansible.posix.sysctl:
     name: "{{ item.key }}"
     value: "{{ item.value }}"

@@ -1,6 +1,6 @@
-#!/usr/bin/env bash 
-# This script provisions k3s and installs flux and k3s monitoring stack 
-  
+#!/usr/bin/env bash
+# This script provisions k3s and installs flux and k3s monitoring stack
+
 USER="sa" # change to fit your needs
 K3S_VERSION="v1.23.4+k3s1"
 
@@ -17,22 +17,22 @@ need "kubectl"
 need "helm"
 need "k3sup"
 need "ansible-inventory"
-need "jq" 
+need "jq"
 need "flux"
 
 K3S_MASTER=$(ansible-inventory -i ${ANSIBLE_INVENTORY} --list | jq -r '.k3s_master[] | @tsv')
 K3S_WORKERS=$(ansible-inventory -i ${ANSIBLE_INVENTORY} --list | jq -r '.k3s_worker[] | @tsv')
 
 
-# echo "Cluster IP" ${FIRST_MASTER} #works 
+# echo "Cluster IP" ${FIRST_MASTER} #works
 echo "Masters" ${K3S_MASTER}
-echo "Workers" ${K3S_WORKERS} 
+echo "Workers" ${K3S_WORKERS}
 
 message() {
   echo -e "\n######################################################################"
   echo "# ${1}"
   echo "######################################################################"
-} 
+}
 
 k3s_master_node() {
     # echo "" > ~/.secret/node-token # clear if not cleared
@@ -46,7 +46,7 @@ k3s_master_node() {
     #scp ${USER}@${K3S_MASTER}:sudo /etc/rancher/k3s/k3s.yaml ~/.kube/config
 
     # mv /etc/rancher/k3s/k3s.yaml ~/.kube/config
-    sleep 10 
+    sleep 10
 }
 
 k3s_worker_node() {
@@ -73,9 +73,5 @@ k3s_worker_node
 
 
 sleep 5
-message "Installed k3s" 
+message "Installed k3s"
 ssh ${USER}@${K3S_MASTER} "sudo kubectl get nodes -o=wide"
-
-
-
-

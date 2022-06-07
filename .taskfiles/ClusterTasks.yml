@@ -4,7 +4,7 @@ version: "3"
 tasks:
 
   flux:verify:
-    desc: check flux reqirements 
+    desc: check flux reqirements
     cmds:
       - flux check --pre
 
@@ -14,43 +14,43 @@ tasks:
       - kubectl create namespace flux-system --dry-run=client -o yaml | kubectl apply -f -
 
   flux:secret:
-    desc: create age secret in flux-system namespace 
+    desc: create age secret in flux-system namespace
     cmds:
       - cat {{.SOPS_AGE_KEY_FILE}} | kubectl -n flux-system create secret generic sops-age --from-file=age.agekey=/dev/stdin
     preconditions:
       - sh: test -f {{.SOPS_AGE_KEY_FILE}}
         msg: |
-          Age key file is not found. please create it! 
+          Age key file is not found. please create it!
     vars:
       SOPS_AGE_KEY_FILE: ~/.config/sops/age/keys.txt
 
   flux:install:
-    desc: install flux into cluster 
+    desc: install flux into cluster
     cmds:
       - kubectl apply -k {{.CLUSTER_DIR}}/base/flux-system
 
   reconcile:
-    desc: for flux to pull changes from your Git repository 
+    desc: for flux to pull changes from your Git repository
     cmds:
       - flux reconcile source git flux-system {{.CLI_ARGS | default "-n flux-system"}}
 
   nodes:
-    desc: Get all nodes 
+    desc: Get all nodes
     cmds:
       - kubectl get nodes {{.CLI_ARGS | default "-o wide"}}
 
   pods:
-    desc: get all pods 
+    desc: get all pods
     cmds:
       - kubectl get pods {{.CLI_ARGS | default "-A"}}
 
   kustomizations:
-    desc: list all kustomizations in cluster 
+    desc: list all kustomizations in cluster
     cmds:
       - kubectl get kustomizations {{.CLI_ARGS | default "-A"}}
 
   helmreleases:
-    desc: list all helm relases 
+    desc: list all helm relases
     cmds:
       - kubectl get helmreleases {{.CLI_ARGS | default "-A"}}
 
@@ -65,13 +65,13 @@ tasks:
       - kubectl get gitrepositories {{.CLI_ARGS | default "-A"}}
 
   certificates:
-    desc: list all the certificates in cluster 
+    desc: list all the certificates in cluster
     cmds:
       - kubectl get certificates {{.CLI_ARGS | default "-A"}}
       - kubectl get certificaterequests {{.CLI_ARGS | default "-A"}}
 
   resources:
-    desc: get all resources in cluster 
+    desc: get all resources in cluster
     cmds:
       - task: nodes
       - task: kustomizations

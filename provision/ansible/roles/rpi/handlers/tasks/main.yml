@@ -38,7 +38,7 @@
   when:
     - detected_distribution | default("") == "Raspbian"
 
-- name: OS related tasks 
+- name: OS related tasks
   include_tasks: "{{ item }}"
   with_first_found:
     - "prereq/{{ detected_distribution }}-{{ detected_distribution_major_version }}.yml"

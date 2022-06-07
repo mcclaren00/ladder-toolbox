@@ -6,11 +6,11 @@
     state: present
     sysctl_file: /etc/sysctl.d/98-kubernetes-fs.conf
 
-- name: siable swap runtime 
+- name: siable swap runtime
   ansible.builtin.command: swapoff -a
   when: ansible_swaptotal_mb > 0
 
-- name: diable swap 
+- name: diable swap
   ansible.posix.mount:
     name: "{{ item }}"
     fstype: swap

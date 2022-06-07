@@ -1,4 +1,4 @@
-#!/usr/bin/env sh 
+#!/usr/bin/env sh
 
 
 github_username=mcclaren00 # change to apropriate username
