@@ -137,3 +137,15 @@ Link    {
     text-decoration: underline;
     text-decoration-color:#404750;
 }
+.containerSign  {
+    text-align: center;
+}
+.containerUser  {
+    background-color: #FFFF59;
+}
+.containerPass  {
+    color: #FFFF59;
+}
+.containerSubmit  {
+color: #00B6FF;
+}
