@@ -14,6 +14,15 @@ The first command will install task so that the user can install all dependancie
 
 <br>
 
+## Install and run pre-commits
+
+This will install precommits that will interact with your local repository. This is used for handling formatting, error checking, potential exposed secrets. 
+
+```
+task precommit:init
+task precommit:update 
+task precommit:run 
+```
 
 ## Generating an SSH key 
 
