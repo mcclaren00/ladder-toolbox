@@ -51,22 +51,18 @@ This is important because it allows for all of our configs to be in one place. T
  ## Cluster folder structure:
 
 ```
+cluster
 ├── apps
-│   ├── default
-│   │  
-│   ├── kube-system
-│   │  
-│   ├── networking
-│   │  
+│   ├── default 
+│   ├── kube-system  
+│   ├── networking 
 ├── base
-│  
-├── core
-│  
+├── core  
 ├── crds
 ```
 <br>
 
-## Usage
+## Usage:
 
 Most of the interaction with kubernetes cluster nodes is done with Taskfiles and task commands (see task help for task commands options).
 
@@ -74,6 +70,8 @@ Once cluster is installed majority of interation to the cluster is through `kube
 
 
 However with fluxcd installed an looking at the cluster file, changing kubernetes manifest files will be through Git by pushing to the `infra` branch. This replaces the `kubectl apply -f <file>` command to apply manifest files to the Kubernetes cluster. 
+
+I'd reccomend using a tool called Lens to get a full picture of the cluster and easier navigation/tracking of different deployments, namespaces, pods, helm releases, etc. Then write different manifest files within the IDE of your choice (be careful to pay attention to different Kustomizations to deploy correctly). 
 
 <br>
 
@@ -94,5 +92,12 @@ etc.
 ## Bots: 
 
 Were using Botkube to allow for eyes and ears as far as Pods, Deployments, Services, PVC, and more (only alerting on creations, errors, and deletions in specific namespaces). We are also alerting if any exposed secrets are pushed to Github through Gitguardian.   
+
+<br>
+
+## Production Deployment: 
+
+Deployments of the Ladder web application and its microservices will be in the `production` Namespace and various ingresses, load balancers and scaling will be deployed to accomodate different needs of the application. 
+
 
 
