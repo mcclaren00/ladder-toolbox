@@ -1,5 +1,5 @@
 ---
-# Namespace should alreaady exist may want to delete later 
+# Namespace should alreaady exist may want to delete later
 $patch: delete
 apiVersion: v1
 kind: Namespace

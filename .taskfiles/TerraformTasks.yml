@@ -10,13 +10,13 @@ tasks:
       - terraform init {{.CLI_ARGS}}
 
   plan:
-    desc: show proposed changes terraform will commit 
+    desc: show proposed changes terraform will commit
     dir: provision/terraform/cloudflare
     cmds:
       - terraform plan {{.CLI_ARGS}}
 
   apply:
-    desc: apply changes to cloudflare 
+    desc: apply changes to cloudflare
     dir: provision/terraform/cloudflare
     cmds:
       - terraform apply {{.CLI_ARGS}}

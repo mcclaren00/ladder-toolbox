@@ -2,7 +2,7 @@
 
 version: "3"
 
-env: 
+env:
   ANSIBLE_CONFIG: "{{.PROJECT_DIR}}/ansible.cfg"
 
 vars:
@@ -10,59 +10,59 @@ vars:
   ANSIBLE_INVENTORY_DIR: "{{.ANSIBLE_DIR}}/inventory"
 
 tasks:
-  init: 
-    desc: install ansible galaxy depen 
+  init:
+    desc: install ansible galaxy depen
     dir: provision/ansible
     cmds:
-      - ansible-galaxy install -r requirements.yml --roles-path ~/.ansible/roles --force 
-      - ansible-galaxy collection install -r requirements.yml --collections-path ~/.ansible/collections --force 
+      - ansible-galaxy install -r requirements.yml --roles-path ~/.ansible/roles --force
+      - ansible-galaxy collection install -r requirements.yml --collections-path ~/.ansible/collections --force
 
   list:
-    desc: get all hosts 
-    dir: provision/ansible           
+    desc: get all hosts
+    dir: provision/ansible
     cmds:
       - ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --list-hosts
-  
+
   prepare:
-    desc: prepare all nodes 
+    desc: prepare all nodes
     dir: provision/ansible
     cmds:
       - ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/ubuntu-prepare.yml
-      
+
 
   post-installation:
-    desc: install kube on nodes 
+    desc: install kube on nodes
     dir: provision/ansible
     cmds:
       - ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/k3s-install.yml
 
   nuke:
-    desc: uninstall kube on nodes 
+    desc: uninstall kube on nodes
     dir: provision/ansible
     cmds:
       - ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/k3s-nuke.yml
       - defer: ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml -a '/usr/bin/systemctl reboot' --become
 
   ping:
-    desc: ping all hosts for troubleshooting 
+    desc: ping all hosts for troubleshooting
     dir: provision/ansible
     cmds:
       - ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -m 'ping'
 
   uptime:
-    desc: get uptime 
+    desc: get uptime
     dir: provision/ansible
     cmds:
       - ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -a 'uptime'
 
   reboot:
-    desc: reboot all nodes 
+    desc: reboot all nodes
     dir: provision/ansible
     cmds:
       - ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml -a '/usr/bin/systemctl reboot' --become
 
   poweroff:
-    desc: shutdown all nodes 
+    desc: shutdown all nodes
     dir: provision/ansible
     cmds:
       - ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml -a '/usr/bin/systemctl poweroff' --become

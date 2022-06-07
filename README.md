@@ -7,8 +7,8 @@ This is important because it allows for all of our configs to be in one place. T
 
  <br>
 
- ## Tools used in this branch: 
- 
+ ## Tools used in this branch:
+
  <ul>
     <li>Ansible - Playbooks for bootstrapping and manage nodes </li>
     <li>Terraform - Help bootstrapping DNS with Cloudflare, and provisioning VMs on proxmox </li>
@@ -21,7 +21,7 @@ This is important because it allows for all of our configs to be in one place. T
  <br>
 
  ## Default Kubernetes cluster state:
- 
+
  <ul>
     <li>Apps</li>
  <ul>
@@ -45,31 +45,33 @@ This is important because it allows for all of our configs to be in one place. T
 
  Various workflows with `Renovatebot` and `dependabot`. 
  
+
  <br>
 
  ## Cluster folder structure:
- 
+
 ```
 ├── apps
 │   ├── default
-│   │   
+│   │  
 │   ├── kube-system
 │   │  
 │   ├── networking
-│   │   
+│   │  
 ├── base
-│   
+│  
 ├── core
-│   
+│  
 ├── crds
 ```
 <br>
 
 ## Usage
 
-Most of the interaction with kubernetes cluster nodes is done with Taskfiles and task commands (see task help for task commands options). 
+Most of the interaction with kubernetes cluster nodes is done with Taskfiles and task commands (see task help for task commands options).
 
-Once cluster is installed majority of interation to the cluster is through `kubectl` although there are some `task` commands that interact with the cluster. 
+Once cluster is installed majority of interation to the cluster is through `kubectl` although there are some `task` commands that interact with the cluster.
+
 
 However with fluxcd installed an looking at the cluster file, changing kubernetes manifest files will be through Git by pushing to the `infra` branch. This replaces the `kubectl apply -f <file>` command to apply manifest files to the Kubernetes cluster. 
 
@@ -92,4 +94,5 @@ etc.
 ## Bots: 
 
 Were using Botkube to allow for eyes and ears as far as Pods, Deployments, Services, PVC, and more (only alerting on creations, errors, and deletions in specific namespaces). We are also alerting if any exposed secrets are pushed to Github through Gitguardian.   
+
 

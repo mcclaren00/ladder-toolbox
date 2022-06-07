@@ -1,6 +1,6 @@
-#!/usr/bin/env bash 
+#!/usr/bin/env bash
 
-# This script is meant to uninstall or nuke K3s on all nodes 
+# This script is meant to uninstall or nuke K3s on all nodes
 
 USER="sa"
 REPO_ROOT=$(git rev-parse --show-toplevel)
@@ -22,19 +22,19 @@ uninstall_masters(){
     for master in ${K3S_MASTERS}; do
         message "Removing K3s from ${master}"
         ssh ${USER}@${master} "sudo systemctl stop k3s.service ; sudo /usr/local/bin/k3s-uninstall.sh"
-    done        
+    done
 }
 
 uninstall_workers(){
     for worker in ${K3S_WORKERS}; do
         message "Removing from ${worker}"
         ssh ${USER}@${worker} "sudo systemctl stop k3s-agent.service ; sudo /usr/local/bin/k3s-agent-uninstall.sh"
-    done 
+    done
 }
 
 uninstall_masters
 uninstall_workers
 
-rm -rf ~/.kube/* 
+rm -rf ~/.kube/*
 
 message "Finished uninstalling"
