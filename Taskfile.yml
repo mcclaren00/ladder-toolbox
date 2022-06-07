@@ -51,7 +51,7 @@ tasks:
         yamllint
         yq
         k3sup
-        gcc@5
+        gcc
         go
 
   workstation:
@@ -62,14 +62,14 @@ tasks:
       - sh: command -v brew 
         msg: install homebrew 
     vars: 
-      DEPS >-
+      DEPS: >-
         direnv
         gitleaks 
         go-task/tap/go-task
         pre-commit
         prettier
         yamllint
-        gcc@5
+        gcc
         go
 
   verify:
