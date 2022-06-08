@@ -7,4 +7,5 @@ resources:
   # - system-upgrade
   - default
   - kube-system
+  - prometheus-stack
   - networking
