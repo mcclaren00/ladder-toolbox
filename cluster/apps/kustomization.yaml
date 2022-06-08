@@ -6,6 +6,6 @@ resources:
   # OR uncommend 'system-upgrade' line for automatic upgrades
   # - system-upgrade
   - default
-  - kube-system
   - prometheus-stack
+  - kube-system
   - networking
