@@ -6,6 +6,10 @@
 192.168.50.225 hostname=k3s-worker-01
 192.168.50.105 hostname=k3s-worker-02
 192.168.50.78 hostname=k3s-worker-03
+192.168.50.133 hostname=k3s-worker-04
+192.168.50.185 hostname=k3s-worker-05
+192.168.50.186 hostname=k3s-worker-06
+192.168.50.220 hostname=k3s-worker-07
 
 [k3s_cluster:children]
 k3s_master
