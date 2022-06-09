@@ -12,6 +12,11 @@
 # 192.168.50.220 hostname=k3s-worker-07
 192.168.50.249 hostname=k3s-worker-08
 
+[rpi]
+192.168.50.133 hostname=k3s-worker-04
+192.168.50.186 hostname=k3s-worker-06
+192.168.50.249 hostname=k3s-worker-08
+
 
 [k3s_cluster:children]
 k3s_master
