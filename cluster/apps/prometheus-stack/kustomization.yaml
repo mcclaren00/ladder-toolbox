@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - helm-release.yaml
   - prometheus-config.yaml
+  - custom-prometheus.rules.yaml
