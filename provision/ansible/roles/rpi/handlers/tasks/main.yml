@@ -1,4 +1,4 @@
---
+---
 - name: Test RPI for /proc/cpuinfo
   command: grep -E "Raspberry Pi|BCM2708|BCM2709|BCM2835|BCM2836" /proc/cpuinfo
   register: grep_cpuinfo_raspberrypi

@@ -32,7 +32,7 @@
       - unzip
     install_recommends: false
 
-- name: Install raspberry pi specific packages
+- name: Install RasPi specific packages
   ansible.builtin.apt:
     name:
       - linux-modules-extra-raspi
@@ -40,5 +40,5 @@
   notify: Restart node
   when: "'raspi' in ansible_kernel"
 
-- name: Restart node
+- name: Restart node if necessary
   ansible.builtin.meta: flush_handlers
