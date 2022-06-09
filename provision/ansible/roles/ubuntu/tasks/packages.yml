@@ -32,13 +32,6 @@
       - unzip
     install_recommends: false
 
-- name: Install RasPi specific packages
-  ansible.builtin.apt:
-    name:
-      - linux-modules-extra-raspi
-    install_recommends: false
-  notify: Restart node
-  when: "'raspi' in ansible_kernel"
 
 - name: Restart node if necessary
   ansible.builtin.meta: flush_handlers
