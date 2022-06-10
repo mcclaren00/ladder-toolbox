@@ -9,10 +9,10 @@ spec:
   chart:
     spec:
       chart: traefik
-      version: 10.19.5
+      version: 10.20.1
       sourceRef:
         kind: HelmRepository
-        name: traefik-charts
+        name: traefik
         namespace: flux-system
       interval: 5m
   dependsOn:
@@ -26,16 +26,16 @@ spec:
     remediation:
       retries: 3
   values:
-    image:
-      name: ghcr.io/k8s-at-home/traefik
     deployment:
       kind: Deployment
       replicas: 1
     service:
       enabled: true
       type: LoadBalancer
+      annotations:
+        metallb.universe.tf/loadBalancerIPs: |-
+          "${METALLB_TRAEFIK_ADDR}"
       spec:
-        loadBalancerIP: "${METALLB_TRAEFIK_ADDR}"
         externalTrafficPolicy: Local
     logs:
       general:

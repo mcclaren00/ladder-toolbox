@@ -4,8 +4,8 @@ kind: Kustomization
 resources:
   # either keep the ./provision/ansible/inventory/group_vars/kubernetes/k3s.yml updated and re-run playbook to upgrade
   # OR uncommend 'system-upgrade' line for automatic upgrades
-  # - system-upgrade
+  - system-upgrade
   - default
-  - prometheus-stack
   - kube-system
   - networking
+  - monitoring
