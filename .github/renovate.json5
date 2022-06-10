@@ -1,4 +1,5 @@
 {
+  "baseBranches": ["infra"]
   "enabled": true,
   "semanticCommits": "enabled",
   "dependencyDashboard": true,
