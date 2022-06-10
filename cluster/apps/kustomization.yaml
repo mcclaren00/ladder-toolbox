@@ -8,4 +8,4 @@ resources:
   - default
   - kube-system
   - networking
-  - monitoring
+  # - monitoring
