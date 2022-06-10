@@ -36,7 +36,7 @@ message() {
 
 k3s_master_node() {
     message "Installing first master node"
-    k3sup install --ip "${K3S_MASTER}" --user "${USER}" --k3s-version "${K3S_VERSION}" --ssh-key "~/.ssh/id_ed25519"
+    k3sup install --ip "${K3S_MASTER}" --user "${USER}" --k3s-version "${K3S_VERSION}" --ssh-key "~/.ssh/id_ed25519" --args "--disable servicelb"
 
     # Move to correct folder
     mkdir -p ~/.kube
@@ -49,7 +49,7 @@ k3s_worker_node() {
     for worker in ${K3S_WORKERS}; do
 
         message "Joining ${worker} to ${K3S_MASTER} cluster"
-        k3sup join --ip "${worker}" --server-ip "${K3S_MASTER}" --ssh-key "~/.ssh/id_ed25519" --k3s-version "${K3S_VERSION}" --user "${USER}"
+        k3sup join --ip "${worker}" --server-ip "${K3S_MASTER}" --ssh-key "~/.ssh/id_ed25519" --k3s-version "${K3S_VERSION}" --user "${USER}" --args "--disable servicelb"
 
         sleep 10
 

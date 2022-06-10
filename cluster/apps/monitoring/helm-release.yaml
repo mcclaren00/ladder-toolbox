@@ -1,0 +1,88 @@
+---
+# Flux component defintions: https://github.com/fluxcd/flux2#components
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: prometheus-community
+  namespace: flux-system
+spec:
+  interval: 10m
+  url: https://prometheus-community.github.io/helm-charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: monitoring
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: flux-system
+      interval: 5m
+  valuesFrom:
+  - kind: ConfigMap
+    name: prometheus-config
+    valuesKey: |
+    prometheus:
+      prometheusSpec:
+        ruleSelector: {}
+        ruleSelectorNilUsesHelmValues: false
+        serviceMonitorSelectorNilUsesHelmValues: false
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              accessModes: ["ReadWriteOnce"]
+              storageClassName: do-block-storage
+              resources:
+                requests:
+                  storage: 25Gi
+    grafana:
+      adminPassword: admin
+      persistence:
+        enabled: true
+        storageClassName: do-block-storage
+        accessModes: ["ReadWriteOnce"]
+        size: 5Gi
+    alertmanager:
+      alertmanagerSpec:
+        storage:
+          volumeClaimTemplate:
+            spec:
+              accessModes: ["ReadWriteOnce"]
+              storageClassName: do-block-storage
+              resources:
+                requests:
+                  storage: 5Gi
+      config:
+        global:
+          slack_api_url: "https://discord.com/api/webhooks/984086134734872576/yeP2t2-9SVpcpGqBJQ7_WXmRDzXa05c8fOA40SSFjoKPpCSwexTx95a-TSVAW3hmTQ-0/slack" # SET ENDPOINT FOR ALERTS
+        route:
+          group_by: ["alertname", "cluster", "service"]
+          receiver: 'null'
+          routes:
+            - receiver: discord-alerts
+              match:
+                severity: 'critical'
+            - receiver: 'null'
+              match:
+                alertname: Watchdog
+        receivers:
+          - name: 'null'
+          - name: discord-alerts
+            slack_configs:
+              - send_resolved: true
+    prometheus-node-exporter:
+      service:
+        port: 30206
+        targetPort: 30206
+    kubeEtcd:
+      enabled: false
+    kubeControllerManager:
+      enabled: false
+    kubeScheduler:
+      enabled: false
