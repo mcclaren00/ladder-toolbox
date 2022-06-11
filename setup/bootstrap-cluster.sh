@@ -62,7 +62,7 @@ k3s_worker_node() {
 }
 
 install_flux() {
-    ## installing flux through helm
+    ## installing flux through helm 
     message "Installing flux"
 
     # Bootstrap flux into cluster and repo
