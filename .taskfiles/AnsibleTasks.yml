@@ -30,7 +30,7 @@ tasks:
       - ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/ubuntu-prepare.yml
 
 
-  post-installation:
+  installation:
     desc: install kube on nodes
     dir: provision/ansible
     cmds:
