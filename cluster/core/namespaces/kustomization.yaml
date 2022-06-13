@@ -6,5 +6,3 @@ resources:
   - metallb-system.yaml
   - networking.yaml
   - system-upgrade.yaml
-  - botkube.yaml
-  - monitoring.yaml

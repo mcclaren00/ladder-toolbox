@@ -1,10 +1,5 @@
----
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - flux-system
-  - apps.yaml
-  - cluster-secrets.sops.yaml
   - cluster-settings.yaml
-  - core.yaml
-  - crds.yaml
+  - cluster-secrets.sops.yaml
