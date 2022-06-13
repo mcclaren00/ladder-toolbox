@@ -37,49 +37,39 @@ main() {
         verify_cloudflare
         verify_success
     else
-        # this generates sops configuration files
+        # generate sops configuration file
         envsubst < "${PROJECT_DIR}/initial/.sops.yaml" \
             > "${PROJECT_DIR}/.sops.yaml"
-
-
-        # generating cluster settings
-        envsubst < "${PROJECT_DIR}/initial/cluster/cluster-settings.yml" \
-            > "${PROJECT_DIR}/cluster/base/cluster-settings.yaml"
-        envsubst < "${PROJECT_DIR}/initial/cluster/gotk-sync.yml" \
-            > "${PROJECT_DIR}/cluster/base/flux-system/gotk-sync.yaml"
-        envsubst < "${PROJECT_DIR}/initial/cluster/kube-vip-daemonset.yml" \
+        # generate cluster settings
+        envsubst < "${PROJECT_DIR}/initial/cluster/cluster-settings.yaml" \
+            > "${PROJECT_DIR}/cluster/config/cluster-settings.yaml"
+        envsubst < "${PROJECT_DIR}/tinitial/cluster/flux-cluster.yaml" \
+            > "${PROJECT_DIR}/cluster/flux/flux-system/flux-cluster.yaml"
+        envsubst < "${PROJECT_DIR}/initial/cluster/kube-vip-daemonset.yaml" \
             > "${PROJECT_DIR}/cluster/core/kube-system/kube-vip/daemon-set.yaml"
-
-
-        # generating cluster secrets
-        envsubst < "${PROJECT_DIR}/initial/cluster/cluster-secrets.sops.yml" \
-            > "${PROJECT_DIR}/cluster/base/cluster-secrets.sops.yaml"
-        envsubst < "${PROJECT_DIR}/initial/cluster/cert-manager-secret.sops.yml" \
+        # generate cluster secrets
+        envsubst < "${PROJECT_DIR}/initial/cluster/cluster-secrets.sops.yaml" \
+            > "${PROJECT_DIR}/cluster/config/cluster-secrets.sops.yaml"
+        envsubst < "${PROJECT_DIR}/initial/cluster/cert-manager-secret.sops.yaml" \
             > "${PROJECT_DIR}/cluster/core/cert-manager/secret.sops.yaml"
-        envsubst < "${PROJECT_DIR}/initial/cluster/cloudflare-ddns-secret.sops.yml" \
+        envsubst < "${PROJECT_DIR}/initial/cluster/cloudflare-ddns-secret.sops.yaml" \
             > "${PROJECT_DIR}/cluster/apps/networking/cloudflare-ddns/secret.sops.yaml"
-        envsubst < "${PROJECT_DIR}/initial/cluster/external-dns-secret.sops.yml" \
+        envsubst < "${PROJECT_DIR}/initial/cluster/external-dns-secret.sops.yaml" \
             > "${PROJECT_DIR}/cluster/apps/networking/external-dns/secret.sops.yaml"
-
-        # encrypts cluster secrets
-        sops --encrypt --in-place "${PROJECT_DIR}/cluster/base/cluster-secrets.sops.yaml"
+        # encrypt cluster secrets
+        sops --encrypt --in-place "${PROJECT_DIR}/cluster/config/cluster-secrets.sops.yaml"
         sops --encrypt --in-place "${PROJECT_DIR}/cluster/core/cert-manager/secret.sops.yaml"
         sops --encrypt --in-place "${PROJECT_DIR}/cluster/apps/networking/cloudflare-ddns/secret.sops.yaml"
         sops --encrypt --in-place "${PROJECT_DIR}/cluster/apps/networking/external-dns/secret.sops.yaml"
-
-        # generates terraform secrets from sops template
-        envsubst < "${PROJECT_DIR}/initial/terraform/secret.sops.yml" \
+        # generate terraform secrets
+        envsubst < "${PROJECT_DIR}/initial/terraform/secret.sops.yaml" \
             > "${PROJECT_DIR}/provision/terraform/cloudflare/secret.sops.yaml"
-
-
         # encrypt terraform secrets
         sops --encrypt --in-place "${PROJECT_DIR}/provision/terraform/cloudflare/secret.sops.yaml"
-
-        # ansible settings stuff
+        # generate ansible settings
         envsubst < "${PROJECT_DIR}/initial/ansible/kube-vip.yml" \
             > "${PROJECT_DIR}/provision/ansible/inventory/group_vars/kubernetes/kube-vip.yml"
-
-        # ansible hosts and secrets
+        # generate ansible hosts file and secrets
         generate_ansible_hosts
         generate_ansible_host_secrets
         setup_github_webhook
@@ -112,27 +102,29 @@ parse_command_line() {
 
 _has_binary() {
     command -v "${1}" >/dev/null 2>&1 || {
-        _log "ERROR" "${1} is not installed or in \$PATH"
+        _log "ERROR" "${1} is not installed or not found in \$PATH"
         exit 1
     }
 }
 
 _has_optional_envar() {
     local option="${1}"
+    # shellcheck disable=SC2015
     [[ "${!option}" == "" ]] && {
         _log "WARN" "Unset optional variable ${option}"
     } || {
-        _log "INFO" "Found a variable '${option}' with value '${!option}'"
+        _log "INFO" "Found variable '${option}' with value '${!option}'"
     }
 }
 
 _has_envar() {
     local option="${1}"
+    # shellcheck disable=SC2015
     [[ "${!option}" == "" ]] && {
         _log "ERROR" "Unset variable ${option}"
         exit 1
     } || {
-        _log "INFO" "Found a variable '${option}' with value '${!option}'"
+        _log "INFO" "Found variable '${option}' with value '${!option}'"
     }
 }
 
@@ -298,10 +290,10 @@ setup_github_webhook() {
 
         cp -rf  "${PROJECT_DIR}/initial/cluster/flux-system" "${PROJECT_DIR}/cluster/apps/"
 
-        envsubst < "${PROJECT_DIR}/initial/cluster/flux-system/webhook/github/secret.sops.yaml" \
-            > "${PROJECT_DIR}/cluster/apps/flux-system/webhook/github/secret.sops.yaml"
+        envsubst < "${PROJECT_DIR}/initial/cluster/flux-system/webhooks/github/secret.sops.yaml" \
+            > "${PROJECT_DIR}/cluster/apps/flux-system/webhooks/github/secret.sops.yaml"
 
-        sops --encrypt --in-place "${PROJECT_DIR}/cluster/apps/flux-system/webhook/github/secret.sops.yaml"
+        sops --encrypt --in-place "${PROJECT_DIR}/cluster/apps/flux-system/webhooks/github/secret.sops.yaml"
 
         if [[ $(yq eval --no-doc 'contains({"resources": ["flux-system"]})' "${PROJECT_DIR}/cluster/apps/kustomization.yaml") == false ]]; then
             yq --inplace '.resources += [ "flux-system" ]' "${PROJECT_DIR}/cluster/apps/kustomization.yaml"
@@ -387,7 +379,7 @@ verify_ansible_hosts() {
 
 verify_success() {
     _log "INFO" "All checks passed!"
-    _log "INFO" "Run the script without --verify to template files "
+    _log "INFO" "Run the script without --verify to template all the files out"
     exit 0
 }
 
@@ -396,8 +388,8 @@ generate_ansible_host_secrets() {
     local node_username=
     local node_password=
     local node_hostname=
-    default_control_node_prefix=${BOOTSTRAP_ANSIBLE_DEFAULT_CONTROL_NODE_HOSTNAME_PREFIX:-k3s-}
-    default_worker_node_prefix=${BOOTSTRAP_ANSIBLE_DEFAULT_NODE_HOSTNAME_PREFIX:-k3s-}
+    default_control_node_prefix=${BOOTSTRAP_ANSIBLE_DEFAULT_CONTROL_NODE_HOSTNAME_PREFIX:-k8s-}
+    default_worker_node_prefix=${BOOTSTRAP_ANSIBLE_DEFAULT_NODE_HOSTNAME_PREFIX:-k8s-}
     for var in "${!BOOTSTRAP_ANSIBLE_HOST_ADDR_@}"; do
         node_id=$(echo "${var}" | awk -F"_" '{print $5}')
         if [[ "${!node_control}" == "true" ]]; then
@@ -430,8 +422,8 @@ generate_ansible_host_secrets() {
 
 generate_ansible_hosts() {
     local worker_node_count=
-    default_control_node_prefix=${BOOTSTRAP_ANSIBLE_DEFAULT_CONTROL_NODE_HOSTNAME_PREFIX:-k3s-}
-    default_worker_node_prefix=${BOOTSTRAP_ANSIBLE_DEFAULT_NODE_HOSTNAME_PREFIX:-k3s-}
+    default_control_node_prefix=${BOOTSTRAP_ANSIBLE_DEFAULT_CONTROL_NODE_HOSTNAME_PREFIX:-k8s-}
+    default_worker_node_prefix=${BOOTSTRAP_ANSIBLE_DEFAULT_NODE_HOSTNAME_PREFIX:-k8s-}
     {
         printf -- "---\n"
         printf "kubernetes:\n"
@@ -481,7 +473,7 @@ generate_ansible_hosts() {
 }
 
 success() {
-    _log "INFO" "All files have been templated, you are cleared to go on!"
+    _log "INFO" "All files have been templated, proceed to the next steps outlined in the README"
     exit 0
 }
 
