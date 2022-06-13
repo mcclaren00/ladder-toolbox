@@ -75,9 +75,9 @@ tasks:
   verify:
     desc: Verify correct env settings
     cmds:
-      - ./configure.sh --verify
+      - ./configure --verify
 
   configure:
     desc: Configure repository and cluster
     cmds:
-      - ./configure.sh
+      - ./configure
