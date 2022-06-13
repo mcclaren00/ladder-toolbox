@@ -6,4 +6,4 @@ metadata:
   namespace: monitoring
 spec:
   interval: 1h
-  url: https://github.com/infracloudio/charts
+  url: https://infracloudio.github.io/charts 
