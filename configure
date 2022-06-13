@@ -43,7 +43,7 @@ main() {
         # generate cluster settings
         envsubst < "${PROJECT_DIR}/initial/cluster/cluster-settings.yaml" \
             > "${PROJECT_DIR}/cluster/config/cluster-settings.yaml"
-        envsubst < "${PROJECT_DIR}/tinitial/cluster/flux-cluster.yaml" \
+        envsubst < "${PROJECT_DIR}/initial/cluster/flux-cluster.yaml" \
             > "${PROJECT_DIR}/cluster/flux/flux-system/flux-cluster.yaml"
         envsubst < "${PROJECT_DIR}/initial/cluster/kube-vip-daemonset.yaml" \
             > "${PROJECT_DIR}/cluster/core/kube-system/kube-vip/daemon-set.yaml"
