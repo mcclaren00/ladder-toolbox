@@ -54,8 +54,7 @@ main() {
             > "${PROJECT_DIR}/cluster/core/cert-manager/secret.sops.yaml"
         envsubst < "${PROJECT_DIR}/initial/cluster/cloudflare-ddns-secret.sops.yaml" \
             > "${PROJECT_DIR}/cluster/apps/networking/cloudflare-ddns/secret.sops.yaml"
-        envsubst < "${PROJECT_DIR}/initial/cluster/external-dns-secret.sops.yaml" \
-            > "${PROJECT_DIR}/cluster/apps/networking/external-dns/secret.sops.yaml"
+      
         # encrypt cluster secrets
         sops --encrypt --in-place "${PROJECT_DIR}/cluster/config/cluster-secrets.sops.yaml"
         sops --encrypt --in-place "${PROJECT_DIR}/cluster/core/cert-manager/secret.sops.yaml"

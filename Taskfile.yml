@@ -80,4 +80,4 @@ tasks:
   configure:
     desc: Configure repository and cluster
     cmds:
-      - ./configure
+      - ./configure.sh

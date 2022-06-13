@@ -5,4 +5,4 @@ resources:
   # - kured
   - metrics-server
   - reflector
-  # - reloader
+  - reloader

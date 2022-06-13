@@ -186,7 +186,9 @@ spec:
             - delete
             - error
     communications:
-      webhook:
-        enabled: true 
-        url: "https://discord.com/api/webhooks/979882588929941604/o_HXdDnqpGhQRi-TO1TEZ5AaPk2ZhW8xcq2rcqWsqgoJcjZYxAutVdvVmwBDuD1a15MZ"
-      
+      discord:
+        enabled: true
+        token: ${SECRET_BOTKUBE_TOKEN}
+        botid: ${SECRET_BOTKUBE_BOTID}
+        channel: ${SECRET_BOTKUBE_CHANNEL}
+        notiftype: short
