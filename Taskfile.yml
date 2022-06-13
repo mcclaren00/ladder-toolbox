@@ -73,11 +73,11 @@ tasks:
         go
 
   verify:
-    desc: Verify correct env settings
+    desc: Verify env settings
     cmds:
       - ./configure --verify
 
   configure:
-    desc: Configure repository and cluster
+    desc: Configure repository from env settings
     cmds:
       - ./configure
