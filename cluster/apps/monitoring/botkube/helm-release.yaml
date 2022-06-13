@@ -188,4 +188,4 @@ spec:
       webhook:
         enabled: true 
         url: "https://discord.com/api/webhooks/979882588929941604/o_HXdDnqpGhQRi-TO1TEZ5AaPk2ZhW8xcq2rcqWsqgoJcjZYxAutVdvVmwBDuD1a15MZ"
-        notify-type: short
+      
