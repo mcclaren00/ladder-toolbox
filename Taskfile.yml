@@ -53,6 +53,7 @@ tasks:
         k3sup
         gcc
         go
+        aylei/tap/kubectl-debug
 
   workstation:
     desc: Install dependancies, for workstations through brew
@@ -71,6 +72,7 @@ tasks:
         yamllint
         gcc
         go
+      # aylei/tap/kubectl-debug
 
   verify:
     desc: Verify env settings
