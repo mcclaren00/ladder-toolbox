@@ -219,16 +219,16 @@ spec:
   valuesFrom:
     - kind: Secret
       name: botkube
-      valuesKey: discord-token
+      valuesKey: token
       targetPath: communications.discord.token
       optional: false
     - kind: Secret
       name: botkube
-      valuesKey: discord-botid
+      valuesKey: botid
       targetPath: communications.discord.botid
       optional: false
     - kind: Secret
       name: botkube
-      valuesKey: discord-channel
+      valuesKey: channel
       targetPath: communications.discord.channel
       optional: false
