@@ -16,12 +16,12 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    serviceMonitor:
-      enabled: true
+    #serviceMonitor:
+      #enabled: true
     config:
       recommendations: false
       settings:
-        clustername: tron 
+        clustername: tron
         kubectl:
           enabled: true
           restrictAccess: true
@@ -55,7 +55,7 @@ spec:
             include:
               - all
             ignore:
-              - 
+              -
           events:
             - create
             - delete
@@ -65,7 +65,7 @@ spec:
             include:
               - all
             ignore:
-              - 
+              -
           events:
             - create
             - update
@@ -81,7 +81,7 @@ spec:
             include:
               - all
             ignore:
-              - 
+              -
           events:
             - create
             - update
@@ -97,7 +97,7 @@ spec:
             include:
               - all
             ignore:
-              - 
+              -
           events:
             - create
             - delete
@@ -107,7 +107,7 @@ spec:
             include:
               - all
             ignore:
-              - 
+              -
           events:
             - create
             - delete
@@ -117,7 +117,7 @@ spec:
             include:
               - all
             ignore:
-              - 
+              -
           events:
             - create
             - delete
@@ -127,7 +127,7 @@ spec:
             include:
               - all
             ignore:
-              - 
+              -
           events:
             - create
             - delete
@@ -137,7 +137,7 @@ spec:
             include:
               - all
             ignore:
-              - 
+              -
           events:
             - create
             - delete
@@ -147,7 +147,7 @@ spec:
             include:
               - all
             ignore:
-              - 
+              -
           events:
             - create
             - delete
@@ -157,7 +157,7 @@ spec:
             include:
               - all
             ignore:
-              - 
+              -
           events:
             - create
             - delete
@@ -167,7 +167,7 @@ spec:
             include:
               - all
             ignore:
-              - 
+              -
           events:
             - update
             - error
@@ -176,7 +176,7 @@ spec:
             include:
               - all
             ignore:
-              - 
+              -
           events:
             - create
             - delete
@@ -186,7 +186,7 @@ spec:
             include:
               - all
             ignore:
-              - 
+              -
           events:
             - create
             - delete
@@ -196,7 +196,7 @@ spec:
             include:
               - all
             ignore:
-              - 
+              -
           events:
             - create
             - delete
