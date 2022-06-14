@@ -1,5 +1,5 @@
 {
-  "baseBranches": ["infra", "updatedSite"],
+  "baseBranches": ["infra", "siteV2"],
   "enabled": true,
   "semanticCommits": "enabled",
   "dependencyDashboard": true,
