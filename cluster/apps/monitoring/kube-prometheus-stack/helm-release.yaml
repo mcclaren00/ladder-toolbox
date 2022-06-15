@@ -27,7 +27,7 @@ spec:
     alertmanager:
       config:
         global:
-          slack_api_url: "${discord-webhook}"
+          slack_api_url: "https://discord.com/api/webhooks/979882588929941604/o_HXdDnqpGhQRi-TO1TEZ5AaPk2ZhW8xcq2rcqWsqgoJcjZYxAutVdvVmwBDuD1a15MZ"
           resolve_timeout: 5m
         receivers:
           - name: "null"
@@ -196,10 +196,10 @@ spec:
             static_configs:
               - targets:
                   - "coredns.networking:53"
-  valuesFrom:
-    - kind: Secret
-      name: prometheus
-      valuesKey: discord-webhook
+  #valuesFrom:
+    #- kind: Secret
+     # name: prometheus
+      #valuesKey: discord-webhook
       # targetPath: alertmanager.config.global.slack_api_url
-      optional: false
+      #optional: false
 
