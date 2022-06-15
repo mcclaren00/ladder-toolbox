@@ -27,7 +27,7 @@ spec:
     alertmanager:
       config:
         global:
-          slack_api_url: ""
+          slack_api_url: "$"
           resolve_timeout: 5m
         receivers:
           - name: "null"
@@ -75,10 +75,10 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/appName: "Alert Manager"
         hosts:
-          - "alert-manager.DOMAIN_SECRET"
+          - "alert-manager.${DOMAIN_SECRET}"
         tls:
           - hosts:
-              - "alert-manager.DOMAIN_SECRET"
+              - "alert-manager.${DOMAIN_SECRET}"
       alertmanagerSpec:
         storage:
           volumeClaimTemplate:
@@ -170,10 +170,10 @@ spec:
           hajimari.io/enable: "true"
           hajimari.io/appName: "Prometheus"
         hosts:
-          - "prometheus.${SECRET_PRIVATE_DOMAIN}"
+          - "prometheus.${SECRET_DOMAIN}"
         tls:
           - hosts:
-              - "prometheus.${SECRET_PRIVATE_DOMAIN}"
+              - "prometheus.${SECRET_DOMAIN}"
       prometheusSpec:
         replicas: 1
         replicaExternalLabelName: "replica"
@@ -200,15 +200,6 @@ spec:
     - kind: Secret
       name: prometheus
       valuesKey: discord-webhook
-      targetPath:
+      targetPath: alertmanager.config.global.slack_api_url
       optional: false
-    - kind: Secret
-      name: prometheus
-      valuesKey: domain
-      targetPath:
-      optional: false
-    - kind: Secret
-      name: prometheus
-      valuesKey: domain
-      targetPath:
-      optional: false
+
