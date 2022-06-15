@@ -21,7 +21,7 @@ spec:
     config:
       recommendations: false
       settings:
-        clustername: tron
+        clustername: Bespin
         kubectl:
           enabled: true
           restrictAccess: true
