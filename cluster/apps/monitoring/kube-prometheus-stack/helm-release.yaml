@@ -27,7 +27,7 @@ spec:
     alertmanager:
       config:
         global:
-          slack_api_url: "https://discord.com/api/webhooks/979882588929941604/o_HXdDnqpGhQRi-TO1TEZ5AaPk2ZhW8xcq2rcqWsqgoJcjZYxAutVdvVmwBDuD1a15MZ"
+          slack_api_url: https://discord.com/api/webhooks/979882588929941604/o_HXdDnqpGhQRi-TO1TEZ5AaPk2ZhW8xcq2rcqWsqgoJcjZYxAutVdvVmwBDuD1a15MZ
           resolve_timeout: 5m
         receivers:
           - name: "null"
