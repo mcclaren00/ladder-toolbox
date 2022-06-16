@@ -14,5 +14,5 @@ resources:
   - traefik.yaml
   - weaveworks-kured.yaml
   - infracloudio.yaml
-  - deliveryhero-charts.yaml
-  - prometheus-community-charts.yaml
+  # - deliveryhero-charts.yaml
+  # - prometheus-community-charts.yaml
