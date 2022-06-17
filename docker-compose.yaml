@@ -1,10 +1,10 @@
 ---
-version: "3.3"
+version: "3.7"
 services:
   client: 
     build: ./client
     container_name: client_c
     ports: 
-      - '3000:3000'
+      - "3000:3000"
     stdin_open: true
     tty: true
