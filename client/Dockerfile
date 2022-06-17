@@ -7,4 +7,4 @@ ENV PATH="./node_modules/.bin:$PATH"
 # RUN npm install
 COPY . .
 RUN npm run build 
-CMD [ "node", "run", "start" ]
+CMD [ "npm", "run", "start" ]
