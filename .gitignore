@@ -22,3 +22,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .config.env
+kubeconfig
+terraform.tfstate.backup
+│terraform.tfstate
