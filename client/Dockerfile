@@ -6,5 +6,5 @@ ENV PATH="./node_modules/.bin:$PATH"
 # RUN npm install --production
 # RUN npm install
 COPY . .
-RUN npm run build 
+RUN npm install 
 CMD [ "npm", "run", "start" ]
