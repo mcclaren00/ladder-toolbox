@@ -1,7 +1,8 @@
 FROM node:16.14
-ENV NODE_ENV=production
+# ENV NODE_ENV=production
 WORKDIR /app
 COPY ["package.json", "package-lock.json*", "./"]
-RUN npm install --production
+# RUN npm install --production
+RUN npm install
 COPY . .
 CMD [ "node", "run", "start" ]
