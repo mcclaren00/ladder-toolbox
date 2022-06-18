@@ -3,6 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ladder-client
+  namespace: production
 spec:
   type: NodePort
   ports:
