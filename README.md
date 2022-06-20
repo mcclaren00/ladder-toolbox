@@ -1,4 +1,8 @@
+*** This branch is a production branch be careful of pushes!!!  *** 
+
 # Infrastructure  
+
+
 
 This branch makes use of many different Infrastructure as code frameworks, in order to bootstrap and create a single source of truth to the Kuberenetes and IPFS clusters.
 <br>
@@ -25,8 +29,6 @@ This is important because it allows for all of our configs to be in one place. T
  <ul>
     <li>Apps</li>
  <ul>
-    <li>k8s-gateway</li>
-    <li>error-pages</li>
     <li>system-upgrade</li>
     <li>external-dns</li>
     <li>echo-server</li>
@@ -41,6 +43,10 @@ This is important because it allows for all of our configs to be in one place. T
     <li>Calico</li>
     <li>Cert-manager</li>
  </ul>
+      <li>Monitoring</li>
+   <ul>
+      <li>Botkube</li>
+      <li>Prometheus Monitoring Stack </li>
  </ul>
 
  Various workflows with `Renovatebot` and `dependabot`. 
