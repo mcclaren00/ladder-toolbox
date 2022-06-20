@@ -28,7 +28,7 @@ export default function site ()  {
                     </Route>
                     <Route exact path="/Redundancy" element={<InfoPage ptype="Redundancy"/>}>
                     </Route>
-                    <Route exact path="/Security" element={<InfoPage ptype="Securityh"/>}>
+                    <Route exact path="/Security" element={<InfoPage ptype="Security"/>}>
                     </Route>
                     <Route exact path="/Decentralize" element={<InfoPage ptype="Decentralize"/>}>
                     </Route>
