@@ -3,7 +3,7 @@
 version: "3"
 
 vars:
-  HACK_DIR: "{{.PROJECT_DIR}}/setup"
+  HACK_DIR: "{{.PROJECT_DIR}/hack"
 
 tasks:
   provision:
@@ -15,3 +15,14 @@ tasks:
     desc: Nuke cluster install through bash script
     sh:
       - ./{{.HACK_DIR}}/uninstall-k3s.sh
+  
+  delete-stuck-ns:
+    desc: Delete a stuck namespace 
+    sh:
+      - ./{{.HACK_DIR}}/delete-stuck-ns.sh 
+  
+  upgrade-crd:
+    desc: Helm Upgrade CRDs
+    sh: 
+      - ./{{.HACK_DIR}}/helm-upgrade-crds.sh
+  
