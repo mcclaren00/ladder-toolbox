@@ -1,12 +1,13 @@
 import React, { Fragment} from "react";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 
-import PrivateRoute from "./components/PrivateRoute";
+
 
 import Home from "./webPages/Home.js"
 import Upload from "./webPages/Upload.js"
 import InfoPage from "./webPages/InfoPage.js"
 import Login from "./webPages/Login.js"
+import PrivateRoute from "./PrivateRoute";
 
 export default function site ()  {
     return  (
