@@ -1,13 +1,12 @@
 import React, { Fragment} from "react";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 
-import Signup from "./components/Signup";
 import PrivateRoute from "./components/PrivateRoute";
-
 
 import Home from "./webPages/Home.js"
 import Upload from "./webPages/Upload.js"
 import InfoPage from "./webPages/InfoPage.js"
+import Login from "./webPages/Login.js"
 
 export default function site ()  {
     return  (
@@ -22,7 +21,7 @@ export default function site ()  {
                     </Route>
                     <Route exact path="/FreeTrial" element={<InfoPage ptype="FreeTrial"/>}>
                     </Route>
-                    <Route exact path="/Signup" element={<Signup/>}>
+                    <Route exact path="/Login" element={<Login />}>
                     </Route>
                     <Route exact path="/Moreinfo" element={<InfoPage ptype="MoreInfo"/>}>
                     </Route>
