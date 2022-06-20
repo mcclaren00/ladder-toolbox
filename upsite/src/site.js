@@ -10,6 +10,8 @@ import Security from "./components/Security";
 import Decentralize from "./components/Decentralization";
 import CloudProviders from "./components/CloudProviders";
 import Upload from "./components/Upload";
+import Main from "./webPages/Main.js";
+
 
 export default function site ()  {
 
@@ -17,6 +19,8 @@ export default function site ()  {
         <Router>
             <Fragment>
                 <Routes>
+                    <Route excat path="/Main" element={<Main/>}>
+                    </Route>
                     <Route exact path="/" element={<PrivateRoute/>}>
                     </Route>
                     <Route exact path="/Home" element={<Home/>}>
