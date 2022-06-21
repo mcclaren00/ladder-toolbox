@@ -3,12 +3,12 @@ import {Link} from "react-router-dom";
 
 export default function Navbar()    {
     return  (
-        <nav className="navTool">
+        <nav className="navBar">
             <Link to="/Home">
-                <h1>LadderCorp</h1>
+                <h1 className="navBar--LadderText">LadderCorp</h1>
             </Link>
             <Link to="/Signup">
-                <h2>Login</h2>
+                <h2 className="navBar--LoginText">Login</h2>
             </Link>
         </nav>
     )

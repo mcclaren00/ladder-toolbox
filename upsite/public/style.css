@@ -1,7 +1,45 @@
-*   {
-    box-sizing: border-box;
+.mainContainer{
+    width: 840px;
+    height: 100vh;
+    display: grid;
+    margin: 0 auto;
+    background-color: #6F7188;
+    border-radius: 25px;
+    grid-template-columns: 1fr;
 }
-.navTool {
+
+.navBar{
+    display: grid;
+    background-color: #00B6FF;
+    border-radius: 25px 25px 0px 0px;
+    height: 13vh;
+    grid-template-columns: repeat(2, 1fr);
+    border: 2px solid black;
+}
+
+.navBar--LadderText, .navBar--LoginText{
+    padding-top: 5vh;
+    margin: 0 auto;
+    padding-bottom: 5vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    border: 2px solid black;
+}
+.navBar--LadderText{
+    
+}
+
+.navBar--LoginText{
+    text-align: end;
+}
+
+
+
+
+
+
+
+/* .navTool {
     display: flex;
     background-color: #00B6FF;
     color: #FFFF59;
@@ -148,4 +186,4 @@ Link    {
 }
 .containerSubmit  {
 color: #00B6FF;
-}
+} */
