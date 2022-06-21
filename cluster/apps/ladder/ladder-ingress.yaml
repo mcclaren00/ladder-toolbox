@@ -3,6 +3,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ladder-ingress
+  namespace: production
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-staging
     hajimari.io/enable: "true"
