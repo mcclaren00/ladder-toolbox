@@ -9,6 +9,7 @@ metadata:
     hajimari.io/enable: "true"
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.middlewares: networking-internal-only@kubernetescrd
+    kubernetes.io/ingress.class: traefik 
   creationTimestamp: {}
   generation: 1
 
