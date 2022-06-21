@@ -23,8 +23,8 @@ spec:
             name: ladder-client
             port:
               number: 3000
-        # path: /
-        # pathType: Prefix
+        path: /
+        pathType: Prefix
   tls:
   - hosts:
     - icoolyousuck.com
