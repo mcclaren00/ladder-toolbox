@@ -73,7 +73,7 @@ export default function Login()  {
     </div>
   );
     return  (
-        <div className="containerSign">
+        <div className="mainContainer">
             <Navbar />
             <h1>Sign in</h1>
             {isSubmitted ? <div>User is successfully logged in</div> : renderForm}

@@ -7,7 +7,7 @@ import infoPageData from "../data/infoPageData.js";
 export default function InfoPage(props)  {
     const card = infoPageData.find(item => item.id === props.ptype)
     return  (
-        <div className="containerTrial">
+        <div className="mainContainer">
             <Navbar />
             <InfoCard title={card.title} details={card.details}/>
             <Footer />

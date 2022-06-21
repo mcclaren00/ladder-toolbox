@@ -6,8 +6,8 @@ export default [
     },
     {
         id: 2,
-        title: "Sign up Now",
-        gate: "/Signup", 
+        title: "Login",
+        gate: "/Login", 
     },
     {
         id: 3,

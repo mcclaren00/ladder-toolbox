@@ -14,24 +14,36 @@
     border-radius: 25px 25px 0px 0px;
     height: 13vh;
     grid-template-columns: repeat(2, 1fr);
-    border: 2px solid black;
+    box-shadow: 0px 7px 10px #003e57;
 }
 
 .navBar--LadderText, .navBar--LoginText{
     padding-top: 5vh;
-    margin: 0 auto;
     padding-bottom: 5vh;
-    padding-left: 2vh;
-    padding-right: 2vh;
-    border: 2px solid black;
+    margin: 0 auto;
 }
 .navBar--LadderText{
-    
+    text-align: start;
+    padding-left: 6.3vh;
 }
 
 .navBar--LoginText{
     text-align: end;
+    padding-right: 3vh;
 }
+
+.navBar--LogoImg{
+    display: block;
+    position: absolute;
+    padding-top: 4vh;
+    margin-left: 1vh;
+    margin-top: 4vh;
+    padding: 0;
+    height: 5vh;
+    border-radius: 25px;
+}
+
+
 
 
 

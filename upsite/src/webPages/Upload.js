@@ -6,7 +6,7 @@ import AddFile from "../components/AddFile.js";
 
 export default function Upload()  {
     return  (
-        <div className="containerUpload">
+        <div className="mainContainer">
             <Navbar />
             <AddFile />
             <Footer />
