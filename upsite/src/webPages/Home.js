@@ -17,9 +17,11 @@ export default function Home() {
     return (
         <div className="mainContainer">
             <Navbar />
-            <main className="baseBody">
+            <main className="home--Container">
                 <h2>Reliable Secure Storage on A Decentralized Network</h2>
-                {buttons}
+                <div className="home--ButtonContainer">
+                    {buttons}
+                </div>
             </main>
             <Footer />
         </div>
