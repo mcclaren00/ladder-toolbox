@@ -5,11 +5,18 @@ metadata:
   name: ladder-client
   namespace: production
 spec:
-  type: NodePort
+  internalTrafficPolicy: Cluster
+  ipFamilies: 
+  - IPv4
+  ipFamilyPolicy: SingleStack
   ports:
-    - port: 3000
-      targetPort: 3000
-      protocol: TCP 
-      nodePort: 30008
-  selector:
-    app: ladder-client
+  - name: http
+    port: 3000
+    protocol: TCP
+    targetPort: 80
+  selector: 
+    app.kubernetes.io/instance: ladder-client
+    app.kubernetes.io/name: ladder-client
+  sessionAffinity: None
+  type: ClusterIP 
+  

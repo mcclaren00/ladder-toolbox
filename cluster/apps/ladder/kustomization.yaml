@@ -4,4 +4,5 @@ kind: Kustomization
 resources:
   - client-deployment.yaml
   - client-service.yaml
+  - ladder-ingress.yaml
   
