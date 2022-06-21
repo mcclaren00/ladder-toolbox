@@ -19,5 +19,4 @@ spec:
     app.kubernetes.io/name: ladder-client
   sessionAffinity: None
   type: ClusterIP 
-  type: NodePort
   
