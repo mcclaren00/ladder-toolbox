@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+    # hajimari.io/enable: "true"
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: networking-internal-only@kubernetescrd
+  creationTimestamp: {}
+  generation: 1
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: icoolyousuck.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: ladder
+            port:
+              number: 3000
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - icoolyousuck.com
+    secretName: ladder-tls
+status:
+  loadBalancer:
+    ingress:
+    - ip: 192.168.50.11
