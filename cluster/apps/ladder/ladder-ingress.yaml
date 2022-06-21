@@ -2,6 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  name: ladder-ingress
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-staging
     hajimari.io/enable: "true"
@@ -9,6 +10,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.middlewares: networking-internal-only@kubernetescrd
   creationTimestamp: {}
   generation: 1
+
 spec:
   ingressClassName: traefik
   rules:
