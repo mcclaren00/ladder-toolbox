@@ -53,6 +53,24 @@
     grid-template-columns: repeat(3, 1fr);
 }
 
+.footer--Container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 13vh;
+    padding-top: 13vh;
+}
+
+.footer--Label{
+    margin: 0 auto;
+}
+
+.footer--JoinList, .footer--StandardsList, .footer--HelpList{
+    list-style: none;
+    margin: 0 auto;
+    padding-left: 5vh;
+}
+
+
 
 
 
