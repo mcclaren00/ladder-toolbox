@@ -1,0 +1,19 @@
+{
+  "name": "test-uploads",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcclaren00/ladder-toolbox.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mcclaren00/ladder-toolbox/issues"
+  },
+  "homepage": "https://github.com/mcclaren00/ladder-toolbox#readme"
+}
