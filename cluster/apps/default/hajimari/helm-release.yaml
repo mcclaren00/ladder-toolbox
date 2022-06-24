@@ -35,7 +35,7 @@ spec:
       name: "you"
       customApps:
         - name: Some External Cluster Service
-          url: http://192.168.1.100:5000
+          url: http://192.168.50.100:5000
           icon: test-tube
       groups:
         - name: Communicate
