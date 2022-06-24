@@ -9,22 +9,43 @@ spec:
   chart:
     spec:
       chart: metallb
-      version: 0.12.1
+      version: 2.6.14
       sourceRef:
         kind: HelmRepository
-        name: metallb
+        name: bitnami-charts
         namespace: flux-system
+      interval: 10m
+  test:
+    enable: false # Enable helm test
   install:
-    createNamespace: true
-    remediation:
+    remediation: # perform remediation when helm install fails
       retries: 3
   upgrade:
-    remediation:
+    remediation: # perform remediation when helm upgrade fails
       retries: 3
+      remediateLastFailure: true # remediate the last failure, when no retries remain
+    cleanupOnFail: true
+  rollback:
+    timeout: 10m
+    recreate: true
+    cleanupOnFail: true
   values:
+    controller:
+      image:
+        repository: metallb/controller
+        tag: v0.12.1
+    speaker:
+      image:
+        repository: metallb/speaker
+        tag: v0.12.1
+    prometheus:
+      serviceMonitor:
+        enabled: false
+      prometheusRule:
+        enabled: false
     configInline:
       address-pools:
         - name: default
           protocol: layer2
           addresses:
-            - "${METALLB_LB_RANGE}"
+            - '${METALLB_LB_RANGE}'
