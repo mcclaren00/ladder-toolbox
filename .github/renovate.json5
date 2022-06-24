@@ -1,5 +1,5 @@
 {
-  "baseBranches": ["infra", "siteV2"],
+  "baseBranches": ["production/infra", "production/site"],
   "enabled": true,
   "semanticCommits": "enabled",
   "dependencyDashboard": true,
