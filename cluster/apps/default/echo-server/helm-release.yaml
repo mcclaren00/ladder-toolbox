@@ -83,15 +83,15 @@ spec:
         tls:
           - hosts:
               - *host
-    # # FIXME: Uncomment this block to ensure multiple
-    # # replicas of the pod are scheduled on different nodes
-    # topologySpreadConstraints:
-    #   - maxSkew: 1
-    #     topologyKey: kubernetes.io/hostname
-    #     whenUnsatisfiable: DoNotSchedule
-    #     labelSelector:
-    #       matchLabels:
-    #         app.kubernetes.io/name: *app
+  
+    # replicas of the pod are scheduled on different nodes
+    topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: DoNotSchedule
+        labelSelector:
+          matchLabels:
+            app.kubernetes.io/name: *app
     resources:
       requests:
         cpu: 50m
