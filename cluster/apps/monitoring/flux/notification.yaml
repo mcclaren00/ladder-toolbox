@@ -10,6 +10,7 @@ spec:
   channel: alerts
   secretRef:
     name: discord-webhook-url
+    namespace: monitoring
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta1
 kind: Alert
