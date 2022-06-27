@@ -1,4 +1,4 @@
 #!/bin/bash
 
-flux suspend hr  -n kube-system
-flux resume hr metrics-server -n kube-system
+flux suspend hr $1 -n $2
+flux resume hr $1 -n $2
