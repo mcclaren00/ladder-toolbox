@@ -3,21 +3,21 @@ apiVersion: notification.toolkit.fluxcd.io/v1beta1
 kind: Provider
 metadata:
   name: discord
-  namespace: flux-system
+  namespace: monitoring
 spec:
   type: discord
-  username: flux
-  channel: flux
+  # username: fluxbot
+  channel: alerts
   secretRef:
     name: discord-webhook-url
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta1
 kind: Alert
 metadata:
-  name: cluster-0-discord
-  namespace: flux-system
+  name: on-call-webapp
+  namespace: monitoring
 spec:
-  summary: "cluster-0"
+  summary: "anton"
   providerRef:
     name: discord
   eventSeverity: error
