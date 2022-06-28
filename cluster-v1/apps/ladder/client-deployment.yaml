@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ladder-client
+  name: ladder-client
+  namespace: production
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ladder-client
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: ladder-client
+    spec:
+      containers:
+      - image: mcclaren00/ladder-toolbox-client:latest
+        name: ladder-toolbox-client
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 80
+        resources: {}
+      restartPolicy:  Always
+status: {}
