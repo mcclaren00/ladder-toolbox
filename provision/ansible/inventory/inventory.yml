@@ -6,6 +6,7 @@
 192.168.50.225 hostname=k3s-worker-01
 192.168.50.105 hostname=k3s-worker-02
 192.168.50.78 hostname=k3s-worker-03
+192.168.50.63 hostname=k3s-worker-04
 
 
 
