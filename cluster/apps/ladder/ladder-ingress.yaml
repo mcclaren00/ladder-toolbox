@@ -4,14 +4,7 @@ kind: Ingress
 metadata:
   name: ladder-ingress
   namespace: production
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-staging
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.middlewares: networking-internal-only@kubernetescrd
-    kubernetes.io/ingress.class: traefik 
-    cert-manager.io/cluster-issuer: "letsencrypt-staging"
-    external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
-    external-dns/is-public: "true"
+
   creationTimestamp: {}
   generation: 1
 
