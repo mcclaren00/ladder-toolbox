@@ -11,12 +11,12 @@ spec:
   ipFamilyPolicy: SingleStack
   ports:
   - name: http
-    port: 3001
+    port: 3000
     protocol: TCP
     targetPort: 80
   selector: 
     app.kubernetes.io/instance: ladder-client
     app.kubernetes.io/name: ladder-client
   sessionAffinity: None
-  type: ClusterIP 
+  type: NodoPort 
   
