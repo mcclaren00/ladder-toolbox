@@ -18,5 +18,5 @@ spec:
     app.kubernetes.io/instance: ladder-client
     app.kubernetes.io/name: ladder-client
   sessionAffinity: None
-  type: NodoPort 
+  type: NodePort 
   
