@@ -8,9 +8,13 @@ spec:
   type: discord
   # username: fluxbot
   channel: alerts
-  secretRef:
-    name: discord-webhook
-    namespace: monitoring
+  env:
+    - name: discord-webhook
+      valueFrom:
+        secretKeyRef:
+          name: discord-webhook
+          key: webhook
+          namespace: monitoring
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta1
 kind: Alert
