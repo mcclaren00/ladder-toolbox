@@ -48,7 +48,8 @@ data:
   init.sql: |
     CREATE DATABASE IF NOT EXISTS ladder;
     USE ladder;
-    CREATE TABLE users (id INT, name VARCHAR(256), cid VARCHAR(256));
+    CREATE TABLE files (user VARCHAR(256), cid VARCHAR(256), date_uploaded VARCHAR(7));
+    CREATE TABLE accounts  (id INT, username VARCHAR(256), password VARCHAR(256), email VARCHAR(100));  
     
 ---
 apiVersion: v1
