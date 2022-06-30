@@ -1,0 +1,23 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: prod
+spec:
+  selector:
+    matchLabels:
+      component: backend
+  template:
+    metadata:
+      labels:
+        component: backend
+    spec:
+      containers:
+        - name: backend
+          image: NODEJS-DOKER-APP
+          ports:
+            - containerPort: 5000
+          env:
+            - name: MYSQL_DATABASE
+              value: mysql-cluster-ip-service

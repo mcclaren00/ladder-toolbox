@@ -3,16 +3,11 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ladder-ingress
-  namespace: production
+  namespace: prod
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-staging
-    hajimari.io/enable: "true"
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.middlewares: networking-internal-only@kubernetescrd
-    # kubernetes.io/ingress.class: traefik 
   creationTimestamp: {}
   generation: 1
-
 spec:
   ingressClassName: traefik
   rules:
