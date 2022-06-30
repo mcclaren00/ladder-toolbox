@@ -23,7 +23,3 @@ spec:
   - hosts:
     - icoolyousuck.com
     secretName: ladder-tls
-status:
-  loadBalancer:
-    ingress:
-    - ip: 192.168.50.11
