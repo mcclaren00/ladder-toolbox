@@ -2,7 +2,7 @@ Process of updating code to updatedSite branch...
 
 !...BEFORE EVERY SESSION(S)...!
 
-*Make sure you are starting in the updatedSite branch*
+*Make sure you are starting in the copelands-siteV2 branch*
 
 #This will allow you to fetch data from Github
 1. git fetch

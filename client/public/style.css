@@ -1,0 +1,231 @@
+.mainContainer{
+    width: 840px;
+    height: 100vh;
+    display: grid;
+    margin: 0 auto;
+    background-color: #6F7188;
+    border-radius: 25px;
+    grid-template-columns: 1fr;
+}
+
+.navBar{
+    display: grid;
+    background-color: #00B6FF;
+    border-radius: 25px 25px 0px 0px;
+    height: 13vh;
+    grid-template-columns: repeat(2, 1fr);
+    box-shadow: 0px 7px 10px #003e57;
+}
+
+.navBar--LadderText, .navBar--LoginText{
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    margin: 0 auto;
+}
+.navBar--LadderText{
+    text-align: start;
+    padding-left: 6.3vh;
+}
+
+.navBar--LoginText{
+    text-align: end;
+    padding-right: 3vh;
+}
+
+.navBar--LogoImg{
+    display: block;
+    position: absolute;
+    padding-top: 4vh;
+    margin-left: 1vh;
+    margin-top: 4vh;
+    padding: 0;
+    height: 5vh;
+}
+
+.home--Container{
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+}
+
+.home--ButtonContainer{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.footer--Container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 13vh;
+    padding-top: 13vh;
+}
+
+.footer--Label{
+    margin: 0 auto;
+}
+
+.footer--JoinList, .footer--StandardsList, .footer--HelpList{
+    list-style: none;
+    margin: 0 auto;
+    padding-left: 5vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* .navTool {
+    display: flex;
+    background-color: #00B6FF;
+    color: #FFFF59;
+    align-items: center;
+    height: 100px;
+    padding: 20px 10px;
+}
+.navTool   h1 {
+    color: #FFFF59;
+    margin-right: 1700px;
+}
+.navTool   h2 {
+    color: #FFFF59;
+}
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: #404750;
+}
+.baseBody   {
+    text-align: center;
+    
+}
+.storNet    {
+    color: #FFFF59;
+}
+.trialFree  {
+    padding: 10px;
+    font-size: large;
+    margin-right: 50px;
+    color: #00B6FF
+}
+.upSign {
+    padding: 10px;
+    font-size: large;
+    margin-right: 50px;
+    color: #00B6FF
+}
+.infoMore   {
+    padding: 10px;
+    font-size: large;
+    color: #00B6FF
+}
+.serviceProv    {
+    margin-top: 50px;
+    color: #FFFF59;
+}
+.coinPic    {
+    border-radius: 50%;
+}
+.corpLadder {
+    margin-top: 100px;
+    color: #FFFF59;
+}
+.redundantMain  {
+    padding: 10px;
+    font-size: large;
+    color: #00B6FF
+}
+.secureMain {
+    padding: 10px;
+    font-size: large;
+    color: #00B6FF
+}
+.decentralMain  {
+    padding: 10px;
+    font-size: large;
+    color: #00B6FF
+}
+.cloudMain  {
+    padding: 10px;
+    font-size: large;
+    color: #00B6FF
+}
+footer  {
+    margin-top: 393px;
+    display: flex;
+    align-items: center;
+    background-color: #00B6FF;
+}
+.usJoin {
+    color: #FFFF59;
+    font-size: large;
+    position: absolute;
+    margin-top: -90px;
+    margin-left: 30px;
+}
+.standOur   {
+    color: #FFFF59;
+    font-size: large;
+    position: absolute;
+    margin-top: -90px;
+    margin-left: 850px;
+}
+.usHelp {
+    color: #FFFF59;
+    font-size: large;
+    margin-top: -90px;
+    margin-right: -60px;
+}
+.logUp  {
+    margin-right: auto;
+    font-size: large;
+}
+.policyUse  {
+    margin-right: auto;
+    font-size: large;
+}
+.recoveryBack {
+    font-size: large;
+}
+.containerUpload    {
+    text-align: center;
+}
+.containerUpload h1 {
+   color:  #FFFF59;
+}
+.containerUpload input  {
+    color: #FFFF59;
+}
+input[type=file]::file-selector-button   {
+    color: #00B6FF;
+    font-size: large;
+    padding: 10px;  
+}
+.containerUpload button  {
+    color: #00B6FF;
+    font-size: large;
+    padding: 10px;
+    text-align: center;
+}
+Link    {
+    text-decoration: underline;
+    text-decoration-color:#404750;
+}
+.containerSign  {
+    text-align: center;
+}
+.containerUser  {
+    background-color: #FFFF59;
+}
+.containerPass  {
+    color: #FFFF59;
+}
+.containerSubmit  {
+color: #00B6FF;
+} */
