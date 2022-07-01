@@ -21,6 +21,7 @@
     grid-template-columns: repeat(2, 1fr);
     box-shadow: 0px 7px 10px #003e57;
     align-self: start;
+    align-items: center;
 }
 
 .navBar--LadderText, .navBar--LoginText{
@@ -85,13 +86,15 @@
     grid-template-columns: 1fr 4fr;
     height: 75vh;
     align-content: start;
+    padding-top: 1vh;
 }
 
 .sideBar--Buttons{
     display: grid;
     margin: 0 auto;
-    justify-self: stretch;
-    align-self: center;
+    justify-items: start;
+    align-items: center;
+    row-gap: 1vh;
 }
 
 
