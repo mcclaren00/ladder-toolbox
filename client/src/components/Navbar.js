@@ -4,7 +4,7 @@ import Logo from "../images/ladder_corp.png"
 
 export default function Navbar()    {
     return  (
-        <nav className="navBar">
+        <nav className="navBar--Container">
             <Link to="/Home">
                 <img src={Logo} className="navBar--LogoImg" alt=""/>
                 <h1 className="navBar--LadderText">LadderCorp</h1>

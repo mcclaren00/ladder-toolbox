@@ -8,6 +8,7 @@ import Upload from "./webPages/Upload.js"
 import InfoPage from "./webPages/InfoPage.js"
 import Login from "./webPages/Login.js"
 import PrivateRoute from "./PrivateRoute";
+import DashBoard from "./webPages/DashBoard.js";
 
 export default function site ()  {
     return  (
@@ -33,6 +34,8 @@ export default function site ()  {
                     <Route exact path="/Decentralize" element={<InfoPage ptype="Decentralize"/>}>
                     </Route>
                     <Route exact path="/CloudProviders" element={<InfoPage ptype="CloudProviders"/>}>
+                    </Route>
+                    <Route exact path="/DashBoard" element={<DashBoard/>}>
                     </Route>
                 </Routes>
             </Fragment>

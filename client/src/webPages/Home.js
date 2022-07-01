@@ -9,6 +9,7 @@ export default function Home() {
     const buttons = frontPageData.map(item => {
         return (
             <ButtonCreation 
+                className="home--ButtonContainer"
                 key = {item.id}
                 item = {item}
             />
