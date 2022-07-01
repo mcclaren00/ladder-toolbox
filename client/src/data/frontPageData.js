@@ -39,4 +39,9 @@ export default [
         title: "Cloud Providers",
         gate: "/CloudProviders", 
     },
+    {
+        id: 9,
+        title: "List",
+        gate: "/List", 
+    },
 ]

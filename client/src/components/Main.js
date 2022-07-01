@@ -33,6 +33,9 @@ export default function Main()  {
             <Link to="/CloudProviders">
                 <Button className="cloudMain">Cloud Providers</Button>
             </Link>
+            <Link to="/List">
+                <Button className="List">List</Button>
+            </Link>
         </main>
     )
 }
