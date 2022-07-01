@@ -14,7 +14,7 @@ spec:
       paths:
       - backend:
           service:
-            name: ladder-client
+            name: frontend
             port:
               number: 3000
         path: /
