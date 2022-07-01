@@ -82,8 +82,17 @@
 
 .sideBar--Container{
     display: grid;
+    grid-template-columns: 1fr 4fr;
+    height: 75vh;
+    align-content: start;
 }
 
+.sideBar--Buttons{
+    display: grid;
+    margin: 0 auto;
+    justify-self: stretch;
+    align-self: center;
+}
 
 
 

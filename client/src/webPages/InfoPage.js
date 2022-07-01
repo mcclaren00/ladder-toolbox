@@ -8,7 +8,7 @@ export default function InfoPage(props)  {
     const card = infoPageData.find(item => item.id === props.ptype)
     return  (
         <div className="mainContainer">
-            <div className="mainGrid-Wrapper">
+            <div className="mainGrid--Wrapper">
                 <Navbar />
                 <InfoCard title={card.title} details={card.details}/>
                 <Footer />
