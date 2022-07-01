@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - metallb
   - external-dns
-  - k8s-gateways
+  - k8s-gateway
