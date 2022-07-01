@@ -3,7 +3,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ladder-ingress
-  namespace: production
+  namespace: prod
   creationTimestamp: {}
   generation: 1
 spec:
