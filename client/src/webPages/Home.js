@@ -17,14 +17,16 @@ export default function Home() {
     })
     return (
         <div className="mainContainer">
-            <Navbar />
-            <main className="home--Container">
-                <h2>Reliable Secure Storage on A Decentralized Network</h2>
-                <div className="home--ButtonContainer">
-                    {buttons}
-                </div>
-            </main>
-            <Footer />
+            <div className="mainGrid--Wrapper">
+                <Navbar />
+                <main className="home--Container">
+                    <h2>Reliable Secure Storage on A Decentralized Network</h2>
+                    <div className="home--ButtonContainer">
+                        {buttons}
+                    </div>
+                </main>
+                <Footer />
+            </div>
         </div>
     )
 }

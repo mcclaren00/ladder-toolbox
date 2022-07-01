@@ -7,16 +7,18 @@ import {Link} from "react-router-dom";
 export default function DashBoard(){
     return (
         <div className="mainContainer">
-            <Navbar />
-            <div>
-                <div className="sideBar--Container">
-                    <Link to="/Home">
-                        <input type="button" value="button"></input>
-                    </Link>
+            <div className="mainGrid-Wrapper">
+                <Navbar />
+                <div>
+                    <div className="sideBar--Container">
+                        <Link to="/Home">
+                            <input type="button" value="button"></input>
+                        </Link>
 
+                    </div>
                 </div>
-        </div>
-            <Footer />
+                <Footer />
+            </div>
         </div>
     )
 }

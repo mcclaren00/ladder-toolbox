@@ -7,9 +7,11 @@ import AddFile from "../components/AddFile.js";
 export default function Upload()  {
     return  (
         <div className="mainContainer">
-            <Navbar />
-            <AddFile />
-            <Footer />
+            <div className="mainGrid--Wrapper">
+                <Navbar />
+                <AddFile />
+                <Footer />
+            </div>
         </div>
     )
 }

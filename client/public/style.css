@@ -1,12 +1,16 @@
 .mainContainer{
     width: 840px;
     height: 100vh;
-    display: grid;
     margin: 0 auto;
     background-color: #6F7188;
     border-radius: 25px;
-    grid-template-rows: repeat(3, 1fr);
+}
+
+.mainGrid--Wrapper{
+    display: grid;
+    grid-template-rows: 1fr 4fr 1fr;
     align-items: center;
+    height: 100vh;
 }
 
 .navBar--Container{
@@ -74,6 +78,10 @@
     list-style: none;
     margin: 0 auto;
     padding-left: 5vh;
+}
+
+.sideBar--Container{
+    display: grid;
 }
 
 
