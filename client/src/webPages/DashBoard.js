@@ -1,6 +1,7 @@
 import React from "react"
 import Navbar from "../components/Navbar.js"
 import Footer from "../components/Footer.js"
+import GrabFile from "../functions/GrabFile.js"
 
 import {Link} from "react-router-dom";
 
@@ -27,7 +28,7 @@ export default function DashBoard(){
                     <div className="dashBoard--FileDisplay">
                         <h1>Files</h1>
                         <input type="file" id="fileUpload"/>
-                        <button id="fileSubmit">Submit</button>
+                        <button id="fileSubmit" onClick={GrabFile}>Submit</button>
                         <input type="button" value="Delete File"/>
                     </div>
                 </div>
