@@ -9,8 +9,8 @@ export default function DashBoard(){
         <div className="mainContainer">
             <div className="mainGrid--Wrapper">
                 <Navbar />
-                <div className="sideBar--Container">
-                    <div className="sideBar--Buttons">
+                <div className="dashBoard--Container">
+                    <div className="dashBoard--SideButtons">
                         <Link to="/Home">
                             <input type="button" value="My Dashboard"></input>
                         </Link>
@@ -24,9 +24,16 @@ export default function DashBoard(){
                             <input type="button" value="Faviorits"></input>
                         </Link>
                     </div>
+                    <div className="dashBoard--FileDisplay">
+                        <h1>Files</h1>
+                        <input type="file" id="fileUpload"/>
+                        <button id="fileSubmit">Submit</button>
+                        <input type="button" value="Delete File"/>
+                    </div>
                 </div>
                 <Footer />
             </div>
         </div>
     )
 }
+

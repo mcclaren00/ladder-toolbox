@@ -81,7 +81,7 @@
     padding-left: 5vh;
 }
 
-.sideBar--Container{
+.dashBoard--Container{
     display: grid;
     grid-template-columns: 1fr 4fr;
     height: 75vh;
@@ -89,7 +89,7 @@
     padding-top: 1vh;
 }
 
-.sideBar--Buttons{
+.dashBoard--SideButtons{
     display: grid;
     margin: 0 auto;
     justify-items: start;
