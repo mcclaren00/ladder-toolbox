@@ -1,9 +1,9 @@
 import React from "react"
 import Navbar from "../components/Navbar.js"
 import Footer from "../components/Footer.js"
-import GrabFile from "../functions/GrabFile.js"
+import UploadPage from "../components/UploadPage.js";
 
-import {Link} from "react-router-dom";
+let curPage = <UploadPage/>
 
 export default function DashBoard(){
     return (
@@ -12,25 +12,13 @@ export default function DashBoard(){
                 <Navbar />
                 <div className="dashBoard--Container">
                     <div className="dashBoard--SideButtons">
-                        <Link to="/Home">
-                            <input type="button" value="My Dashboard"></input>
-                        </Link>
-                        <Link to="/Home">
-                            <input type="button" value="All Files"></input>
-                        </Link>
-                        <Link to="/Home">
-                            <input type="button" value="Recents"></input>
-                        </Link>
-                        <Link to="/Home">
-                            <input type="button" value="Faviorits"></input>
-                        </Link>
+                        <input type="button" value="My Dashboard" onClick={DashBoardInerPageSelector("MyDashBoard")}></input>
+                        <input type="button" value="Upload File" onClick={DashBoardInerPageSelector("UploadPage")}></input>
+                        <input type="button" value="All Files" onClick={DashBoardInerPageSelector("AllFiles")}></input>
+                        <input type="button" value="Recents" onClick={DashBoardInerPageSelector("Recents")}></input>
+                        <input type="button" value="Faviorits" onClick={DashBoardInerPageSelector("Faviorits")}></input>
                     </div>
-                    <div className="dashBoard--FileDisplay">
-                        <h1>Files</h1>
-                        <input type="file" id="fileUpload"/>
-                        <button id="fileSubmit" onClick={GrabFile}>Submit</button>
-                        <input type="button" value="Delete File"/>
-                    </div>
+                    {curPage}
                 </div>
                 <Footer />
             </div>
@@ -38,3 +26,19 @@ export default function DashBoard(){
     )
 }
 
+function DashBoardInerPageSelector(page){
+    if (page === "MyDashBoard"){
+        curPage = <UploadPage/>
+    }else if(page === "UploadPage"){
+        curPage = <UploadPage/>
+    }else if(page === "AllFiles"){
+        curPage = <UploadPage/>
+    }else if(page === "Recents"){
+        curPage = <UploadPage/>
+    }else if(page === "Faviorits"){
+        curPage = <UploadPage/>
+    } else{
+        alert("Error")
+        curPage = <UploadPage/>
+    }
+}
