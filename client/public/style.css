@@ -95,6 +95,8 @@
     justify-items: start;
     align-items: center;
     row-gap: 1vh;
+    border: 5px solid black;
+    padding-bottom: 50vh;
 }
 
 
