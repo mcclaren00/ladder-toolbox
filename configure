@@ -27,6 +27,7 @@ main() {
 
     verify_binaries
 
+    # Check for config values in .config.env file
     if [[ "${verify}" == 1 ]]; then
         verify_ansible_hosts
         verify_metallb
@@ -77,6 +78,7 @@ main() {
     fi
 }
 
+# help and arguments
 parse_command_line() {
     while :; do
         case "${1:-}" in
@@ -100,6 +102,7 @@ parse_command_line() {
     fi
 }
 
+# Error handling and logging 
 _has_binary() {
     command -v "${1}" >/dev/null 2>&1 || {
         _log "ERROR" "${1} is not installed or not found in \$PATH"
@@ -140,6 +143,7 @@ _has_valid_ip() {
     fi
 }
 
+# template addressing 
 verify_addressing() {
     local found_kube_vip="false"
     local found_k8s_gateway="false"
@@ -227,6 +231,7 @@ verify_age() {
     fi
 }
 
+# check for dependancies 
 verify_binaries() {
     _has_binary "ansible"
     _has_binary "envsubst"
@@ -248,6 +253,7 @@ verify_kubevip() {
     _has_valid_ip "${BOOTSTRAP_KUBE_VIP_ADDR}" "BOOTSTRAP_KUBE_VIP_ADDR"
 }
 
+# check metallb values 
 verify_metallb() {
     local ip_floor=
     local ip_ceil=
@@ -264,6 +270,7 @@ verify_metallb() {
     _has_valid_ip "${BOOTSTRAP_METALLB_TRAEFIK_ADDR}" "BOOTSTRAP_METALLB_TRAEFIK_ADDR"
 }
 
+ # check git repo exists
 verify_git_repository() {
     _has_envar "BOOTSTRAP_GIT_REPOSITORY"
 
@@ -301,6 +308,7 @@ setup_github_webhook() {
     fi
 }
 
+# check cloudflare values and test connection
 verify_cloudflare() {
     local account_zone=
     local errors=
@@ -324,6 +332,8 @@ verify_cloudflare() {
         exit 1
     fi
 }
+
+# configure ansible hosts
 
 verify_ansible_hosts() {
     local node_id=
@@ -383,6 +393,8 @@ verify_success() {
     exit 0
 }
 
+
+#ansible hosts secrets generation with SOPS - pushing enc passwords to git 
 generate_ansible_host_secrets() {
     local node_id=
     local node_username=
@@ -420,6 +432,7 @@ generate_ansible_host_secrets() {
     done
 }
 
+# template and configure ansible hosts file
 generate_ansible_hosts() {
     local worker_node_count=
     default_control_node_prefix=${BOOTSTRAP_ANSIBLE_DEFAULT_CONTROL_NODE_HOSTNAME_PREFIX:-k8s-}
