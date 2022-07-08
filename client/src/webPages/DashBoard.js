@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState} from "react"
 import Navbar from "../components/Navbar.js"
 import Footer from "../components/Footer.js"
 import UploadPage from "../components/UploadPage.js";
@@ -7,6 +7,27 @@ let curPage = <UploadPage/>
 
 
 const DashBoard = () => {
+
+    const [page, setPage] = useState("MyDashBoard")
+
+    const DashBoardInerPageSelector = page => {
+        if (page === "MyDashBoard"){
+            curPage = <UploadPage/>
+        }else if(page === "UploadPage"){
+            curPage = <UploadPage/>
+        }else if(page === "AllFiles"){
+            curPage = <UploadPage/>
+        }else if(page === "Recents"){
+            curPage = <UploadPage/>
+        }else if(page === "Faviorits"){
+            curPage = <UploadPage/>
+        } else{
+            alert("Error")
+            curPage = <UploadPage/>
+        }
+}
+
+
     return (
     <div className="mainContainer">
         <div className="mainGrid--Wrapper">
@@ -26,21 +47,5 @@ const DashBoard = () => {
     </div>
 )}
 
-const DashBoardInerPageSelector = page => {
-        if (page === "MyDashBoard"){
-            curPage = <UploadPage/>
-        }else if(page === "UploadPage"){
-            curPage = <UploadPage/>
-        }else if(page === "AllFiles"){
-            curPage = <UploadPage/>
-        }else if(page === "Recents"){
-            curPage = <UploadPage/>
-        }else if(page === "Faviorits"){
-            curPage = <UploadPage/>
-        } else{
-            alert("Error")
-            curPage = <UploadPage/>
-        }
-}
 
 export default DashBoard
