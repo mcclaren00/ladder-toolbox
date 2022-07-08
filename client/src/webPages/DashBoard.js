@@ -3,28 +3,27 @@ import Navbar from "../components/Navbar.js"
 import Footer from "../components/Footer.js"
 import UploadPage from "../components/UploadPage.js";
 
-let curPage = <UploadPage/>
-
-
 const DashBoard = () => {
 
-    const [page, setPage] = useState("MyDashBoard")
+    const [page, setPage] = useState(<UploadPage/>)
 
-    const DashBoardInerPageSelector = page => {
-        if (page === "MyDashBoard"){
-            curPage = <UploadPage/>
-        }else if(page === "UploadPage"){
-            curPage = <UploadPage/>
-        }else if(page === "AllFiles"){
-            curPage = <UploadPage/>
-        }else if(page === "Recents"){
-            curPage = <UploadPage/>
-        }else if(page === "Faviorits"){
-            curPage = <UploadPage/>
-        } else{
-            alert("Error")
-            curPage = <UploadPage/>
-        }
+    const DashBoardInerPageSelector = changePage => {
+        setTimeout(() => {
+            if (changePage === "MyDashBoard"){
+                setPage(<UploadPage/>)
+            }else if(changePage === "UploadPage"){
+                setPage(<UploadPage/>)
+            }else if(changePage === "AllFiles"){
+                setPage(<UploadPage/>)
+            }else if(changePage === "Recents"){
+                setPage(<UploadPage/>)
+            }else if(changePage === "Faviorits"){
+                setPage(<UploadPage/>)
+            } else{
+                alert("Error")
+                setPage(<UploadPage/>)
+            }
+        }, 400)
 }
 
 
@@ -34,13 +33,14 @@ const DashBoard = () => {
             <Navbar />
             <div className="dashBoard--Container">
                 <div className="dashBoard--SideButtons">
-                    <input type="button" value="My Dashboard" onClick={DashBoardInerPageSelector("MyDashBoard")}></input>
-                    <input type="button" value="Upload File" onClick={DashBoardInerPageSelector("UploadPage")}></input>
-                    <input type="button" value="All Files" onClick={DashBoardInerPageSelector("AllFiles")}></input>
-                    <input type="button" value="Recents" onClick={DashBoardInerPageSelector("Recents")}></input>
-                    <input type="button" value="Faviorits" onClick={DashBoardInerPageSelector("Faviorits")}></input>
+                    <button onClick={DashBoardInerPageSelector("MyDashBoard")}>MyDashBoard</button>
+                    <button onClick={DashBoardInerPageSelector("UploadPage")}>Upload Page</button>
+                    <button onClick={DashBoardInerPageSelector("AllFiles")}>All Files</button>
+                    <button onClick={DashBoardInerPageSelector("Recents")}>Recents</button>
+                    <button onClick={DashBoardInerPageSelector("Faviorits")}>Faviorits</button>
                 </div>
-                {curPage}
+                {console.log(page)}
+                {page}
             </div>
             <Footer />
         </div>
