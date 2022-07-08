@@ -4,8 +4,7 @@ import ButtonCreation from "../components/ButtonCreation";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-
-export default function Home() {
+const Home = () => {
     const buttons = frontPageData.map(item => {
         return (
             <ButtonCreation 
@@ -30,3 +29,5 @@ export default function Home() {
         </div>
     )
 }
+
+export default Home

@@ -2,8 +2,8 @@ import React from "react"
 import GrabFile from "../functions/GrabFile.js"
 import RemoveFile from "../functions/RemoveFile.js"
 
-export default function UploadPage(){
-    return (
+const UploadPage = () => {
+    return(
         <div className="dashBoard--FileDisplay">
             <h1>Files</h1>
             <input type="file" id="fileUpload"/>
@@ -12,3 +12,5 @@ export default function UploadPage(){
         </div>
     )
 }
+
+export default UploadPage

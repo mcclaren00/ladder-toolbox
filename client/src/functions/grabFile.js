@@ -1,5 +1,5 @@
 
-export default function GrabFile(){
+const GrabFile =() => {
     const fileName = document.getElementById("fileUpload").value
     if(fileName === ''){
         alert("No File Detected")
@@ -9,3 +9,5 @@ export default function GrabFile(){
     
     
 }
+
+export default GrabFile

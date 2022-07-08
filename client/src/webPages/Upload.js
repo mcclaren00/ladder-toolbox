@@ -3,8 +3,7 @@ import Footer from "../components/Footer.js";
 import Navbar from "../components/Navbar.js";
 import AddFile from "../components/AddFile.js";
 
-
-export default function Upload()  {
+const Upload = () => {
     return  (
         <div className="mainContainer">
             <div className="mainGrid--Wrapper">
@@ -15,3 +14,5 @@ export default function Upload()  {
         </div>
     )
 }
+
+export default Upload

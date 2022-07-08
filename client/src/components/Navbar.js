@@ -2,7 +2,7 @@ import React from "react"
 import {Link} from "react-router-dom";
 import Logo from "../images/ladder_corp.png"
 
-export default function Navbar()    {
+const Navbar = () => {
     return  (
         <nav className="navBar--Container">
             <Link to="/Home">
@@ -15,3 +15,5 @@ export default function Navbar()    {
         </nav>
     )
 }
+
+export default Navbar
