@@ -11,16 +11,17 @@ const AddFile = () => {
     formData.append("selectedFile", selectedFile);
     new Response(formData).text().then(console.log)
     try {
-      const response = axios.post('//localhost:5000/Upload', formData).then((response) => {
+        axios.post('//localhost:5000/Upload', selectedFile,).then((response) => {
         console.log("success")
         console.log(response.data)
-      })
+        console.log(selectedFile);
+        })
         /*method: "post",*/
         /*url: "http://localhost:5000/Upload",*/
         /*data: formData,*/
         /*headers: { "Content-Type": "multipart/form-data" },*/
       
-    } catch(error) {
+      } catch(error) {
       console.log(error)
     }
   }
