@@ -1,13 +1,12 @@
 let express = require('express'),
     multer = require('multer'),
-    uuidv4 = require('uuid/v4'),
     router = express.Router();
 const DIR = './public/';
 const fs = require('fs');
-const assert = require('assert');
+//const assert = require('assert');
+//const mysql = require('mysql');
 const crypto = require('crypto');
 const { exec } = require('child_process');
-
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, DIR);
@@ -56,12 +55,13 @@ var upload = multer({
                     if (stderr) {
                       console.log(stderr, stdout);
                       const constCID = stdout; //IPFS RESPONSE VARIABLE
-                      
-                      fs.unlink(newPath, function(err){
+
+                      //Deletes file
+                      fs.unlink(newPath, function(err){ 
                         if(err) return console.log(err);
                         console.log('file deleted successfully!');
                       });
-                      //START SQL HERE
+                      //START SQL HERE - UNCOMMENT WHEN READY FOR DB FILE TRACKING
                       //var con = mysql.createConnection({
                         //host: "localhost",
                         //user: "root",
@@ -86,17 +86,9 @@ var upload = multer({
         })
     }
 });
-// User model
+// User model ??
 let User = require('../models/User');
 router.post('/user-profile', upload.single('profileImg'), (req, res, next) => {
     const url = req.protocol + '://' + req.get('host')
 })
-router.get("/", (req, res, next) => {
-    User.find().then(data => {
-        res.status(200).json({
-            message: "User list retrieved successfully!",
-            users: data
-        });
-    });
-});
 module.exports = router;
