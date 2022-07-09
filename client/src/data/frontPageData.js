@@ -26,7 +26,7 @@ export default [
     },
     {
         id: 6,
-        title: "",
+        title: "Upload",
         gate: "/Upload", 
     },
     {
@@ -38,5 +38,10 @@ export default [
         id: 8,
         title: "Cloud Providers",
         gate: "/CloudProviders", 
+    },
+    {
+        id: 9,
+        title: "List",
+        gate: "/List", 
     },
 ]
