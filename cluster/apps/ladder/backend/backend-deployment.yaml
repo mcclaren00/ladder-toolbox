@@ -15,9 +15,8 @@ spec:
     spec:
       containers:
         - name: backend
-          image: NODEJS-DOKER-APP
+          image: mcclaren00/ladder-server:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000
-          env:
-            - name: MYSQL_DATABASE
-              value: mysql-cluster-ip-service
+      restartPolicy: Always
