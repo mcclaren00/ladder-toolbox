@@ -1,5 +1,6 @@
 .mainContainer{
     width: 840px;
+    min-height: 800px;
     height: 100vh;
     margin: 0 auto;
     background-color: #6F7188;
@@ -69,6 +70,12 @@
     grid-template-columns: repeat(3, 1fr);
     height: 13vh;
     align-self: end;
+    margin-left: 2vh;
+    margin-right: 2vh;
+    padding-top: 2vh;
+    padding-left: 5vh;
+    border-top: 1px solid #00B6FF;
+
 }
 
 .footer--Label{
@@ -84,7 +91,7 @@
 .dashBoard--Container{
     display: grid;
     grid-template-columns: 1fr 4fr;
-    height: 75vh;
+    height: 70vh;
     align-content: start;
     padding-top: 1vh;
 }
@@ -95,8 +102,26 @@
     justify-items: start;
     align-items: center;
     row-gap: 1vh;
-    border: 5px solid black;
-    padding-bottom: 50vh;
+    border-right: 1px solid #00B6FF;
+    padding-bottom: 45vh;
+    padding-right: 1vh;
+}
+
+.dashBoard--Buttons{
+    transition-duration: 0.4s;
+    background-color: transparent;
+    border: 0px;
+    border-bottom: 1px solid #00B6FF;
+    padding-bottom: 1vh;
+    padding-top: 1vh;
+    color:white;
+}
+
+.dashBoard--Buttons:hover {
+    background-color: #00B6FF;
+    border-radius: 2px;
+    color:#FFFF59;
+    border: 0px;
 }
 
 

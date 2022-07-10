@@ -32,11 +32,11 @@ const DashBoard = () => {
             <Navbar />
             <div className="dashBoard--Container">
                 <div className="dashBoard--SideButtons">
-                    <button onClick={MyDashBoardF}>MyDashBoard</button>
-                    <button onClick={UploadPageF}>Upload Page</button>
-                    <button onClick={AllFilesF}>All Files</button>
-                    <button onClick={RecentsF}>Recents</button>
-                    <button onClick={FavioritsF}>Faviorits</button>
+                    <button className="dashBoard--Buttons" onClick={MyDashBoardF}>MyDashBoard</button>
+                    <button className="dashBoard--Buttons" onClick={UploadPageF}>Upload Page</button>
+                    <button className="dashBoard--Buttons" onClick={AllFilesF}>All Files</button>
+                    <button className="dashBoard--Buttons" onClick={RecentsF}>Recents</button>
+                    <button className="dashBoard--Buttons" onClick={FavioritsF}>Faviorits</button>
                 </div>
                 {console.log(page)}
                 {page}
