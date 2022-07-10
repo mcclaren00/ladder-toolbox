@@ -2,42 +2,41 @@ import React, { useState} from "react"
 import Navbar from "../components/Navbar.js"
 import Footer from "../components/Footer.js"
 import UploadPage from "../components/UploadPage.js";
+import MyDashBoard from "../components/MyDashBoard.js";
+import AllFiles from "../components/AllFiles.js";
+import Recents from "../components/Recents.js";
+import Faviorits from "../components/Faviorits.js";
 
 const DashBoard = () => {
 
-    const [page, setPage] = useState(<UploadPage/>)
+    const [page, setPage] = useState(<MyDashBoard/>)
 
-    const DashBoardInerPageSelector = changePage => {
-        setTimeout(() => {
-            if (changePage === "MyDashBoard"){
-                setPage(<UploadPage/>)
-            }else if(changePage === "UploadPage"){
-                setPage(<UploadPage/>)
-            }else if(changePage === "AllFiles"){
-                setPage(<UploadPage/>)
-            }else if(changePage === "Recents"){
-                setPage(<UploadPage/>)
-            }else if(changePage === "Faviorits"){
-                setPage(<UploadPage/>)
-            } else{
-                alert("Error")
-                setPage(<UploadPage/>)
-            }
-        }, 400)
-}
-
-
+    const MyDashBoardF = () => {
+        setPage(<MyDashBoard/>)
+    }
+    const UploadPageF = () => {
+        setPage(<UploadPage/>)
+    }
+    const AllFilesF = () => {
+        setPage(<AllFiles/>)
+    }
+    const RecentsF = () => {
+        setPage(<Recents/>)
+    }
+    const FavioritsF = () => {
+        setPage(<Faviorits/>)
+    }
     return (
     <div className="mainContainer">
         <div className="mainGrid--Wrapper">
             <Navbar />
             <div className="dashBoard--Container">
                 <div className="dashBoard--SideButtons">
-                    <button onClick={DashBoardInerPageSelector("MyDashBoard")}>MyDashBoard</button>
-                    <button onClick={DashBoardInerPageSelector("UploadPage")}>Upload Page</button>
-                    <button onClick={DashBoardInerPageSelector("AllFiles")}>All Files</button>
-                    <button onClick={DashBoardInerPageSelector("Recents")}>Recents</button>
-                    <button onClick={DashBoardInerPageSelector("Faviorits")}>Faviorits</button>
+                    <button onClick={MyDashBoardF}>MyDashBoard</button>
+                    <button onClick={UploadPageF}>Upload Page</button>
+                    <button onClick={AllFilesF}>All Files</button>
+                    <button onClick={RecentsF}>Recents</button>
+                    <button onClick={FavioritsF}>Faviorits</button>
                 </div>
                 {console.log(page)}
                 {page}
