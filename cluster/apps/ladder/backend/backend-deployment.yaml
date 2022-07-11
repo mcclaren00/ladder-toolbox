@@ -19,5 +19,5 @@ spec:
           image: mcclaren00/ladder-toolbox-server:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 5000
+            - containerPort: 4000
       restartPolicy: Always
