@@ -5,12 +5,12 @@ import Logo from "../images/ladder_corp.png"
 const Navbar = () => {
     return  (
         <nav className="navBar--Container">
-            <Link to="/Home">
-                <img src={Logo} className="navBar--LogoImg" alt=""/>
-                <h1 className="navBar--LadderText">LadderCorp</h1>
+            <img src={Logo} className="navBar--LogoImg" alt=""/>
+            <Link className="navBar--Button1" to="/Home">
+                <button className="navBar--LadderButton">LadderCorp</button>
             </Link>
-            <Link to="/Login">
-                <h2 className="navBar--LoginText">Login</h2>
+            <Link className="navBar--Button2" to="/Login">
+                <button className="navBar--LoginButton">Login</button>
             </Link>
         </nav>
     )
