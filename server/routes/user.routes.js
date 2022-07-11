@@ -4,6 +4,7 @@ let express = require('express'),
 path = require ('path');
 const DIR = '../server/public/';
 const fs = require('fs');
+const secretKey = require('secret-key'); 
 //const assert = require('assert');
 //const mysql = require('mysql');
 const crypto = require('crypto');
@@ -35,7 +36,16 @@ var upload = multer({
             var buffer = data;
             console.log(data);
             const algorithm = 'aes-256-ctr';
-            let key = 'MySuperSecretKey';
+            var length = 8, 
+              charset = "abcdefghijklmnopqrstuvwxyzABCEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+              retVal = ""; 
+            for (var i = 0, n = charset.length; i < length; ++i) {
+              retVal += charset.charAt(Math.floor(Math.random() * n));
+            }
+
+            let key = retVal
+
+            console.log(key)
             key = crypto.createHash('sha256').update(key).digest('base64').substr(0, 32);
             const iv = crypto.randomBytes(16);
             const cipher = crypto.createCipheriv(algorithm, key, iv);
@@ -46,9 +56,9 @@ var upload = multer({
                     console.error(err);
                     return;
                   };
-                  const newPath = rFilePath;
-                  console.log(newPath);
-                  exec(`curl -X POST -F file=@${newPath} http://192.168.50.247:9095/api/v0/add`, (err, stdout, stderr) => {
+                  // const newPath = rFilePath;
+                  //console.log(newPath);
+                  exec(`curl -X POST -F file=@${rFilePath} http://192.168.50.247:9095/api/v0/add`, (err, stdout, stderr) => {
                     if (err) {
                       console.log('error: ${error.message}', err);
                       return;
@@ -58,7 +68,7 @@ var upload = multer({
                       const constCID = stdout; //IPFS RESPONSE VARIABLE
 
                       //Deletes file
-                      fs.unlink(newPath, function(err){ 
+                      fs.unlink(rFilePath, function(err){ 
                         if(err) return console.log(err);
                         console.log('file deleted successfully!');
                       });
