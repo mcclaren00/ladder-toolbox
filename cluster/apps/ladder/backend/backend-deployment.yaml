@@ -5,6 +5,7 @@ metadata:
   name: backend-deployment
   namespace: prod
 spec:
+  replicas: 3
   selector:
     matchLabels:
       component: backend
