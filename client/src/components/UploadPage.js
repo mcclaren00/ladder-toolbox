@@ -1,5 +1,5 @@
 import React from "react"
-import GrabFile from "../functions/GrabFile.js"
+import GrabFile from "../functions/grabFile.js"
 import RemoveFile from "../functions/RemoveFile.js"
 
 const UploadPage = () => {

@@ -26,7 +26,7 @@ export default [
     },
     {
         id: 6,
-        title: "",
+        title: "Upload",
         gate: "/Upload", 
     },
     {
