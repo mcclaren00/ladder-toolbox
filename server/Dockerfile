@@ -5,4 +5,4 @@ ENV PATH="./node_modules/.bin:$PATH"
 COPY . .
 RUN npm install
 EXPOSE 4000
-CMD [ "npm", "serve" ]
+CMD [ "npm", "start" ]
