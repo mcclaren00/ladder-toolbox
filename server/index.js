@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cors());
-app.use('/public', express.static('public'));
+app.use(__dirname+'/public', express.static(__dirname+'/public'));
 app.use('/api', api)
 const port = process.env.PORT || 4000;
 const server = app.listen(port, () => {

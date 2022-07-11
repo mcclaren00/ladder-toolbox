@@ -1,7 +1,8 @@
 let express = require('express'),
     multer = require('multer'),
     router = express.Router();
-const DIR = './public/';
+path = require ('path');
+const DIR = '../server/public/';
 const fs = require('fs');
 //const assert = require('assert');
 //const mysql = require('mysql');
@@ -24,7 +25,7 @@ var upload = multer({
         cb(null, true); // THIS ACTUALLY UPLOADS IT TO /PUBLIC
         console.log('uploaded!');
         //ENCRYPT HERE
-        rFilePath = '../server/public/' + fileName;
+        rFilePath = path.join('../' + '/server/public/' + fileName);
         console.log(rFilePath);
         fs.readFile(rFilePath, 'utf8', (err, data) => {
             if (err) {
