@@ -11,5 +11,6 @@ spec:
   selector: 
     app: backend
   ports: 
-  - port: 4000
+  - prototcol: TCP
+    port: 4000
     targetPort: 4000
