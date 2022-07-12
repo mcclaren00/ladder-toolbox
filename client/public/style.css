@@ -3,13 +3,10 @@ body{
 }
 
 .mainContainer{
-    width: 840px;
-    min-height: 800px;
+    width: 100vw;
     height: 100vh;
     margin: 0 auto;
-    background-color: #6F7188;
-    box-shadow: 0px 0px 20px black;
-    border-radius: 25px;
+    background-color: #2a2b33;
     color: white;
 }
 
@@ -22,12 +19,13 @@ body{
 .navBar--Container{
     display: grid;
     background-color: #00B6FF;
-    border-radius: 25px 25px 0px 0px;
+    border-radius: 0vh 0vh 1vh 1vh;
     height: 13vh;
     grid-template-columns: 1fr 1fr;
     box-shadow: 0px 7px 10px #003e57;
     align-self: start;
     align-items: center;
+    justify-items: center;
 }
 
 
@@ -36,33 +34,21 @@ body{
 }
 
 .navBar--LadderButton{
-
+    place-self: start;
+    align-self: center;
 }
 
 .navBar--LoginButton{
-
-}
-
-.navBar--Button1 {
-    text-align: left;
-}
-
-.navBar--Button2{
-    text-align: right;
-}
-
-.navBar--Button1, .navBar--Button2 {
-    
+    place-self: end;
+    align-self: center
 }
 
 .navBar--LogoImg{
     display: block;
     position: absolute;
-    padding-top: 4vh;
-    margin-left: 1vh;
-    margin-top: 4vh;
-    padding: 0;
-    height: 5vh;
+    height: 7vh;
+    top: 4vh;
+    left: 47.4vw;
 }
 
 .home--Container{
@@ -85,10 +71,10 @@ body{
     grid-template-columns: repeat(3, 1fr);
     height: 13vh;
     align-self: end;
-    margin-left: 2vh;
-    margin-right: 2vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
     padding-top: 2vh;
-    padding-left: 5vh;
+    padding-left: 5vw;
     border-top: 1px solid #00B6FF;
 
 }
@@ -105,7 +91,7 @@ body{
 
 .dashBoard--Container{
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 7fr;
     height: 70vh;
     align-content: start;
     padding-top: 1vh;
@@ -114,27 +100,48 @@ body{
 .dashBoard--SideButtons{
     display: grid;
     margin: 0 auto;
-    justify-items: start;
-    align-items: center;
-    row-gap: 1vh;
+    justify-items: stretch;
+    align-items: start;
+    row-gap: 1vw;
     border-right: 1px solid #00B6FF;
-    padding-bottom: 45vh;
-    padding-right: 1vh;
+    padding-bottom: 38vh;
+    padding-right: 3vw;
+    max-width: 90px;
 }
 
 .dashBoard--Buttons{
-    transition-duration: 0.4s;
+    transition-duration: 0.6s;
     background-color: transparent;
     border: 0px;
     border-bottom: 1px solid #00B6FF;
     padding-bottom: 1vh;
     padding-top: 1vh;
     color:white;
+    text-align: start;
 }
 
 .dashBoard--Buttons:hover {
     background-color: #00B6FF;
-    border-radius: 2px;
+    border-radius: 15px;
+    color:#FFFF59;
+    border: 0px;
+}
+
+.uploadPage--Buttons {
+    transition-duration: 0.6s;
+    background-color: transparent;
+    border: 0px;
+    border-style: outset;
+    padding-bottom: 1vh;
+    padding-top: 1vh;
+    margin-right: 10px;
+    color:white;
+    text-align: start;
+}
+
+.uploadPage--Buttons:hover {
+    background-color: #00B6FF;
+    border-radius: 15px;
     color:#FFFF59;
     border: 0px;
 }

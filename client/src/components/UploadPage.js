@@ -6,9 +6,9 @@ const UploadPage = () => {
     return(
         <div className="dashBoard--FileDisplay">
             <h1>Files</h1>
-            <input type="file" id="fileUpload"/>
-            <button id="fileSubmit" onClick={GrabFile}>Submit</button>
-            <input type="button" value="Delete File" onClick={RemoveFile}/>
+            <input type="file" id="fileUpload" className=""/>
+            <button id="fileSubmit" onClick={GrabFile} className="uploadPage--Buttons">Submit</button>
+            <input type="button" value="Delete File" onClick={RemoveFile} className="uploadPage--Buttons"/>
         </div>
     )
 }

@@ -6,12 +6,8 @@ const Navbar = () => {
     return  (
         <nav className="navBar--Container">
             <img src={Logo} className="navBar--LogoImg" alt=""/>
-            <Link className="navBar--Button1" to="/Home">
-                <button className="navBar--LadderButton">LadderCorp</button>
-            </Link>
-            <Link className="navBar--Button2" to="/Login">
-                <button className="navBar--LoginButton">Login</button>
-            </Link>
+            <button className="navBar--LadderButton">LadderCorp</button>
+            <button className="navBar--LoginButton">Login</button>
         </nav>
     )
 }
