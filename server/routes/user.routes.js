@@ -3,7 +3,9 @@ let express = require('express'),
     router = express.Router();
 path = require ('path');
 const DIR = '../server/public/';
+const FormData = require('form-data');
 const fs = require('fs');
+const axios = require('axios');
 const secretKey = require('secret-key'); 
 //const assert = require('assert');
 //const mysql = require('mysql');
@@ -56,22 +58,36 @@ var upload = multer({
                     console.error(err);
                     return;
                   };
-                  // const newPath = rFilePath;
-                  //console.log(newPath);
-                  exec(`curl -X POST -F file=@${rFilePath} http://192.168.50.247:9095/api/v0/add`, (err, stdout, stderr) => {
-                    if (err) {
-                      console.log('error: ${error.message}', err);
-                      return;
-                    }
-                    if (stderr) {
-                      console.log(stderr, stdout);
-                      const constCID = stdout; //IPFS RESPONSE VARIABLE
 
-                      //Deletes file
-                      fs.unlink(rFilePath, function(err){ 
-                        if(err) return console.log(err);
-                        console.log('file deleted successfully!');
-                      });
+                  //start axios IPFS upload                
+                  async function upload() {
+                    const form = new FormData();
+                    form.append('file', rFilePath);
+                    const response = await axios.post(
+                        'http://192.168.50.247:9095/api/v0/add',
+                        form,
+                        {
+                            headers: {
+                                ...form.getHeaders()
+                            }
+                        }
+                    );
+                    console.log(response);
+                    //remove entry in filesystem
+                    fs.unlink(rFilePath, function(err){ 
+                      if(err) return console.log(err);
+                      console.log('file deleted successfully!');
+                    });
+                  }
+
+                  (async() => {
+                    console.log('before start');
+                    await upload();
+                    console.log('after start');
+                  })();
+
+                  //end axios IPFS upload
+
                       //START SQL HERE - UNCOMMENT WHEN READY FOR DB FILE TRACKING
                       //var con = mysql.createConnection({
                         //host: "localhost",
@@ -89,10 +105,7 @@ var upload = multer({
                         //});
                       //});
                       //STOP SQL HERE
-                    }
-                    return;
-                    console.log(stdout);
-                  });
+
             })
         })
     }
