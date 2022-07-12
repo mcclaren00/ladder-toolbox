@@ -23,6 +23,11 @@ spec:
         imagePullPolicy: Always
         ports:
           - containerPort: 3000
+      - image: mcclaren00/ladder-toolbox-server:latest
+        name: ladder-toolbox-server
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 4000
         resources: {}
       restartPolicy:  Always
 status: {}

@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: nginx-deployment
-        image: NGINX-DOCKER-IMAGE 
+        image: nginx
         ports:
         - containerPort: 80
