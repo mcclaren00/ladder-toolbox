@@ -8,7 +8,7 @@ const fs = require('fs');
 const axios = require('axios');
 const secretKey = require('secret-key'); 
 //const assert = require('assert');
-//const mysql = require('mysql');
+const mysql = require('mysql');
 const crypto = require('crypto');
 const { exec } = require('child_process');
 const storage = multer.diskStorage({
@@ -29,6 +29,7 @@ var upload = multer({
         console.log('uploaded!');
         //ENCRYPT HERE
         rFilePath = path.join('../' + '/server/public/' + fileName);
+        constFileName = fileName
         console.log(rFilePath);
         fs.readFile(rFilePath, 'utf8', (err, data) => {
             if (err) {
@@ -46,7 +47,7 @@ var upload = multer({
             }
 
             let key = retVal
-
+            constKey = retVal;
             console.log(key)
             key = crypto.createHash('sha256').update(key).digest('base64').substr(0, 32);
             const iv = crypto.randomBytes(16);
@@ -72,40 +73,49 @@ var upload = multer({
                             }
                         }
                     );
-                    console.log(response);
-                    //remove entry in filesystem
-                    fs.unlink(rFilePath, function(err){ 
-                      if(err) return console.log(err);
-                      console.log('file deleted successfully!');
-                    });
+                    //console.log(response);
+                    //console.log( response.data.Hash )
+                    constCID = response.data.Hash;
+                    console.log(constCID);
                   }
 
                   (async() => {
                     console.log('before start');
                     await upload();
                     console.log('after start');
+                    
+                    //remove entry in filesystem
+                    fs.unlink(rFilePath, function(err){ 
+                      if(err) return console.log(err);
+                      console.log('file deleted successfully!');
+                    });
+
+                    //START SQL HERE - UNCOMMENT WHEN READY FOR DB FILE TRACKING
+
+                      var con = mysql.createConnection({
+                        host: "localhost",
+                        user: "root",
+                        password: "",
+                        database: "ipfs_test"
+                      });
+                      con.connect(function(err){
+                        if (err) throw err;
+                        console.log("Connected");
+                        //using static set username field for now - no dynamic value to pass in currently
+                        var sql = `INSERT INTO files (user, cid, file_name, date_uploaded, encryption_key) VALUES ('john', '${constCID}', '${constFileName}', '71222', '${constKey}')`;
+                        con.query(sql, function (err, result) {
+                          if (err) throw err;
+                          console.log("1 record inserted");
+                        });
+                      });
+
+                    //STOP SQL HERE
+
                   })();
 
                   //end axios IPFS upload
 
-                      //START SQL HERE - UNCOMMENT WHEN READY FOR DB FILE TRACKING
-                      //var con = mysql.createConnection({
-                        //host: "localhost",
-                        //user: "root",
-                        //password: "",
-                        //database: "ipfs_test"
-                      //});
-                      //con.connect(function(err){
-                        //if (err) throw err;
-                        //console.log("Connected");
-                        //var sql = `INSERT INTO files (user, cid, file_name, date_uploaded) VALUES ('john', '${constCID}', '${newFileName}', '62622')`;
-                        //con.query(sql, function (err, result) {
-                          //if (err) throw err;
-                          //console.log("1 record inserted");
-                        //});
-                      //});
-                      //STOP SQL HERE
-
+                      
             })
         })
     }
