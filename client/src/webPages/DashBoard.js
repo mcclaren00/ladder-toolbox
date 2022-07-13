@@ -26,6 +26,7 @@ const DashBoard = () => {
     const FavioritsF = () => {
         setPage(<Faviorits/>)
     }
+
     return (
     <div className="mainContainer">
         <div className="mainGrid--Wrapper">
