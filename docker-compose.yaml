@@ -1,17 +1,17 @@
----
-version: "3.7"
+version: '3'
+
 services:
-  client: 
-    build: ./client
-    container_name: client_c
-    ports: 
-      - "3000:3000"
-    stdin_open: true
-    tty: true
   server:
-    build: ./server
-    container_name: server_c
+    build:
+      context: ./server
+      dockerfile: ./Dockerfile
+    image: "mcclaren00/ladder-toolbox-server"
     ports:
       - "4000:4000"
-    stdin_open: true
-    tty: true
+  frontend:
+    build:
+      context: ./client
+      dockerfile: ./Dockerfile
+    image: "mcclaren00/ladder-toolbox-client"
+    ports:
+      - "3000:3000"
