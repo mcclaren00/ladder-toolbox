@@ -3,9 +3,8 @@ body{
 }
 
 .mainContainer{
-    width: 100vw;
-    height: 100vh;
-    margin: 0 auto;
+    width: 99vw;
+    margin: auto;
     background-color: #2a2b33;
     color: white;
 }
@@ -14,12 +13,14 @@ body{
     display: grid;
     grid-template-rows: 1fr 4fr 1fr;
     height: 100vh;
+    margin: auto;
 }
 
 .navBar--Container{
     display: grid;
     background-color: #00B6FF;
-    border-radius: 0vh 0vh 1vh 1vh;
+    /* border-radius: 0vh 0vh 1vh 1vh; */
+    width: 99vw;
     height: 13vh;
     grid-template-columns: 1fr 1fr;
     box-shadow: 0px 7px 10px #003e57;
@@ -91,7 +92,7 @@ body{
 
 .dashBoard--Container{
     display: grid;
-    grid-template-columns: 1fr 7fr;
+    grid-template-columns: 14vw 86vw;
     height: 70vh;
     align-content: start;
     padding-top: 1vh;
@@ -150,4 +151,8 @@ body{
     border-radius: 15px;
     color:#FFFF59;
     border: 0px;
+}
+
+.myDashBoard--Wrapper {
+    width: 80vw;
 }
