@@ -4,7 +4,7 @@ COPY client/ ./client/
 RUN cd client && npm install
 
 FROM node:16.14-alpine AS server-build
-WORKDIR /usr/src/app
+WORKDIR /app
 COPY --from=ui-build /usr/src/app/client/ ./client/
 COPY server/package*.json ./server/
 RUN cd server && npm install
