@@ -3,6 +3,7 @@ let express = require('express'),
     bodyParser = require('body-parser');
 const api = require('../server/routes/user.routes')
 const app = express();
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
@@ -10,6 +11,7 @@ app.use(bodyParser.urlencoded({
 app.use(cors('*'));
 app.use(__dirname+'/public', express.static(__dirname+'/public'));
 app.use('/api', api)
+
 const port = process.env.PORT || 4000;
 const server = app.listen(port, () => {
     console.log('Connected to port ' + port)
