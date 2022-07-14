@@ -1,9 +1,11 @@
 body{
     background-color: #2a2b33;
+    margin: 0;
+    padding: 0;
 }
 
 .mainContainer{
-    width: 99vw;
+    width: 100vw;
     margin: auto;
     background-color: #2a2b33;
     color: white;
@@ -11,7 +13,7 @@ body{
 
 .mainGrid--Wrapper{
     display: grid;
-    grid-template-rows: 1fr 4fr 1fr;
+    grid-template-rows: 13vh 74vh 13vh;
     height: 100vh;
     margin: auto;
 }
@@ -19,10 +21,10 @@ body{
 .navBar--Container{
     display: grid;
     background-color: #00B6FF;
-    /* border-radius: 0vh 0vh 1vh 1vh; */
-    width: 99vw;
+    border-radius: 0vh 0vh 1vh 1vh;
+    width: 100vw;
     height: 13vh;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 50vw 50vw;
     box-shadow: 0px 7px 10px #003e57;
     align-self: start;
     align-items: center;
