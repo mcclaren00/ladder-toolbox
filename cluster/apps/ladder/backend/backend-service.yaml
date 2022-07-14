@@ -9,7 +9,7 @@ metadata:
 spec: 
   selector: 
     app: backend
-  type: ClusterIP
+  type: LoadBalancer
   ports: 
   - prototcol: TCP
     port: 4000
