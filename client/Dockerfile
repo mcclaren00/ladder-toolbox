@@ -2,7 +2,7 @@ FROM node:16.14-alpine as build-stage
 # ENV NODE_ENV=production
 WORKDIR /client
 ENV PATH="./node_modules/.bin:$PATH"
-RUN npm install 
+RUN npm install --production
 # COPY ["package.json", "package-lock.json*", "./"]
 # RUN npm install --production
 # RUN npm install
