@@ -1,10 +1,14 @@
-FROM node:16.14-alpine
+FROM node:16.14-alpine as build-stage 
 # ENV NODE_ENV=production
 WORKDIR /client
 ENV PATH="./node_modules/.bin:$PATH"
+RUN npm install 
 # COPY ["package.json", "package-lock.json*", "./"]
 # RUN npm install --production
 # RUN npm install
 COPY . .
-RUN npm install 
-CMD [ "npm", "run", "start" ]
+# ENV REACT_APP_baseAPIURL=<backend-app-service-ip>:<port>
+RUN npm build 
+FROM nginx:alpine
+COPY --from=build-stage /client/build /usr/share/nginx/html
+EXPOSE 80
