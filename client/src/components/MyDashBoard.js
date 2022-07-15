@@ -17,7 +17,7 @@ const MyDashBoard = () => {
 
     return (
     <div className="myDashBoard--Wrapper">
-        <h1>My DashBoard Test</h1>
+        <h1><span className="dashBoard--HeaderText">My DashBoard</span></h1>
         <div className="UserFile--FileHeader">
             <p>File Name</p>
             <p>File Type</p>
