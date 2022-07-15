@@ -18,6 +18,11 @@ const MyDashBoard = () => {
     return (
     <div className="myDashBoard--Wrapper">
         <h1>My DashBoard Test</h1>
+        <div className="UserFile--FileHeader">
+            <p>File Name</p>
+            <p>File Type</p>
+            <p>File Upload Date</p>
+        </div>
         <div className="dashBoard--FileWrapper">
             {data}
         </div>
