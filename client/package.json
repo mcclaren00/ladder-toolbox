@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://10.43.70.4:4000",
+  "proxy": "http://backend-service:4000",
   "dependencies": {
     "axios": "^0.27.2",
     "bootstrap": "^5.1.3",
