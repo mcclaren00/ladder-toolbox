@@ -74,10 +74,12 @@ export default function Login()  {
   );
     return  (
         <div className="mainContainer">
-            <Navbar />
-            <h1>Sign in</h1>
-            {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
-            <Footer />
+          <div className="mainGrid--Wrapper">
+              <Navbar />
+              <h1>Sign in</h1>
+              {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+              <Footer />
+            </div>
         </div>
     )
 }
