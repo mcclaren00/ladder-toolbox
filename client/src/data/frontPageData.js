@@ -41,7 +41,12 @@ export default [
     },
     {
         id: 9,
+<<<<<<< HEAD
         title: "DashBoard",
         gate: "/DashBoard", 
+=======
+        title: "List",
+        gate: "/List", 
+>>>>>>> production/site
     },
 ]
