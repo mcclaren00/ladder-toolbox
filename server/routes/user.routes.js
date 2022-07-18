@@ -28,7 +28,7 @@ var upload = multer({
         cb(null, true); // THIS ACTUALLY UPLOADS IT TO /PUBLIC
         console.log('uploaded!');
         //ENCRYPT HERE
-        rFilePath = path.join('../' + '/server/public/' + fileName);
+        rFilePath = path.join(__dirname + '../' + '../'+ '/public/' + fileName);
         constFileName = fileName
         console.log(rFilePath);
         fs.readFile(rFilePath, 'utf8', (err, data) => {
