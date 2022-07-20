@@ -11,7 +11,7 @@ spec:
       chart: ingress-nginx
       sourceRef:
         kind: HelmRepository
-        name: ingress-nginx-charts
+        name: ingress-nginx
         namespace: flux-system
   install:
     createNamespace: true
