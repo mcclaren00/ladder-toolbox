@@ -91,7 +91,7 @@ var upload = multer({
                     });
 
                     //START SQL HERE - UNCOMMENT WHEN READY FOR DB FILE TRACKING
-
+                    /*
                       var con = mysql.createConnection({
                         host: "localhost",
                         user: "root",
@@ -110,6 +110,7 @@ var upload = multer({
                       });
 
                     //STOP SQL HERE
+                    */
 
                   })();
 
