@@ -1,19 +1,28 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import DashBoardData from "../data/DashBoardData"
 import UserFile from "./UserFile"
-const data = DashBoardData.map(item => {
-    return (
-        <UserFile 
-            className="dashBoard--Files"
-            key = {item.id}
-            item = {item}
-        />
-    )
-})
+//const data = DashBoardData.map(item => {
+    //return (
+        //<UserFile 
+            //className="dashBoard--Files"
+            //key = {item.id}
+            //item = {item}
+        ///>
+    //)
+//})
 export default class DashboardComponent extends Component {
-    onSubmit(e) {
+    onClick(e) {
+        e.preventDefault()
         console.log('loaded!')
-        window.print('SUCCESS!')
+        const formdata = new FormData()
+        cid = "QmR9AZtQM3cqACWirHDbWAbqy3BVK2VwnNHfNbn7s7cx2q";
+        axios.post("http://localhost:4001/api/download", { title: cid })
+        .then(res => {
+            console.log(res)
+        });
+        //window.print('SUCCESS!')
+        //API call to run SQL query
     }
     render() {
         return (
@@ -24,11 +33,11 @@ export default class DashboardComponent extends Component {
                 <p>File Type</p>
                 <p>File Upload Date</p>
             </div>
-            <form onSubmit={this.onSubmit}>
+            <form onClick={this.onClick}>
                 <button type="submit">Fetch</button>
             </form>
             <div className="dashBoard--FileWrapper">
-                {data}
+                
             </div>
         </div>
         )
