@@ -15,14 +15,26 @@ export default class DashboardComponent extends Component {
     onClick(e) {
         e.preventDefault()
         console.log('loaded!')
-        const formdata = new FormData()
-        cid = "QmR9AZtQM3cqACWirHDbWAbqy3BVK2VwnNHfNbn7s7cx2q";
-        axios.post("http://localhost:4001/api/download", { title: cid })
-        .then(res => {
-            console.log(res)
-        });
-        //window.print('SUCCESS!')
-        //API call to run SQL query
+        var data = JSON.stringify({
+            "title": "QmR9AZtQM3cqACWirHDbWAbqy3BVK2VwnNHfNbn7s7cx2q"
+          });
+          
+          var config = {
+            method: 'post',
+            url: 'http://localhost:4001/api/download',
+            headers: { 
+              'Content-Type': 'application/json'
+            },
+            data : data
+          };
+          
+          axios(config)
+          .then(function (response) {
+            console.log(JSON.stringify(response.data));
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
     render() {
         return (

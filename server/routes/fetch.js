@@ -1,9 +1,11 @@
 const express = require('express');
+cors = require('cors');
 const FormData = require('form-data');
 const axios = require('axios');
 const app = express();
 //const api = require('C:/xampp/htdocs/ladder-toolbox/server/routes/fetch');
 app.use(express.json());
+app.use(cors('*'));
 
 async function download(cid) {
     form = new FormData();
