@@ -18,20 +18,7 @@ async function download(cid) {
     //console.log(response.config);
     //return;
 }
-
-app.post('/api/download', (req, res) => {
-    //format body with JSON!!!
-    const cid = (req.body.title);
-    download(cid);
-    res.json({requestBody: req.body});
-});
-
-app.get('/api/test', (req, res) => {
-    res.send('Success for /api/test!');
-});
-
-app.get('/api/fetch', (req, res) => {
-    //res.send('Success for /api/fetch!');
+async function fetchAll(user, callback) {
     var con = mysql.createConnection({
         host: "localhost",
         user: "root",
@@ -41,18 +28,41 @@ app.get('/api/fetch', (req, res) => {
       con.connect(function(err){
         if (err) throw err;
         console.log("Connected");
-        //using static set username field for now - no dynamic value to pass in currently
-        var constName = 'john'
-        var sql = `SELECT * FROM files WHERE (user = '${constName}');`
-        //var sql = `INSERT INTO files (user, cid, file_name, date_uploaded, encryption_key) VALUES ('john', '${constCID}', '${constFileName}', '71222', '${constKey}')`;
-        con.query(sql, function (err, result) {
+        var sql = `SELECT * FROM files WHERE (user = '${user}');`
+        con.query(sql, function (err, results) {
           if (err) throw err;
-          console.log("Records retrieved");
-          console.log(result);
-          res.send(result);
+          userFiles = results;
+          return callback(results);
         });
-      });
-      //res.send(result);
+    });
+}
+
+app.post('/api/download', (req, res) => {
+    //format body with JSON!!!
+    const cid = (req.body.title);
+    res.send(download(cid));
+    res.json({requestBody: req.body});
 });
+
+app.post('/api/fetch', async (req, res) => {
+    const user = (req.body.title);
+    var userFiles = '';
+    try {
+        fetchAll(user, function(results) {
+            userFiles = results;
+            console.log('lolxd stuff i want');
+            console.log(userFiles);
+            res.json(userFiles);
+        })
+    } catch(e) {
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
+
+app.get('/api/test', (req, res) => {
+    res.send('Success for /api/test!');
+});
+
 const port = process.env.PORT || 4001;
 app.listen(port, () => console.log('Listening on port ' + port));
