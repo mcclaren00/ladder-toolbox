@@ -28,7 +28,7 @@ async function fetchAll(user, callback) {
       con.connect(function(err){
         if (err) throw err;
         console.log("Connected");
-        var sql = `SELECT * FROM files WHERE (user = '${user}');`
+        var sql = `SELECT file_name, cid, date_uploaded FROM files WHERE (user = '${user}');`
         con.query(sql, function (err, results) {
           if (err) throw err;
           userFiles = results;
