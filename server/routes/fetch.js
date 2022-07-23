@@ -50,8 +50,6 @@ app.post('/api/fetch', async (req, res) => {
     try {
         fetchAll(user, function(results) {
             userFiles = results;
-            console.log('lolxd stuff i want');
-            console.log(userFiles);
             res.json(userFiles);
         })
     } catch(e) {
